@@ -1,16 +1,23 @@
 package org.Aeroporto;
 
 public class Gate {
-    private int Num_Gate;
+    private int numeroGate;
 
-    public Gate(int Num_Gate) {
-        this.Num_Gate = Num_Gate;
+    public Gate(int numeroGate) {
+        this.numeroGate = numeroGate;
     }
 
-    public int getNum_Gate() {
-        return Num_Gate;
+    public int getNumeroGate() {
+        return numeroGate;
     }
-    public void setNum_Gate(int Num_Gate) {
-        this.Num_Gate = Num_Gate;
+
+    public void setNumeroGate(int numeroGate) {
+        this.numeroGate = numeroGate;
+    }
+
+    public String toString() {
+        return "Gate{" +
+                "numeroGate=" + numeroGate +
+                '}';
     }
 }

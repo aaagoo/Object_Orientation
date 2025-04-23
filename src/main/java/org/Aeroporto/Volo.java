@@ -1,8 +1,8 @@
 package org.Aeroporto;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Objects;
 
 
 public abstract class Volo {
@@ -16,7 +16,7 @@ public abstract class Volo {
     private Stato_Volo Stato;
 
     public Volo(String Codice, String Compagnia_Aerea, String Aeroporto_Origine,
-                String Aeroporto_Destinazione, LocalDate Data, LocalTime Orario) {
+                String Aeroporto_Destinazione, LocalDate Data, LocalTime Orario, Duration ritardo, Stato_Volo stato) {
         this.Codice = Codice;
         this.Compagnia_Aerea = Compagnia_Aerea;
         this.Aeroporto_Origine = Aeroporto_Origine;
