@@ -7,7 +7,7 @@ public class Amministratore_Del_Sistema extends Utente {
         super(Nome_Utente, Password);
     }
 
-    public List<Prenotazione> Visualizza_Voli() {
+    public List<Volo> Visualizza_Voli() {
 
         return null;
     }

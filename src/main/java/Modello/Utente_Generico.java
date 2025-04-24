@@ -28,7 +28,7 @@ public class Utente_Generico extends Utente {
         this.Cognome = Cognome;
     }
 
-    public List<Prenotazione> Visualizza_Voli() {
+    public List<Volo> Visualizza_Voli() {
 
         return null;
     }

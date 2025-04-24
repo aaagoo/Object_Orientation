@@ -25,5 +25,5 @@ public abstract class Utente {
         this.Password = Password;
     }
 
-    public abstract List<Prenotazione> Visualizza_Voli();
+    public abstract List<Volo> Visualizza_Voli();
 }
