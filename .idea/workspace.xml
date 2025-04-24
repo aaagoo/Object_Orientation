@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit" />
+    <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Amministratore_Del_Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Amministratore_Del_Sistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Gate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Gate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Stato_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Stato_Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Stato_Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Stato_Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Utente_Generico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Utente_Generico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Volo_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Volo_Arrivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Aeroporto/Volo_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/Volo_Partenza.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,15 +33,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/aaagoo/Object_Orientation.git",
-    "accountId": "b544e6f3-76d0-4239-8311-3c402bb729dc"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;aaagoo&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="b544e6f3-76d0-4239-8311-3c402bb729dc" />
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/aaagoo/OO.git&quot;,
+    &quot;accountId&quot;: &quot;b544e6f3-76d0-4239-8311-3c402bb729dc&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2w8Edrp2adhzHQgGZJ64aHSqrQb" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -37,24 +59,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/agoso/Documents/Java/Aeroporto/src/main/java/org/example/Main.java",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/agoso/Documents/Java/Aeroporto/src/main/java/org/example/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -70,7 +92,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745414891171</updated>
-      <workItem from="1745414892532" duration="667000" />
+      <workItem from="1745414892532" duration="2370000" />
+      <workItem from="1745417284584" duration="15000" />
+      <workItem from="1745417303106" duration="4000" />
+      <workItem from="1745422831250" duration="1510000" />
+      <workItem from="1745485139832" duration="690000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -80,7 +106,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745415373506</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1745415770968</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1745415770968</updated>
+    </task>
+    <task id="LOCAL-00003" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1745417068784</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745417068784</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1745417253952</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1745417253952</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

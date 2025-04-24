@@ -1,4 +1,4 @@
-package org.Aeroporto;
+package Modello;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -89,5 +89,19 @@ public abstract class Volo {
 
     public void setStato(Stato_Volo Stato) {
         this.Stato = Stato;
+    }
+
+    @Override
+    public String toString() {
+        return "Volo{" +
+                "Codice='" + Codice + '\'' +
+                ", Compagnia_Aerea='" + Compagnia_Aerea + '\'' +
+                ", Aeroporto_Origine='" + Aeroporto_Origine + '\'' +
+                ", Aeroporto_Destinazione='" + Aeroporto_Destinazione + '\'' +
+                ", Data=" + Data +
+                ", Orario=" + Orario +
+                ", Ritardo=" + Ritardo +
+                ", Stato=" + Stato +
+                '}';
     }
 }

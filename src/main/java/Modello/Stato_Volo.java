@@ -1,4 +1,4 @@
-package org.Aeroporto;
+package Modello;
 
 public enum Stato_Volo {
     Programmato,

@@ -1,4 +1,4 @@
-package org.Aeroporto;
+package Modello;
 
 import java.util.List;
 

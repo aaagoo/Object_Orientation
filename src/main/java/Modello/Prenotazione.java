@@ -1,4 +1,4 @@
-package org.Aeroporto;
+package Modello;
 
 public class Prenotazione {
     private String Numero_Biglietto;
@@ -68,5 +68,18 @@ public class Prenotazione {
     }
     public void setVolo(Volo Volo) {
         this.Volo = Volo;
+    }
+
+    @Override
+    public String toString() {
+        return "Prenotazione{" +
+                "Numero_Biglietto='" + Numero_Biglietto + '\'' +
+                ", Posto_Assegnato='" + Posto_Assegnato + '\'' +
+                ", Stato=" + Stato +
+                ", Nome_Passeggero='" + Nome_Passeggero + '\'' +
+                ", Cognome_Passeggero='" + Cognome_Passeggero + '\'' +
+                ", Codice_Fiscale='" + Codice_Fiscale + '\'' +
+                ", Volo=" + Volo +
+                '}';
     }
 }

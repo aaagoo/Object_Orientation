@@ -1,4 +1,4 @@
-package org.Aeroporto;
+package Modello;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,14 +15,7 @@ public class Volo_Partenza extends Volo {
                          Duration Ritardo,
                          Stato_Volo Stato,
                          Gate Gate) {
-        super(Codice,
-                Compagnia_Aerea,
-                "Napoli",
-                Aeroporto_Destinazione,
-                Data,
-                Orario,
-                Ritardo,
-                Stato);
+        super(Codice, Compagnia_Aerea, "Napoli", Aeroporto_Destinazione, Data, Orario, Ritardo, Stato);
         this.Gate = Gate;
     }
 
@@ -32,6 +25,11 @@ public class Volo_Partenza extends Volo {
 
     public void setGate(Gate Gate) {
         this.Gate = Gate;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Gate: " + Gate;
     }
 }
 
