@@ -1,4 +1,4 @@
-package Modello;.
+package Modello;
 
 public class Gate {
     private int Numero_Gate;

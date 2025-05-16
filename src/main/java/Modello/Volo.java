@@ -1,4 +1,4 @@
-package Modello;.
+package Modello;
 
 import java.time.Duration;
 import java.time.LocalDate;

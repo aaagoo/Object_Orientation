@@ -1,4 +1,4 @@
-package Modello;.
+package Modello;
 
 public enum Stato_Prenotazione {
     Confermata,
