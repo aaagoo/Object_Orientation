@@ -2,11 +2,12 @@ package Modello;
 
 import java.util.List;
 
+
 public class Utente_Generico extends Utente {
     private String Nome;
     private String Cognome;
 
-    public Utente_Generico(String Nome_Utente, String Password, String Nome, String Cognome) {
+    public Utente_Generico(String Nome, String Cognome, String Nome_Utente, String Password) {
         super(Nome_Utente, Password);
         this.Nome = Nome;
         this.Cognome = Cognome;

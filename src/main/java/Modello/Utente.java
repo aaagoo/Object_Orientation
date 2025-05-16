@@ -2,6 +2,7 @@ package Modello;
 
 import java.util.List;
 
+
 public abstract class Utente {
     private String Nome_Utente;
     private String Password;
