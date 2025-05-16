@@ -1,4 +1,4 @@
-package Modello;
+package Modello;.
 
 import javax.swing.*;
 import javax.swing.DefaultComboBoxModel;

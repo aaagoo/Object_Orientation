@@ -1,4 +1,4 @@
-package Modello;
+package Modello;.
 
 public class Prenotazione {
     private String Numero_Biglietto;
