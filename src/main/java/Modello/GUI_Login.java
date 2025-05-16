@@ -1,8 +1,8 @@
 package Modello;
 
 import javax.swing.*;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUI_Login extends JFrame {
     private JPanel mainpanel;
@@ -21,33 +21,39 @@ public class GUI_Login extends JFrame {
         setVisible(true);
 
 
-            registratiButton.addActionListener(e -> {
+            registratiButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                dispose();
+                new GUI_RegistrazioneScelta();
 
-                setVisible(false);
-                new GUI_Registrazione();
+                }
             });
 
-            accediButton.addActionListener(e -> {
-                String username = userfield.getText();
-                String password = new String(pswfield.getPassword());
+            accediButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String username = userfield.getText();
+                    String password = new String(pswfield.getPassword());
 
-                Utente utente = UtenteController.getInstance().login(username, password);
-                if (utente != null) {
-                    setVisible(false);
-                    // Apri l'interfaccia appropriata in base al tipo di utente
-                    if (utente instanceof Amministratore_Del_Sistema) {
-                        mostraInterfacciaAmministratore((Amministratore_Del_Sistema) utente);
+                    Utente utente = UtenteController.getInstance().login(username, password);
+                    if (utente != null) {
+                        dispose();
 
-                    } else if (utente instanceof Utente_Generico) {
+                        if (utente instanceof Amministratore_Del_Sistema) {
+                            mostraInterfacciaAmministratore((Amministratore_Del_Sistema) utente);
 
-                        mostraInterfacciaUtente((Utente_Generico) utente);
+                        } else if (utente instanceof Utente_Generico) {
+
+                            mostraInterfacciaUtente((Utente_Generico) utente);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(GUI_Login.this,
+                                "Credenziali non valide!",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
                     }
-
-                } else {
-                    JOptionPane.showMessageDialog(this,
-                            "Credenziali non valide!",
-                            "Errore",
-                            JOptionPane.ERROR_MESSAGE);
                 }
             });
 

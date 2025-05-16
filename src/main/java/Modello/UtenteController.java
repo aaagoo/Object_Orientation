@@ -21,26 +21,24 @@ public class UtenteController {
         return instance;
     }
 
-    public boolean registraUtente(String nome, String cognome, String username, String password, String ruolo) {
+    public boolean registraUtenteGenerico(String nome, String cognome, String username, String password) {
         if (utentiRegistrati.containsKey(username)) {
             return false;
         }
-
-        Utente nuovoUtente;
-        switch (ruolo) {
-            case "Amministratore":
-                nuovoUtente = new Amministratore_Del_Sistema(username, password);
-                break;
-            case "Utente Generico":
-                nuovoUtente = new Utente_Generico(nome, cognome, username, password);
-                break;
-            default:
-                return false;
-        }
-
+        Utente_Generico nuovoUtente = new Utente_Generico(nome, cognome, username, password);
         utentiRegistrati.put(username, nuovoUtente);
         return true;
     }
+
+    public boolean registraAmministratore(String username, String password) {
+        if (utentiRegistrati.containsKey(username)) {
+            return false;
+        }
+        Amministratore_Del_Sistema nuovoAdmin = new Amministratore_Del_Sistema(username, password);
+        utentiRegistrati.put(username, nuovoAdmin);
+        return true;
+    }
+
 
     public Utente login(String username, String password) {
         Utente utente = utentiRegistrati.get(username);
