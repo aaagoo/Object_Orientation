@@ -61,12 +61,12 @@ public class GUI_Login extends JFrame {
 
     private void mostraInterfacciaAmministratore(Amministratore_Del_Sistema admin) {
 
-        JFrame adminFrame = new JFrame("Pannello Amministratore");
+        new GUI_HomeAmministratore(admin);
     }
 
     private void mostraInterfacciaUtente(Utente_Generico utente) {
 
-        JFrame userFrame = new JFrame("Area Utente");
+        new GUI_HomeUtente(utente);
     }
 
 }
