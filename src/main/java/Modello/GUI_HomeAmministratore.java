@@ -11,11 +11,12 @@ public class GUI_HomeAmministratore extends JFrame{
     private JButton assegnaGateButton;
     private JButton aggiornaVoloButton;
     private JLabel benvenuto;
+    private JButton disconnettitiButton;
 
 
     public GUI_HomeAmministratore(Amministratore_Del_Sistema amministratore){
         setContentPane(mainpanel);
-        setTitle("Home Utente");
+        setTitle("Home Amministratore");
         setSize(500,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -34,7 +35,7 @@ public class GUI_HomeAmministratore extends JFrame{
         nuovoVoloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_NuovoVolo();
+                new GUI_NuovoVolo(amministratore);
                 dispose();
             }
         });
@@ -51,6 +52,15 @@ public class GUI_HomeAmministratore extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //new GUI_AggiornaVolo();
+                dispose();
+            }
+        });
+
+
+        disconnettitiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_Login();
                 dispose();
             }
         });

@@ -12,7 +12,7 @@ public class GUI_VisualizzaVoliA extends JFrame {
     private JButton voliButton;
     private JTable tabellavoli;
     private DefaultTableModel modelArrivi;
-    private Utente utente;
+    private final Utente utente;
 
     public GUI_VisualizzaVoliA(Utente utente) {
         this.utente = utente;
@@ -51,12 +51,13 @@ public class GUI_VisualizzaVoliA extends JFrame {
         indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dispose();
                 if (utente instanceof Amministratore_Del_Sistema) {
                     new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
                 } else {
                     new GUI_HomeUtente((Utente_Generico) utente);
                 }
-                dispose();
+
             }
         });
 

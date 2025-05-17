@@ -12,6 +12,7 @@ public class GUI_HomeUtente extends JFrame{
     private JButton cercaPrenotazioneVoloButton;
     private JButton cercaPrenotazionePasseggeroButton;
     private JLabel benvenuto;
+    private JButton disconnettitiButton;
 
 
     public GUI_HomeUtente(Utente_Generico utente) {
@@ -55,6 +56,15 @@ public class GUI_HomeUtente extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //new GUI_CercaPrenotazionePasseggero();
+                dispose();
+            }
+        });
+
+
+        disconnettitiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_Login();
                 dispose();
             }
         });

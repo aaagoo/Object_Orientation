@@ -13,7 +13,7 @@ public class GUI_VisualizzaVoliP extends JFrame {
     private JButton indietroButton;
     private JButton voliButton;
     private DefaultTableModel modelPartenze;
-    private Utente utente;
+    private final Utente utente;
 
     public GUI_VisualizzaVoliP(Utente utente) {
         this.utente = utente;
@@ -53,6 +53,7 @@ public class GUI_VisualizzaVoliP extends JFrame {
         indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 if (utente instanceof Amministratore_Del_Sistema) {
                     new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
                 } else {

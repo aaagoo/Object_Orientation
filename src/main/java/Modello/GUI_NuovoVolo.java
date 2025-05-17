@@ -8,9 +8,12 @@ public class GUI_NuovoVolo extends JFrame {
     private JPanel mainpanel;
     private JButton partenzaButton;
     private JButton arrivoButton;
+    private JButton annullaButton;
+    private Utente utente;
 
 
-    public GUI_NuovoVolo() {
+    public GUI_NuovoVolo(Utente utente) {
+        this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Nuovo Volo");
         setSize(400,300);
@@ -22,7 +25,7 @@ public class GUI_NuovoVolo extends JFrame {
         partenzaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_Partenza();
+                new GUI_Partenza((Amministratore_Del_Sistema) utente);
                 dispose();
             }
         });
@@ -31,7 +34,16 @@ public class GUI_NuovoVolo extends JFrame {
         arrivoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_Arrivo();
+                new GUI_Arrivo((Amministratore_Del_Sistema) utente);
+                dispose();
+            }
+        });
+
+
+        annullaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
                 dispose();
             }
         });
