@@ -25,28 +25,71 @@ public class VoloController {
     }
 
     private void initializeTestData() {
-        // Voli in arrivo
+
         voli.add(new Volo_Arrivo(
-                "AZ1234",
-                "Alitalia",
-                "Roma",
+                "BL2435",
+                "EasyJet",
+                "Madrid",
                 LocalDate.now(),
-                LocalTime.of(10, 30),
+                LocalTime.of(9, 45),
                 Duration.ZERO,
                 Stato_Volo.Programmato
         ));
 
         voli.add(new Volo_Arrivo(
+                "AH8364",
+                "Ryanair",
+                "Barcellona",
+                LocalDate.now(),
+                LocalTime.of(10, 55),
+                Duration.ZERO,
+                Stato_Volo.Programmato
+        ));
+
+        Volo_Arrivo voloGS6859 = new Volo_Arrivo(
+                "GS6859",
+                "Turkish Airlines",
+                "Istanbul",
+                LocalDate.now(),
+                LocalTime.of(20, 30),
+                Duration.ofMinutes(15),
+                Stato_Volo.In_Ritardo
+        );
+        voloGS6859.setRitardo(15);
+        voli.add(voloGS6859);
+
+        voli.add(new Volo_Arrivo(
+                "GB9405",
+                "British Airways",
+                "Londra",
+                LocalDate.now(),
+                LocalTime.of(16, 05),
+                Duration.ZERO,
+                Stato_Volo.Programmato
+        ));
+
+        Volo_Arrivo voloAZ1234 = new Volo_Arrivo(
+                "AZ1234",
+                "Alitalia",
+                "Roma",
+                LocalDate.now(),
+                LocalTime.of(12, 30),
+                Duration.ofMinutes(35),
+                Stato_Volo.In_Ritardo
+        );
+        voloAZ1234.setRitardo(35);
+        voli.add(voloAZ1234);
+
+        voli.add(new Volo_Arrivo(
                 "FR5678",
                 "Ryanair",
-                "Londra",
+                "Bologna",
                 LocalDate.now(),
                 LocalTime.of(14, 45),
                 Duration.ZERO,
                 Stato_Volo.Programmato
         ));
 
-        // Voli in partenza
         voli.add(new Volo_Partenza(
                 "AZ2468",
                 "Alitalia",
@@ -67,6 +110,52 @@ public class VoloController {
                 Duration.ZERO,
                 Stato_Volo.Programmato,
                 new Gate(2)
+        ));
+
+        voli.add(new Volo_Partenza(
+                "EA0495",
+                "EasyJet",
+                "Berlino",
+                LocalDate.now(),
+                LocalTime.of(8, 25),
+                Duration.ZERO,
+                Stato_Volo.Programmato,
+                new Gate(9)
+        ));
+
+        voli.add(new Volo_Partenza(
+                "BA7233",
+                "Swiss Air",
+                "Zurigo",
+                LocalDate.now(),
+                LocalTime.of(21, 35),
+                Duration.ZERO,
+                Stato_Volo.Programmato,
+                null
+        ));
+
+        Volo_Partenza voloBN9932 = new Volo_Partenza(
+                "BN9932",
+                "Lufthansa",
+                "Francoforte",
+                LocalDate.now(),
+                LocalTime.of(10, 15),
+                Duration.ofMinutes(10),
+                Stato_Volo.In_Ritardo,
+                new Gate(5)
+        );
+        voloBN9932.setRitardo(10);
+        voli.add(voloBN9932);
+
+        voli.add(new Volo_Partenza(
+                "AN2758",
+                "Air France",
+                "Parigi",
+                LocalDate.now(),
+                LocalTime.of(15, 20),
+                Duration.ZERO,
+                Stato_Volo.Programmato,
+                new Gate(7)
         ));
     }
 
@@ -137,6 +226,14 @@ public class VoloController {
         return getVoliPartenza().stream()
                 .filter(v -> v.getGate().getNumero_Gate() == numeroGate)
                 .collect(Collectors.toList());
+    }
+
+    public Volo_Partenza trovaVoloPartenza(String codice) {
+        return voli.stream()
+                .filter(v -> v instanceof Volo_Partenza && v.getCodice().equals(codice))
+                .map(v -> (Volo_Partenza) v)
+                .findFirst()
+                .orElse(null);
     }
 }
 

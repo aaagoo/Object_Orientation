@@ -43,7 +43,7 @@ public class GUI_HomeAmministratore extends JFrame{
         assegnaGateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //new GUI_AssegnaGate();
+                new GUI_AssegnaGate(amministratore);
                 dispose();
             }
         });
@@ -51,7 +51,7 @@ public class GUI_HomeAmministratore extends JFrame{
         aggiornaVoloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //new GUI_AggiornaVolo();
+                new GUI_AggiornaVolo(amministratore);
                 dispose();
             }
         });

@@ -28,27 +28,44 @@ public class GUI_VisualizzaVoliP extends JFrame {
         modelPartenze = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
                 0
-        );
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Rende la tabella non editabile
+            }
+        };
         tabellavoli.setModel(modelPartenze);
 
         modelPartenze.setRowCount(0);
 
-        // Carica i voli dal controller
         for (Volo_Partenza volo : VoloController.getInstance().getVoliPartenza()) {
-            String ritardoFormattato = volo.getRitardo() > 0 ?
-                    volo.getRitardo() + " min" : "In orario";
+
+            if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {
+                volo.setStato(Stato_Volo.In_Ritardo);
+            }
+
+            String dataFormattata = volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            String oraFormattata = volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm"));
+
+            String ritardoFormattato;
+            if (volo.getRitardo() > 0) {
+                ritardoFormattato = volo.getRitardo() + " min";
+            } else {
+                ritardoFormattato = "In orario";
+            }
 
             modelPartenze.addRow(new Object[]{
                     volo.getCodice(),
                     volo.getCompagnia_Aerea(),
                     volo.getAeroporto_Destinazione(),
-                    volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                    volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
+                    dataFormattata,
+                    oraFormattata,
                     ritardoFormattato,
                     volo.getGate(),
                     volo.getStato()
             });
         }
+
 
         indietroButton.addActionListener(new ActionListener() {
             @Override

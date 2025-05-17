@@ -20,7 +20,6 @@ public class GUI_Arrivo extends JFrame {
     private JTextField ritardoField;
     private JButton annullaButton;
     private JButton confermaButton;
-    private JComboBox statoComboBox;
     private Amministratore_Del_Sistema utente;
 
 
@@ -33,11 +32,6 @@ public class GUI_Arrivo extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Inizializza la combo box con gli stati del volo
-        statoComboBox.setModel(new DefaultComboBoxModel<>(Stato_Volo.values()));
-
-        // Imposta il valore predefinito del ritardo a 0
-        ritardoField.setText("0");
 
         confermaButton.addActionListener(e -> {
             try {
@@ -50,12 +44,19 @@ public class GUI_Arrivo extends JFrame {
                 LocalTime orario = LocalTime.parse(orarioField.getText(),
                         DateTimeFormatter.ofPattern("HH:mm"));
                 long ritardoMinuti = Long.parseLong(ritardoField.getText());
-                Stato_Volo stato = (Stato_Volo) statoComboBox.getSelectedItem();
 
                 // Verifica che il ritardo non sia negativo
                 if (ritardoMinuti < 0) {
                     throw new IllegalArgumentException("Il ritardo non può essere negativo");
                 }
+
+                Stato_Volo statoIniziale;
+                if (ritardoMinuti > 0) {
+                    statoIniziale = Stato_Volo.In_Ritardo;
+                } else {
+                    statoIniziale = Stato_Volo.Programmato;
+                }
+
 
                 // Creazione del nuovo volo con ritardo
                 Volo_Arrivo nuovoVolo = new Volo_Arrivo(
@@ -65,16 +66,12 @@ public class GUI_Arrivo extends JFrame {
                         data,
                         orario,
                         Duration.ofMinutes(ritardoMinuti),  // Converti i minuti in Duration
-                        stato
+                        statoIniziale
                 );
 
                 // Imposta esplicitamente il ritardo
                 nuovoVolo.setRitardo(ritardoMinuti);
 
-                // Se c'è un ritardo, aggiorna lo stato automaticamente
-                if (ritardoMinuti > 0 && stato == Stato_Volo.Programmato) {
-                    nuovoVolo.setStato(Stato_Volo.In_Ritardo);
-                }
 
                 // Aggiunta del volo al controller
                 VoloController.getInstance().aggiungiVolo(nuovoVolo);

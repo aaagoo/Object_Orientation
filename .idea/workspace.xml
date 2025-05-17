@@ -8,16 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_Arrivo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_Arrivo.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_Arrivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeAmministratore.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeAmministratore.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeAmministratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeUtente.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeUtente.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_HomeUtente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_NuovoVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_NuovoVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_NuovoVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_NuovoVolo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_Partenza.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_Partenza.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_Partenza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_VisualizzaVoliA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_VisualizzaVoliA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Modello/GUI_VisualizzaVoliP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/GUI_VisualizzaVoliP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/VoloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modello/VoloController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +73,26 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Modello.Main" />
+      <module name="Aeroporto" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Modello.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -107,7 +123,7 @@
       <workItem from="1747399673180" duration="46000" />
       <workItem from="1747402037860" duration="718000" />
       <workItem from="1747422254176" duration="124000" />
-      <workItem from="1747467980102" duration="14553000" />
+      <workItem from="1747467980102" duration="22477000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -181,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747476662015</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1747482747851</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1747482747851</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
