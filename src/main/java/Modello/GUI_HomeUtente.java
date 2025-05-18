@@ -37,7 +37,7 @@ public class GUI_HomeUtente extends JFrame{
         prenotaVoloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //new GUI_PrenotaVolo();
+                new GUI_PrenotaVolo(utente);
                 dispose();
             }
         });
@@ -46,7 +46,7 @@ public class GUI_HomeUtente extends JFrame{
         cercaPrenotazioneVoloButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //new GUI_CercaPrenotazioneVolo();
+                new GUI_CercaPrenVolo(utente);
                 dispose();
             }
         });
@@ -55,7 +55,7 @@ public class GUI_HomeUtente extends JFrame{
         cercaPrenotazionePasseggeroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //new GUI_CercaPrenotazionePasseggero();
+                new GUI_CercaPrenPass(utente);
                 dispose();
             }
         });
