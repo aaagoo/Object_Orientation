@@ -33,91 +33,85 @@ public class GUI_Partenza extends JFrame {
         setVisible(true);
 
 
-
-
-        confermaButton.addActionListener(e -> {
-            try {
-                // Parsing dei dati inseriti
-                String codice = codiceField.getText();
-                String compagnia = compagniaField.getText();
-                String destinazione = destinazioneField.getText();
-                LocalDate data = LocalDate.parse(dataField.getText(),
-                        DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                LocalTime orario = LocalTime.parse(orarioField.getText(),
-                        DateTimeFormatter.ofPattern("HH:mm"));
-                long ritardoMinuti = Long.parseLong(ritardoField.getText());
-
-                // Verifica che il ritardo non sia negativo
-                if (ritardoMinuti < 0) {
-                    throw new IllegalArgumentException("Il ritardo non può essere negativo");
-                }
-
-                Stato_Volo statoIniziale;
-                if (ritardoMinuti > 0) {
-                    statoIniziale = Stato_Volo.In_Ritardo;
-                } else {
-                    statoIniziale = Stato_Volo.Programmato;
-                }
-
-
-                // Creazione del nuovo volo con ritardo
-                Volo_Partenza nuovoVolo = new Volo_Partenza(
-                        codice,
-                        compagnia,
-                        destinazione,
-                        data,
-                        orario,
-                        Duration.ofMinutes(ritardoMinuti),  // Converti i minuti in Duration
-                        statoIniziale,
-                        null
-                );
-
-                // Imposta esplicitamente il ritardo
-                nuovoVolo.setRitardo(ritardoMinuti);
-
-
-                // Aggiunta del volo al controller
-                VoloController.getInstance().aggiungiVolo(nuovoVolo);
-
-                // Mostra messaggio di successo
-                JOptionPane.showMessageDialog(this,
-                        "Volo inserito con successo!",
-                        "Successo",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-                // Aggiorna la tabella dei voli
-                if (utente instanceof Amministratore_Del_Sistema) {
-                    new GUI_VisualizzaVoliP(utente);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Errore: Utente non autorizzato");
-                }
-                dispose();
-
-
-            } catch (DateTimeParseException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "Formato data/ora non valido.\nUtilizzare i formati:\nData: dd/MM/yyyy\nOra: HH:mm",
-                        "Errore",
-                        JOptionPane.ERROR_MESSAGE);
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "Valore numerico non valido per ritardo.\nInserire numeri interi.",
-                        "Errore",
-                        JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,
-                        "Errore nell'inserimento dei dati: " + ex.getMessage(),
-                        "Errore",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
+            }
+        });
+
+        confermaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String codice = codiceField.getText();
+                    String compagnia = compagniaField.getText();
+                    String destinazione = destinazioneField.getText();
+                    LocalDate data = LocalDate.parse(dataField.getText(),
+                            DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    LocalTime orario = LocalTime.parse(orarioField.getText(),
+                            DateTimeFormatter.ofPattern("HH:mm"));
+                    long ritardoMinuti = Long.parseLong(ritardoField.getText());
+
+                    if (ritardoMinuti < 0) {
+                        throw new IllegalArgumentException("Il ritardo non può essere negativo");
+                    }
+
+                    Stato_Volo statoIniziale;
+                    if (ritardoMinuti > 0) {
+                        statoIniziale = Stato_Volo.In_Ritardo;
+                    } else {
+                        statoIniziale = Stato_Volo.Programmato;
+                    }
+
+
+                    Volo_Partenza nuovoVolo = new Volo_Partenza(
+                            codice,
+                            compagnia,
+                            destinazione,
+                            data,
+                            orario,
+                            Duration.ofMinutes(ritardoMinuti),
+                            statoIniziale,
+                            null
+                    );
+
+                    nuovoVolo.setRitardo(ritardoMinuti);
+
+                    VoloController.getInstance().aggiungiVolo(nuovoVolo);
+
+                    JOptionPane.showMessageDialog(GUI_Partenza.this,
+                            "Volo inserito con successo!",
+                            "Successo",
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                    // Aggiorna la tabella dei voli
+                    if (utente instanceof Amministratore_Del_Sistema) {
+                        new GUI_VisualizzaVoliP(utente);
+                    } else {
+                        JOptionPane.showMessageDialog(GUI_Partenza.this,
+                                "Errore: Utente non autorizzato");
+                    }
+                    dispose();
+
+
+                } catch (DateTimeParseException ex) {
+                    JOptionPane.showMessageDialog(GUI_Partenza.this,
+                            "Formato data/ora non valido.\nUtilizzare i formati:\nData: dd/MM/yyyy\nOra: HH:mm",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(GUI_Partenza.this,
+                            "Valore numerico non valido per ritardo.\nInserire numeri interi.",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(GUI_Partenza.this,
+                            "Errore nell'inserimento dei dati: " + ex.getMessage(),
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }

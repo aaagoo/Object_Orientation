@@ -30,14 +30,12 @@ public class GUI_VisualizzaVoliA extends JFrame {
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Rende la tabella non editabile
+                return false;
             }
         };
         tabellavoli.setModel(modelArrivi);
-
         modelArrivi.setRowCount(0);
 
-        // Carica i voli dal controller
         for (Volo_Arrivo volo : VoloController.getInstance().getVoliArrivo()) {
 
             if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {

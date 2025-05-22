@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class VoloController {
     private static VoloController instance;
-    private List<Volo> voli;
+    private final List<Volo> voli;
 
     private VoloController() {
         voli = new ArrayList<>();
@@ -63,7 +63,7 @@ public class VoloController {
                 "British Airways",
                 "Londra",
                 LocalDate.now(),
-                LocalTime.of(16, 05),
+                LocalTime.of(16, 5),
                 Duration.ZERO,
                 Stato_Volo.Programmato
         ));
@@ -183,49 +183,11 @@ public class VoloController {
         voli.add(volo);
     }
 
-    public void rimuoviVolo(String codice) {
-        voli.removeIf(v -> v.getCodice().equals(codice));
-    }
-
     public Volo cercaVoloPerCodice(String codice) {
         return voli.stream()
                 .filter(v -> v.getCodice().equals(codice))
                 .findFirst()
                 .orElse(null);
-    }
-
-    public void aggiornaStatoVolo(String codice, Stato_Volo nuovoStato) {
-        voli.stream()
-                .filter(v -> v.getCodice().equals(codice))
-                .findFirst()
-                .ifPresent(v -> v.setStato(nuovoStato));
-    }
-
-    public void aggiornaRitardoVolo(String codice, long ritardoMinuti) {
-        voli.stream()
-                .filter(v -> v.getCodice().equals(codice))
-                .findFirst()
-                .ifPresent(v -> v.setRitardo(ritardoMinuti));
-    }
-
-    public void aggiornaGateVolo(String codice, int nuovoNumeroGate) {
-        voli.stream()
-                .filter(v -> v instanceof Volo_Partenza && v.getCodice().equals(codice))
-                .map(v -> (Volo_Partenza) v)
-                .findFirst()
-                .ifPresent(v -> v.setGate(new Gate(nuovoNumeroGate)));
-    }
-
-    public List<Volo> cercaVoliPerStato(Stato_Volo stato) {
-        return voli.stream()
-                .filter(v -> v.getStato() == stato)
-                .collect(Collectors.toList());
-    }
-
-    public List<Volo_Partenza> cercaVoliPerGate(int numeroGate) {
-        return getVoliPartenza().stream()
-                .filter(v -> v.getGate().getNumero_Gate() == numeroGate)
-                .collect(Collectors.toList());
     }
 
     public Volo_Partenza trovaVoloPartenza(String codice) {

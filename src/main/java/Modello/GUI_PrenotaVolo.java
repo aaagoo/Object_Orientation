@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.event.ListSelectionListener;
@@ -32,7 +31,6 @@ public class GUI_PrenotaVolo extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Inizializzazione tabella voli
         modelVoli = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Stato"},
                 0
@@ -45,7 +43,6 @@ public class GUI_PrenotaVolo extends JFrame {
         tabellaVoli.setModel(modelVoli);
         tabellaVoli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // Caricamento voli disponibili
         caricaVoliDisponibili();
 
         tabellaVoli.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -58,10 +55,8 @@ public class GUI_PrenotaVolo extends JFrame {
             }
         });
 
-
         nomeField.setText(utente.getNome());
         cognomeField.setText(utente.getCognome());
-
 
         confermaButton.addActionListener(new ActionListener() {
             @Override
@@ -78,9 +73,6 @@ public class GUI_PrenotaVolo extends JFrame {
                 new GUI_HomeUtente(utente);
                 dispose();
             }
-        });
-
-        confermaButton.addComponentListener(new ComponentAdapter() {
         });
 
     }
@@ -116,7 +108,6 @@ public class GUI_PrenotaVolo extends JFrame {
             return false;
         }
 
-        // Validazione Codice Fiscale (16 caratteri)
         if (CFField.getText().trim().length() != 16) {
             JOptionPane.showMessageDialog(this,
                     "Il codice fiscale deve essere di 16 caratteri!",
@@ -125,7 +116,6 @@ public class GUI_PrenotaVolo extends JFrame {
             return false;
         }
 
-        // Verifica esistenza del volo
         Volo volo = VoloController.getInstance().cercaVoloPerCodice(voloField.getText().trim());
         if (volo == null) {
             JOptionPane.showMessageDialog(this,

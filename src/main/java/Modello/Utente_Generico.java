@@ -33,16 +33,5 @@ public class Utente_Generico extends Utente {
 
         return null;
     }
-    public List<Prenotazione> CercaPrenotazionePerNome(String Nome_Passeggero) {
 
-        return null;
-    }
-    public List<Prenotazione> CercaPrenotazionePerCodiceVolo(String Codice_Volo) {
-
-        return null;
-    }
-
-    public void Prenota_Volo(Prenotazione prenotazione) {
-
-    }
 }

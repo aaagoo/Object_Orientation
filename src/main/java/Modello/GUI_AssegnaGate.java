@@ -26,21 +26,19 @@ public class GUI_AssegnaGate extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Inizializza la tabella dei voli
+
         modelVoli = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Gate", "Stato"},
                 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Rende la tabella non editabile
+                return false;
             }
         };
         tabellaVoli.setModel(modelVoli);
 
-        // Carica i voli senza gate assegnato
         aggiornaTabella();
-
 
         confermaButton.addActionListener(new ActionListener() {
             @Override
@@ -50,7 +48,6 @@ public class GUI_AssegnaGate extends JFrame {
                     String codiceVolo = codiceVoloField.getText();
                     int numeroGate = Integer.parseInt(gateField.getText());
 
-                    // Trova il volo
                     Volo_Partenza volo = VoloController.getInstance().trovaVoloPartenza(codiceVolo);
                     if (volo == null) {
                         JOptionPane.showMessageDialog(GUI_AssegnaGate.this,
@@ -60,13 +57,10 @@ public class GUI_AssegnaGate extends JFrame {
                         return;
                     }
 
-                    // Assegna il gate
                     volo.setGate(new Gate(numeroGate));
 
-                    // Aggiorna la tabella
                     aggiornaTabella();
 
-                    // Pulisci i campi
                     codiceVoloField.setText("");
                     gateField.setText("");
 

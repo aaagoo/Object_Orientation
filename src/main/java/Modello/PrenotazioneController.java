@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class PrenotazioneController {
     private static PrenotazioneController instance;
-    private Map<String, Prenotazione> prenotazioni;
+    private final Map<String, Prenotazione> prenotazioni;
     private int numeroPrenotazioneCorrente;
 
     private PrenotazioneController() {
@@ -26,10 +26,8 @@ public class PrenotazioneController {
 
     public Prenotazione creaPrenotazione(String nomePasseggero, String cognomePasseggero,
                                          String codiceFiscale, Volo volo) {
-        // Genera un numero di biglietto univoco
-        String numeroBiglietto = generaNumeroBiglietto();
 
-        // Per ora assegniamo un posto casuale (da implementare logica più complessa)
+        String numeroBiglietto = generaNumeroBiglietto();
         String postoAssegnato = generaPostoCasuale();
 
         Prenotazione prenotazione = new Prenotazione(
@@ -73,24 +71,5 @@ public class PrenotazioneController {
                 .collect(Collectors.toList());
     }
 
-    public Prenotazione getPrenotazione(String numeroBiglietto) {
-        return prenotazioni.get(numeroBiglietto);
-    }
-
-    public void cancellaPrenotazione(String numeroBiglietto) {
-        Prenotazione prenotazione = prenotazioni.get(numeroBiglietto);
-        if (prenotazione != null) {
-            prenotazione.setStato(Stato_Prenotazione.Cancellata);
-        }
-    }
-
-    public boolean modificaPrenotazione(String numeroBiglietto, String nuovoPosto) {
-        Prenotazione prenotazione = prenotazioni.get(numeroBiglietto);
-        if (prenotazione != null && prenotazione.getStato() != Stato_Prenotazione.Cancellata) {
-            prenotazione.setPosto_Assegnato(nuovoPosto);
-            return true;
-        }
-        return false;
-    }
 }
 

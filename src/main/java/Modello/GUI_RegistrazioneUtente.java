@@ -24,8 +24,6 @@ public class GUI_RegistrazioneUtente extends JFrame{
         setTitle("Registrazione Utente");
 
 
-
-
         confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

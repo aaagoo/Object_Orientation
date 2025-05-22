@@ -2,7 +2,8 @@ package Modello;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class GUI_CercaPrenVolo extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
+        setVisible(true);
 
-        // Inizializzazione tabella voli
         modelVoli = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
                 0
@@ -38,10 +39,8 @@ public class GUI_CercaPrenVolo extends JFrame {
         tabellaVoli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tabellaVoli.setAutoCreateRowSorter(true);
 
-        // Caricamento voli in partenza
         caricaVoliPartenza();
 
-        // Listener per la selezione nella tabella
         tabellaVoli.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && tabellaVoli.getSelectedRow() != -1) {
                 String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
@@ -49,19 +48,41 @@ public class GUI_CercaPrenVolo extends JFrame {
             }
         });
 
-        cercaButton.addActionListener(e -> mostraPrenotazioni());
+        cercaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        annullaButton.addActionListener(e -> {
-            dispose();
-            new GUI_HomeUtente(utente).setVisible(true);
+                if (codicevoloField.getText().isEmpty()) {
+
+                    JOptionPane.showMessageDialog(
+                            GUI_CercaPrenVolo.this,
+                            "Inserire un codice volo!",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                dispose();
+                new GUI_CercaPrenVoloRisult(utente, codicevoloField.getText());
+
+            }
         });
 
-        cercaPerDatiPasseggeroButton.addActionListener(e -> {
-            dispose();
-            new GUI_CercaPrenPass(utente).setVisible(true);
+        cercaPerDatiPasseggeroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_CercaPrenPass(utente);
+                dispose();
+            }
         });
 
-        setVisible(true);
+        annullaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_HomeUtente(utente);
+                dispose();
+            }
+        });
     }
 
     private void caricaVoliPartenza() {
@@ -89,71 +110,5 @@ public class GUI_CercaPrenVolo extends JFrame {
                     volo.getStato()
             });
         }
-    }
-
-    private void mostraPrenotazioni() {
-        String codiceVolo = codicevoloField.getText().trim();
-
-        if (codiceVolo.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                    "Inserire un codice volo!",
-                    "Errore",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        List<Prenotazione> prenotazioni = PrenotazioneController.getInstance()
-                .cercaPrenotazioniPerCodiceVolo(codiceVolo);
-
-        if (prenotazioni.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                    "Nessuna prenotazione trovata per il volo specificato",
-                    "Informazione",
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
-        // Creazione della finestra dei risultati
-        JFrame risultatiFrame = new JFrame("Prenotazioni per il volo " + codiceVolo);
-        risultatiFrame.setSize(800, 400);
-        risultatiFrame.setLocationRelativeTo(this);
-
-        // Creazione della tabella risultati
-        DefaultTableModel modelRisultati = new DefaultTableModel(
-                new String[]{"Numero Biglietto", "Nome", "Cognome", "CF", "Posto", "Stato"},
-                0
-        ) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-
-        JTable tabellaRisultati = new JTable(modelRisultati);
-        JScrollPane scrollPane = new JScrollPane(tabellaRisultati);
-
-        // Popolamento della tabella risultati
-        for (Prenotazione p : prenotazioni) {
-            modelRisultati.addRow(new Object[]{
-                    p.getNumero_Biglietto(),
-                    p.getNome_Passeggero(),
-                    p.getCognome_Passeggero(),
-                    p.getCodice_Fiscale(),
-                    p.getPosto_Assegnato(),
-                    p.getStato()
-            });
-        }
-
-        // Aggiunta della tabella alla finestra
-        risultatiFrame.add(scrollPane);
-
-        // Aggiunta pulsante di chiusura
-        JPanel buttonPanel = new JPanel();
-        JButton chiudiButton = new JButton("Chiudi");
-        chiudiButton.addActionListener(e -> risultatiFrame.dispose());
-        buttonPanel.add(chiudiButton);
-        risultatiFrame.add(buttonPanel, BorderLayout.SOUTH);
-
-        risultatiFrame.setVisible(true);
     }
 }

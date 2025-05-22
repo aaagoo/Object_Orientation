@@ -24,18 +24,17 @@ public class GUI_VisualizzaVoliP extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-
         modelPartenze = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
                 0
         ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Rende la tabella non editabile
+                return false;
             }
         };
-        tabellavoli.setModel(modelPartenze);
 
+        tabellavoli.setModel(modelPartenze);
         modelPartenze.setRowCount(0);
 
         for (Volo_Partenza volo : VoloController.getInstance().getVoliPartenza()) {
@@ -65,7 +64,6 @@ public class GUI_VisualizzaVoliP extends JFrame {
                     volo.getStato()
             });
         }
-
 
         indietroButton.addActionListener(new ActionListener() {
             @Override

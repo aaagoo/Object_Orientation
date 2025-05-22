@@ -5,13 +5,13 @@ import java.util.HashMap;
 
 public class UtenteController {
     private static UtenteController instance;
-    private Map<String, Utente> utentiRegistrati;
+    private final Map<String, Utente> utentiRegistrati;
 
     private UtenteController() {
         utentiRegistrati = new HashMap<>();
 
         utentiRegistrati.put("admin", new Amministratore_Del_Sistema("admin", "admin"));
-        utentiRegistrati.put("utente", new Utente_Generico("Mario", "Rossi", "utente", "password"));
+        utentiRegistrati.put("utente", new Utente_Generico("Gennaro", "Esposito", "utente", "utente"));
     }
 
     public static UtenteController getInstance() {

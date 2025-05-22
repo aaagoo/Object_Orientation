@@ -41,6 +41,7 @@ public class GUI_Login extends JFrame {
                         dispose();
 
                         if (utente instanceof Amministratore_Del_Sistema) {
+
                             mostraInterfacciaAmministratore((Amministratore_Del_Sistema) utente);
 
                         } else if (utente instanceof Utente_Generico) {
