@@ -51,7 +51,6 @@ public class PrenotazioneController {
     }
 
     private String generaPostoCasuale() {
-        // Implementazione semplificata - da migliorare con gestione posti reale
         Random random = new Random();
         int fila = random.nextInt(30) + 1;
         char lettera = (char) ('A' + random.nextInt(6));

@@ -159,7 +159,6 @@ public class VoloController {
         ));
     }
 
-    // Metodi per ottenere i voli
     public List<Volo> getAllVoli() {
         return new ArrayList<>(voli);
     }
@@ -178,7 +177,6 @@ public class VoloController {
                 .collect(Collectors.toList());
     }
 
-    // Nuovi metodi di gestione
     public void aggiungiVolo(Volo volo) {
         voli.add(volo);
     }
