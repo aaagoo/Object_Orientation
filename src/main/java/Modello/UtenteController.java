@@ -11,7 +11,7 @@ public class UtenteController {
         utentiRegistrati = new HashMap<>();
 
         utentiRegistrati.put("admin", new Amministratore_Del_Sistema("admin", "admin"));
-        utentiRegistrati.put("utente", new Utente_Generico("Gennaro", "Esposito", "utente", "utente"));
+        utentiRegistrati.put("utente", new Utente_Generico("Ciro", "Esposito", "utente", "utente"));
     }
 
     public static UtenteController getInstance() {
