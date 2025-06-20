@@ -1,7 +1,7 @@
 package GUI;
 
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -39,10 +39,10 @@ public class GUI_VisualizzaVoliA extends JFrame {
         tabellavoli.setModel(modelArrivi);
         modelArrivi.setRowCount(0);
 
-        for (Volo_Arrivo volo : VoloController.getInstance().getVoliArrivo()) {
+        for (VoloArrivo volo : Controller.getInstance().getVoliArrivo()) {
 
-            if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {
-                volo.setStato(Stato_Volo.In_Ritardo);
+            if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
+                volo.setStato(StatoVolo.IN_RITARDO);
             }
 
             String ritardoFormattato = volo.getRitardo() > 0 ?
@@ -50,8 +50,8 @@ public class GUI_VisualizzaVoliA extends JFrame {
 
             modelArrivi.addRow(new Object[]{
                     volo.getCodice(),
-                    volo.getCompagnia_Aerea(),
-                    volo.getAeroporto_Origine(),
+                    volo.getCompagniaAerea(),
+                    volo.getAeroportoOrigine(),
                     volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                     volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
                     ritardoFormattato,
@@ -63,10 +63,10 @@ public class GUI_VisualizzaVoliA extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                if (utente instanceof Amministratore_Del_Sistema) {
-                    new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
+                if (utente instanceof AmministratoreSistema) {
+                    new GUI_HomeAmministratore((AmministratoreSistema) utente);
                 } else {
-                    new GUI_HomeUtente((Utente_Generico) utente);
+                    new GUI_HomeUtente((UtenteGenerico) utente);
                 }
 
             }

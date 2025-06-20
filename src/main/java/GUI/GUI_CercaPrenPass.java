@@ -1,6 +1,6 @@
 package GUI;
 
-import Modello.Utente_Generico;
+import modello.UtenteGenerico;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,9 +14,9 @@ public class GUI_CercaPrenPass extends JFrame {
     private JButton cercaPerCodiceVoloButton;
     private JTextField nomeField;
     private JTextField cognomeField;
-    private final Utente_Generico utente;
+    private final UtenteGenerico utente;
 
-    public GUI_CercaPrenPass(Utente_Generico utente) {
+    public GUI_CercaPrenPass(UtenteGenerico utente) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Cerca Prenotazione Passeggero");

@@ -1,7 +1,7 @@
 package GUI;
 
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -14,14 +14,14 @@ public class GUI_AggiornaVolo extends JFrame {
     private JPanel mainpanel;
     private JTextField codiceVoloField;
     private JTextField ritardoField;
-    private JComboBox<Stato_Volo> statoComboBox;
+    private JComboBox<StatoVolo> statoComboBox;
     private JButton confermaButton;
     private JButton annullaButton;
     private JTable tabellaVoli;
     private DefaultTableModel modelVoli;
-    private Amministratore_Del_Sistema utente;
+    private AmministratoreSistema utente;
 
-    public GUI_AggiornaVolo(Amministratore_Del_Sistema utente) {
+    public GUI_AggiornaVolo(AmministratoreSistema utente) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Aggiorna Volo");
@@ -44,7 +44,7 @@ public class GUI_AggiornaVolo extends JFrame {
 
         tabellaVoli.setModel(modelVoli);
 
-        statoComboBox.setModel(new DefaultComboBoxModel<>(Stato_Volo.values()));
+        statoComboBox.setModel(new DefaultComboBoxModel<>(StatoVolo.values()));
 
         aggiornaTabella();
 
@@ -69,7 +69,7 @@ public class GUI_AggiornaVolo extends JFrame {
                         return;
                     }
 
-                    Volo volo = VoloController.getInstance().cercaVoloPerCodice(codiceVolo);
+                    Volo volo = Controller.getInstance().cercaVoloPerCodice(codiceVolo);
                     if (volo == null) {
                         JOptionPane.showMessageDialog(GUI_AggiornaVolo.this,
                                 "Volo non trovato",
@@ -84,18 +84,18 @@ public class GUI_AggiornaVolo extends JFrame {
                     }
                     volo.setRitardo(nuovoRitardo);
 
-                    Stato_Volo nuovoStato = (Stato_Volo) statoComboBox.getSelectedItem();
+                    StatoVolo nuovoStato = (StatoVolo) statoComboBox.getSelectedItem();
                     volo.setStato(nuovoStato);
 
-                    if (nuovoRitardo > 0 && nuovoStato == Stato_Volo.Programmato) {
-                        volo.setStato(Stato_Volo.In_Ritardo);
+                    if (nuovoRitardo > 0 && nuovoStato == StatoVolo.PROGRAMMATO) {
+                        volo.setStato(StatoVolo.IN_RITARDO);
                     }
 
                     aggiornaTabella();
 
                     codiceVoloField.setText("");
                     ritardoField.setText("0");
-                    statoComboBox.setSelectedItem(Stato_Volo.Programmato);
+                    statoComboBox.setSelectedItem(StatoVolo.PROGRAMMATO);
 
                     JOptionPane.showMessageDialog(GUI_AggiornaVolo.this,
                             "Volo aggiornato con successo!",
@@ -120,26 +120,26 @@ public class GUI_AggiornaVolo extends JFrame {
     private void aggiornaTabella() {
         modelVoli.setRowCount(0);
 
-        for (Volo volo : VoloController.getInstance().getAllVoli()) {
+        for (Volo volo : Controller.getInstance().getAllVoli()) {
 
-            if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {
-                volo.setStato(Stato_Volo.In_Ritardo);
+            if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
+                volo.setStato(StatoVolo.IN_RITARDO);
             }
 
-            String tipo = volo instanceof Volo_Arrivo ? "Arrivo" : "Partenza";
-            String origine_destinazione = volo instanceof Volo_Arrivo ?
-                    (volo).getAeroporto_Origine() :
-                    (volo).getAeroporto_Destinazione();
-            String gate = volo instanceof Volo_Partenza ?
-                    (((Volo_Partenza) volo).getGate() != null ?
-                            String.valueOf(((Volo_Partenza) volo).getGate().getNumero_Gate()) :
+            String tipo = volo instanceof VoloArrivo ? "Arrivo" : "Partenza";
+            String origine_destinazione = volo instanceof VoloArrivo ?
+                    (volo).getAeroportoOrigine() :
+                    (volo).getAeroportoDestinazione();
+            String gate = volo instanceof VoloPartenza ?
+                    (((VoloPartenza) volo).getGate() != null ?
+                            String.valueOf(((VoloPartenza) volo).getGate().getNumeroGate()) :
                             "Non assegnato") :
                     "N/A";
 
             modelVoli.addRow(new Object[]{
                     volo.getCodice(),
                     tipo,
-                    volo.getCompagnia_Aerea(),
+                    volo.getCompagniaAerea(),
                     origine_destinazione,
                     volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                     volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),

@@ -1,6 +1,6 @@
 package GUI;
 
-import Modello.Utente_Generico;
+import modello.UtenteGenerico;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +17,7 @@ public class GUI_HomeUtente extends JFrame{
     private JButton disconnettitiButton;
 
 
-    public GUI_HomeUtente(Utente_Generico utente) {
+    public GUI_HomeUtente(UtenteGenerico utente) {
         setContentPane(mainpanel);
         setTitle("Home Utente");
         setSize(500,400);

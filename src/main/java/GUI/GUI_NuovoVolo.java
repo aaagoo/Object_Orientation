@@ -1,7 +1,7 @@
 package GUI;
 
-import Modello.Amministratore_Del_Sistema;
-import Modello.Utente;
+import modello.AmministratoreSistema;
+import modello.Utente;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +28,7 @@ public class GUI_NuovoVolo extends JFrame {
         partenzaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_Partenza((Amministratore_Del_Sistema) utente);
+                new GUI_Partenza((AmministratoreSistema) utente);
                 dispose();
             }
         });
@@ -37,7 +37,7 @@ public class GUI_NuovoVolo extends JFrame {
         arrivoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_Arrivo((Amministratore_Del_Sistema) utente);
+                new GUI_Arrivo((AmministratoreSistema) utente);
                 dispose();
             }
         });
@@ -46,7 +46,7 @@ public class GUI_NuovoVolo extends JFrame {
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
+                new GUI_HomeAmministratore((AmministratoreSistema) utente);
                 dispose();
             }
         });

@@ -1,9 +1,9 @@
 package GUI;
 
-import Modello.Prenotazione;
-import Controller.PrenotazioneController;
-import Modello.Utente_Generico;
-import Modello.Volo;
+import modello.Prenotazione;
+import controller.Controller;
+import modello.UtenteGenerico;
+import modello.Volo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,9 +17,9 @@ public class GUI_CercaPrenPassRisult extends JFrame {
     private JTable tabellaVoli;
     private JButton indietroButton;
     private DefaultTableModel modelTabella;
-    private final Utente_Generico utente;
+    private final UtenteGenerico utente;
 
-    public GUI_CercaPrenPassRisult(Utente_Generico utente, String nome, String cognome) {
+    public GUI_CercaPrenPassRisult(UtenteGenerico utente, String nome, String cognome) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Risultati Ricerca Prenotazioni");
@@ -52,7 +52,7 @@ public class GUI_CercaPrenPassRisult extends JFrame {
     }
 
     private void caricaRisultati(String nome, String cognome) {
-        List<Prenotazione> prenotazioni = PrenotazioneController.getInstance()
+        List<Prenotazione> prenotazioni = Controller.getInstance()
                 .cercaPrenotazioniPerPasseggero(nome, cognome);
 
         if (prenotazioni.isEmpty()) {
@@ -66,11 +66,11 @@ public class GUI_CercaPrenPassRisult extends JFrame {
         for (Prenotazione p : prenotazioni) {
             Volo volo = p.getVolo();
             modelTabella.addRow(new Object[]{
-                    p.getNumero_Biglietto(),
+                    p.getNumeroBiglietto(),
                     volo.getCodice(),
                     volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                     volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
-                    p.getPosto_Assegnato(),
+                    p.getPostoAssegnato(),
                     p.getStato()
             });
         }

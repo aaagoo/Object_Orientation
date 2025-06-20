@@ -1,9 +1,9 @@
 package GUI;
 
-import Modello.Amministratore_Del_Sistema;
-import Modello.Utente;
-import Controller.UtenteController;
-import Modello.Utente_Generico;
+import modello.AmministratoreSistema;
+import modello.Utente;
+import controller.Controller;
+import modello.UtenteGenerico;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -41,17 +41,17 @@ public class GUI_Login extends JFrame {
                     String username = userfield.getText();
                     String password = new String(pswfield.getPassword());
 
-                    Utente utente = UtenteController.getInstance().login(username, password);
+                    Utente utente = Controller.getInstance().login(username, password);
                     if (utente != null) {
                         dispose();
 
-                        if (utente instanceof Amministratore_Del_Sistema) {
+                        if (utente instanceof AmministratoreSistema) {
 
-                            mostraInterfacciaAmministratore((Amministratore_Del_Sistema) utente);
+                            mostraInterfacciaAmministratore((AmministratoreSistema) utente);
 
-                        } else if (utente instanceof Utente_Generico) {
+                        } else if (utente instanceof UtenteGenerico) {
 
-                            mostraInterfacciaUtente((Utente_Generico) utente);
+                            mostraInterfacciaUtente((UtenteGenerico) utente);
                         }
 
                     } else {
@@ -65,12 +65,12 @@ public class GUI_Login extends JFrame {
 
         }
 
-    private void mostraInterfacciaAmministratore(Amministratore_Del_Sistema admin) {
+    private void mostraInterfacciaAmministratore(AmministratoreSistema admin) {
 
         new GUI_HomeAmministratore(admin);
     }
 
-    private void mostraInterfacciaUtente(Utente_Generico utente) {
+    private void mostraInterfacciaUtente(UtenteGenerico utente) {
 
         new GUI_HomeUtente(utente);
     }

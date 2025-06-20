@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit" />
+    <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/PrenotazioneController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/UtenteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/VoloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeAmministratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_NuovoVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_NuovoVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneAmministratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneUtente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Amministratore_Del_Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/AmministratoreSistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Gate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Gate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Stato_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/StatoPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Stato_Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/StatoVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Utente_Generico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/UtenteGenerico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Volo_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/VoloArrivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modello/Volo_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/VoloPartenza.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,17 +94,27 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/agoso/Documents/Java/Aeroporto/src/main/java/org/example/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\main\java\GUI" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Modello.Main" />
+      <option name="MAIN_CLASS_NAME" value="modello.Main" />
       <module name="Aeroporto" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Controller.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,6 +173,15 @@
       <workItem from="1749460593947" duration="487000" />
       <workItem from="1749461130641" duration="428000" />
       <workItem from="1749461573268" duration="95000" />
+      <workItem from="1749461982204" duration="1201000" />
+      <workItem from="1749562615891" duration="62000" />
+      <workItem from="1749569063267" duration="32000" />
+      <workItem from="1749798230166" duration="1830000" />
+      <workItem from="1749800089962" duration="953000" />
+      <workItem from="1750168489214" duration="7773000" />
+      <workItem from="1750255982030" duration="640000" />
+      <workItem from="1750340677166" duration="768000" />
+      <workItem from="1750402834096" duration="4616000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -275,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749461599311</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1749462161691</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1749462161691</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,5 +355,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

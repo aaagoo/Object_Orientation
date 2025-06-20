@@ -1,7 +1,7 @@
 package GUI;
 
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,11 +23,11 @@ public class GUI_Partenza extends JFrame {
     private JTextField ritardoField;
     private JButton annullaButton;
     private JButton confermaButton;
-    private Amministratore_Del_Sistema utente;
+    private AmministratoreSistema utente;
 
 
     public GUI_Partenza(Utente utente) {
-        this.utente = (Amministratore_Del_Sistema) utente;
+        this.utente = (AmministratoreSistema) utente;
         setContentPane(mainpanel);
         setTitle("Inserisci Volo in Partenza");
         setSize(400, 500);
@@ -40,7 +40,7 @@ public class GUI_Partenza extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
+                new GUI_HomeAmministratore((AmministratoreSistema) utente);
             }
         });
 
@@ -61,15 +61,15 @@ public class GUI_Partenza extends JFrame {
                         throw new IllegalArgumentException("Il ritardo non può essere negativo");
                     }
 
-                    Stato_Volo statoIniziale;
+                    StatoVolo statoIniziale;
                     if (ritardoMinuti > 0) {
-                        statoIniziale = Stato_Volo.In_Ritardo;
+                        statoIniziale = StatoVolo.IN_RITARDO;
                     } else {
-                        statoIniziale = Stato_Volo.Programmato;
+                        statoIniziale = StatoVolo.PROGRAMMATO;
                     }
 
 
-                    Volo_Partenza nuovoVolo = new Volo_Partenza(
+                    VoloPartenza nuovoVolo = new VoloPartenza(
                             codice,
                             compagnia,
                             destinazione,
@@ -82,7 +82,7 @@ public class GUI_Partenza extends JFrame {
 
                     nuovoVolo.setRitardo(ritardoMinuti);
 
-                    VoloController.getInstance().aggiungiVolo(nuovoVolo);
+                    Controller.getInstance().aggiungiVolo(nuovoVolo);
 
                     JOptionPane.showMessageDialog(GUI_Partenza.this,
                             "Volo inserito con successo!",
@@ -90,7 +90,7 @@ public class GUI_Partenza extends JFrame {
                             JOptionPane.INFORMATION_MESSAGE);
 
                     // Aggiorna la tabella dei voli
-                    if (utente instanceof Amministratore_Del_Sistema) {
+                    if (utente instanceof AmministratoreSistema) {
                         new GUI_VisualizzaVoliP(utente);
                     } else {
                         JOptionPane.showMessageDialog(GUI_Partenza.this,

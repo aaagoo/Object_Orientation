@@ -1,6 +1,6 @@
 package GUI;
 
-import Modello.Amministratore_Del_Sistema;
+import modello.AmministratoreSistema;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +16,7 @@ public class GUI_HomeAmministratore extends JFrame{
     private JButton disconnettitiButton;
 
 
-    public GUI_HomeAmministratore(Amministratore_Del_Sistema amministratore){
+    public GUI_HomeAmministratore(AmministratoreSistema amministratore){
         setContentPane(mainpanel);
         setTitle("Home Amministratore");
         setSize(500,400);
@@ -24,7 +24,7 @@ public class GUI_HomeAmministratore extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
 
-        benvenuto.setText("Benvenuto " + amministratore.getNome_Utente() + " nel sistema!");
+        benvenuto.setText("Benvenuto " + amministratore.getNomeUtente() + " nel sistema!");
 
         visualizzaVoliButton.addActionListener(new ActionListener() {
             @Override

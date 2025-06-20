@@ -1,9 +1,9 @@
 package GUI;
 
-import Modello.Stato_Volo;
-import Modello.Utente_Generico;
-import Controller.VoloController;
-import Modello.Volo_Partenza;
+import modello.StatoVolo;
+import modello.UtenteGenerico;
+import controller.Controller;
+import modello.VoloPartenza;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,9 +20,9 @@ public class GUI_CercaPrenVolo extends JFrame {
     private JButton cercaPerDatiPasseggeroButton;
     private JTable tabellaVoli;
     private DefaultTableModel modelVoli;
-    private final Utente_Generico utente;
+    private final UtenteGenerico utente;
 
-    public GUI_CercaPrenVolo(Utente_Generico utente) {
+    public GUI_CercaPrenVolo(UtenteGenerico utente) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Cerca Prenotazioni per Volo");
@@ -92,22 +92,22 @@ public class GUI_CercaPrenVolo extends JFrame {
 
     private void caricaVoliPartenza() {
         modelVoli.setRowCount(0);
-        List<Volo_Partenza> voliPartenza = VoloController.getInstance().getVoliPartenza();
+        List<VoloPartenza> voliPartenza = Controller.getInstance().getVoliPartenza();
 
-        for (Volo_Partenza volo : voliPartenza) {
-            if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {
-                volo.setStato(Stato_Volo.In_Ritardo);
+        for (VoloPartenza volo : voliPartenza) {
+            if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
+                volo.setStato(StatoVolo.IN_RITARDO);
             }
 
             String dataFormattata = volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             String oraFormattata = volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm"));
             String ritardoFormattato = volo.getRitardo() > 0 ? volo.getRitardo() + " min" : "In orario";
-            String gate = volo.getGate() != null ? String.valueOf(volo.getGate().getNumero_Gate()) : "Non Assegnato";
+            String gate = volo.getGate() != null ? String.valueOf(volo.getGate().getNumeroGate()) : "Non Assegnato";
 
             modelVoli.addRow(new Object[]{
                     volo.getCodice(),
-                    volo.getCompagnia_Aerea(),
-                    volo.getAeroporto_Destinazione(),
+                    volo.getCompagniaAerea(),
+                    volo.getAeroportoDestinazione(),
                     dataFormattata,
                     oraFormattata,
                     ritardoFormattato,

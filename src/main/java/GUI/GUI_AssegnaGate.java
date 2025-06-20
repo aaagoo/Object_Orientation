@@ -1,7 +1,7 @@
 package GUI;
 
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,10 +17,10 @@ public class GUI_AssegnaGate extends JFrame {
     private JButton confermaButton;
     private JTable tabellaVoli;
     private DefaultTableModel modelVoli;
-    private Amministratore_Del_Sistema utente;
+    private AmministratoreSistema utente;
 
 
-    public GUI_AssegnaGate(Amministratore_Del_Sistema utente) {
+    public GUI_AssegnaGate(AmministratoreSistema utente) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Assegna Gate");
@@ -51,7 +51,7 @@ public class GUI_AssegnaGate extends JFrame {
                     String codiceVolo = codiceVoloField.getText();
                     int numeroGate = Integer.parseInt(gateField.getText());
 
-                    Volo_Partenza volo = VoloController.getInstance().trovaVoloPartenza(codiceVolo);
+                    VoloPartenza volo = Controller.getInstance().trovaVoloPartenza(codiceVolo);
                     if (volo == null) {
                         JOptionPane.showMessageDialog(GUI_AssegnaGate.this,
                                 "Volo non trovato",
@@ -92,19 +92,19 @@ public class GUI_AssegnaGate extends JFrame {
 
     private void aggiornaTabella() {
         modelVoli.setRowCount(0);
-        for (Volo_Partenza volo : VoloController.getInstance().getVoliPartenza()) {
+        for (VoloPartenza volo : Controller.getInstance().getVoliPartenza()) {
 
-            if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {
-                volo.setStato(Stato_Volo.In_Ritardo);
+            if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
+                volo.setStato(StatoVolo.IN_RITARDO);
             }
 
             modelVoli.addRow(new Object[]{
                     volo.getCodice(),
-                    volo.getCompagnia_Aerea(),
-                    volo.getAeroporto_Destinazione(),
+                    volo.getCompagniaAerea(),
+                    volo.getAeroportoDestinazione(),
                     volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                     volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
-                    volo.getGate() != null ? volo.getGate().getNumero_Gate() : "Non assegnato",
+                    volo.getGate() != null ? volo.getGate().getNumeroGate() : "Non assegnato",
                     volo.getStato()
             });
         }

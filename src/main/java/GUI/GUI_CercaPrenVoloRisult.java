@@ -1,8 +1,8 @@
 package GUI;
 
-import Modello.Prenotazione;
-import Controller.PrenotazioneController;
-import Modello.Utente_Generico;
+import modello.Prenotazione;
+import controller.Controller;
+import modello.UtenteGenerico;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,9 +15,9 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
     private JTable tabellaVoli;
     private JButton indietroButton;
     private DefaultTableModel modelTabella;
-    private final Utente_Generico utente;
+    private final UtenteGenerico utente;
 
-    public GUI_CercaPrenVoloRisult(Utente_Generico utente, String codiceVolo) {
+    public GUI_CercaPrenVoloRisult(UtenteGenerico utente, String codiceVolo) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Risultati Ricerca Prenotazioni");
@@ -51,7 +51,7 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
     }
 
     private void caricaRisultati(String codiceVolo) {
-        List<Prenotazione> prenotazioni = PrenotazioneController.getInstance()
+        List<Prenotazione> prenotazioni = Controller.getInstance()
                 .cercaPrenotazioniPerCodiceVolo(codiceVolo);
 
         if (prenotazioni.isEmpty()) {
@@ -64,11 +64,11 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
 
         for (Prenotazione p : prenotazioni) {
             modelTabella.addRow(new Object[]{
-                    p.getNumero_Biglietto(),
-                    p.getNome_Passeggero(),
-                    p.getCognome_Passeggero(),
-                    p.getCodice_Fiscale(),
-                    p.getPosto_Assegnato(),
+                    p.getNumeroBiglietto(),
+                    p.getNomePasseggero(),
+                    p.getCognomePasseggero(),
+                    p.getCodiceFiscale(),
+                    p.getPostoAssegnato(),
                     p.getStato()
             });
         }

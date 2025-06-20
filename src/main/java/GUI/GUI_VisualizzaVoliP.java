@@ -1,7 +1,7 @@
 package GUI;
 
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -40,10 +40,10 @@ public class GUI_VisualizzaVoliP extends JFrame {
         tabellavoli.setModel(modelPartenze);
         modelPartenze.setRowCount(0);
 
-        for (Volo_Partenza volo : VoloController.getInstance().getVoliPartenza()) {
+        for (VoloPartenza volo : Controller.getInstance().getVoliPartenza()) {
 
-            if (volo.getRitardo() > 0 && volo.getStato() == Stato_Volo.Programmato) {
-                volo.setStato(Stato_Volo.In_Ritardo);
+            if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
+                volo.setStato(StatoVolo.IN_RITARDO);
             }
 
             String dataFormattata = volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -58,8 +58,8 @@ public class GUI_VisualizzaVoliP extends JFrame {
 
             modelPartenze.addRow(new Object[]{
                     volo.getCodice(),
-                    volo.getCompagnia_Aerea(),
-                    volo.getAeroporto_Destinazione(),
+                    volo.getCompagniaAerea(),
+                    volo.getAeroportoDestinazione(),
                     dataFormattata,
                     oraFormattata,
                     ritardoFormattato,
@@ -72,10 +72,10 @@ public class GUI_VisualizzaVoliP extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (utente instanceof Amministratore_Del_Sistema) {
-                    new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
+                if (utente instanceof AmministratoreSistema) {
+                    new GUI_HomeAmministratore((AmministratoreSistema) utente);
                 } else {
-                    new GUI_HomeUtente((Utente_Generico) utente);
+                    new GUI_HomeUtente((UtenteGenerico) utente);
                 }
                 dispose();
             }

@@ -1,6 +1,6 @@
 package GUI;
 
-import Controller.UtenteController;
+import controller.Controller;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -51,7 +51,7 @@ public class GUI_RegistrazioneUtente extends JFrame{
                             JOptionPane.ERROR_MESSAGE);
 
 
-                } else if (UtenteController.getInstance().registraUtenteGenerico(nome, cognome, username, password)) {
+                } else if (Controller.getInstance().registraUtenteGenerico(nome, cognome, username, password)) {
                     JOptionPane.showMessageDialog(GUI_RegistrazioneUtente.this,
                             "Registrazione avvenuta con successo!");
                     dispose();

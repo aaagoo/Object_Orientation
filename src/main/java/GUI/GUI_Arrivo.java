@@ -1,7 +1,7 @@
 package GUI;
 
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,11 +23,11 @@ public class GUI_Arrivo extends JFrame {
     private JTextField ritardoField;
     private JButton annullaButton;
     private JButton confermaButton;
-    private Amministratore_Del_Sistema utente;
+    private AmministratoreSistema utente;
 
 
     public GUI_Arrivo(Utente utente) {
-        this.utente = (Amministratore_Del_Sistema) utente;
+        this.utente = (AmministratoreSistema) utente;
         setContentPane(mainpanel);
         setTitle("Inserisci Volo in Arrivo");
         setSize(400, 500);
@@ -53,15 +53,15 @@ public class GUI_Arrivo extends JFrame {
                         throw new IllegalArgumentException("Il ritardo non può essere negativo");
                     }
 
-                    Stato_Volo statoIniziale;
+                    StatoVolo statoIniziale;
                     if (ritardoMinuti > 0) {
-                        statoIniziale = Stato_Volo.In_Ritardo;
+                        statoIniziale = StatoVolo.IN_RITARDO;
                     } else {
-                        statoIniziale = Stato_Volo.Programmato;
+                        statoIniziale = StatoVolo.PROGRAMMATO;
                     }
 
 
-                    Volo_Arrivo nuovoVolo = new Volo_Arrivo(
+                    VoloArrivo nuovoVolo = new VoloArrivo(
                             codice,
                             compagnia,
                             origine,
@@ -72,7 +72,7 @@ public class GUI_Arrivo extends JFrame {
                     );
 
                     nuovoVolo.setRitardo(ritardoMinuti);
-                    VoloController.getInstance().aggiungiVolo(nuovoVolo);
+                    Controller.getInstance().aggiungiVolo(nuovoVolo);
 
 
                     JOptionPane.showMessageDialog(GUI_Arrivo.this,
@@ -80,7 +80,7 @@ public class GUI_Arrivo extends JFrame {
                             "Successo",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                    if (utente instanceof Amministratore_Del_Sistema) {
+                    if (utente instanceof AmministratoreSistema) {
                         new GUI_VisualizzaVoliA(utente);
                     } else {
                         JOptionPane.showMessageDialog(GUI_Arrivo.this,
@@ -112,7 +112,7 @@ public class GUI_Arrivo extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new GUI_HomeAmministratore((Amministratore_Del_Sistema) utente);
+                new GUI_HomeAmministratore((AmministratoreSistema) utente);
             }
         });
 

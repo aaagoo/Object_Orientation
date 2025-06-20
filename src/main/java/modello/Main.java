@@ -1,4 +1,4 @@
-package Modello;
+package modello;
 
 import GUI.GUI_Login;
 

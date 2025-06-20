@@ -1,8 +1,7 @@
 package GUI;
 
-import Controller.PrenotazioneController;
-import Controller.VoloController;
-import Modello.*;
+import controller.Controller;
+import modello.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -24,9 +23,9 @@ public class GUI_PrenotaVolo extends JFrame {
     private JButton annullaButton;
     private JTable tabellaVoli;
     private DefaultTableModel modelVoli;
-    private final Utente_Generico utente;
+    private final UtenteGenerico utente;
 
-    public GUI_PrenotaVolo(Utente_Generico utente) {
+    public GUI_PrenotaVolo(UtenteGenerico utente) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Prenota Volo");
@@ -83,14 +82,14 @@ public class GUI_PrenotaVolo extends JFrame {
 
     private void caricaVoliDisponibili() {
         modelVoli.setRowCount(0);
-        List<Volo_Partenza> voli = VoloController.getInstance().getVoliPartenza();
+        List<VoloPartenza> voli = Controller.getInstance().getVoliPartenza();
 
-        for (Volo_Partenza volo : voli) {
-            if (volo.getStato() == Stato_Volo.Programmato) {
+        for (VoloPartenza volo : voli) {
+            if (volo.getStato() == StatoVolo.PROGRAMMATO) {
                 modelVoli.addRow(new Object[]{
                         volo.getCodice(),
-                        volo.getCompagnia_Aerea(),
-                        volo.getAeroporto_Destinazione(),
+                        volo.getCompagniaAerea(),
+                        volo.getAeroportoDestinazione(),
                         volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                         volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
                         volo.getStato()
@@ -120,7 +119,7 @@ public class GUI_PrenotaVolo extends JFrame {
             return false;
         }
 
-        Volo volo = VoloController.getInstance().cercaVoloPerCodice(voloField.getText().trim());
+        Volo volo = Controller.getInstance().cercaVoloPerCodice(voloField.getText().trim());
         if (volo == null) {
             JOptionPane.showMessageDialog(this,
                     "Il codice volo inserito non è valido!",
@@ -135,9 +134,9 @@ public class GUI_PrenotaVolo extends JFrame {
     private void effettuaPrenotazione() {
         try {
             String codiceVolo = voloField.getText().trim();
-            Volo volo = VoloController.getInstance().cercaVoloPerCodice(codiceVolo);
+            Volo volo = Controller.getInstance().cercaVoloPerCodice(codiceVolo);
 
-            Prenotazione prenotazione = PrenotazioneController.getInstance().creaPrenotazione(
+            Prenotazione prenotazione = Controller.getInstance().creaPrenotazione(
                     nomeField.getText().trim(),
                     cognomeField.getText().trim(),
                     CFField.getText().trim(),
@@ -146,8 +145,8 @@ public class GUI_PrenotaVolo extends JFrame {
 
             JOptionPane.showMessageDialog(this,
                     "Prenotazione effettuata con successo!\nNumero biglietto: " +
-                            prenotazione.getNumero_Biglietto() +
-                            "\nPosto assegnato: " + prenotazione.getPosto_Assegnato(),
+                            prenotazione.getNumeroBiglietto() +
+                            "\nPosto assegnato: " + prenotazione.getPostoAssegnato(),
                     "Prenotazione Confermata",
                     JOptionPane.INFORMATION_MESSAGE);
 
