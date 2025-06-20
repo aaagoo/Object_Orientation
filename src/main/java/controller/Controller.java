@@ -1,8 +1,9 @@
-
 package controller;
 
+import implementazioneDAO.DAOimpl_Utente;
 import modello.*;
 import java.util.List;
+import java.sql.SQLException;
 
 public class Controller {
     private static Controller instance;
@@ -27,8 +28,13 @@ public class Controller {
         return AmministratoreSistema.registraNuovo(username, password);
     }
 
-    public Utente login(String username, String password) {
-        return Utente.autenticaUtente(username, password);
+    public Utente login(String nomeutente, String password) {
+        try {
+            return DAOimpl_Utente.getInstance().verificaCredenziali(nomeutente, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //gestione dei voli

@@ -31,11 +31,11 @@ public class GUI_RegistrazioneUtente extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String nome = nomebar.getText();
                 String cognome = cognomebar.getText();
-                String username = newuser.getText();
+                String nomeutente = newuser.getText();
                 String password = newpsw.getText();
                 String repPassword = newreppsw.getText();
 
-                if (nome.isEmpty() || cognome.isEmpty() || username.isEmpty() || password.isEmpty() || repPassword.isEmpty()) {
+                if (nome.isEmpty() || cognome.isEmpty() || nomeutente.isEmpty() || password.isEmpty() || repPassword.isEmpty()) {
 
                     JOptionPane.showMessageDialog(GUI_RegistrazioneUtente.this,
                             "Compila tutti i campi!",
@@ -51,7 +51,7 @@ public class GUI_RegistrazioneUtente extends JFrame{
                             JOptionPane.ERROR_MESSAGE);
 
 
-                } else if (Controller.getInstance().registraUtenteGenerico(nome, cognome, username, password)) {
+                } else if (Controller.getInstance().registraUtenteGenerico(nome, cognome, nomeutente, password)) {
                     JOptionPane.showMessageDialog(GUI_RegistrazioneUtente.this,
                             "Registrazione avvenuta con successo!");
                     dispose();

@@ -41,28 +41,33 @@ public class GUI_Login extends JFrame {
                     String username = userfield.getText();
                     String password = new String(pswfield.getPassword());
 
-                    Utente utente = Controller.getInstance().login(username, password);
-                    if (utente != null) {
-                        dispose();
-
-                        if (utente instanceof AmministratoreSistema) {
-
-                            mostraInterfacciaAmministratore((AmministratoreSistema) utente);
-
-                        } else if (utente instanceof UtenteGenerico) {
-
-                            mostraInterfacciaUtente((UtenteGenerico) utente);
-                        }
-
-                    } else {
+                    if (username.isEmpty() || password.isEmpty()) {
                         JOptionPane.showMessageDialog(GUI_Login.this,
-                                "Credenziali non valide!",
+                                "Inserire username e password",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
+
+                    Utente utente = Controller.getInstance().login(username, password);
+
+                    if (utente == null) {
+                        JOptionPane.showMessageDialog(GUI_Login.this,
+                                "Credenziali non valide",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    if (utente instanceof AmministratoreSistema) {
+                        mostraInterfacciaAmministratore((AmministratoreSistema) utente);
+                    } else if (utente instanceof UtenteGenerico) {
+                        mostraInterfacciaUtente((UtenteGenerico) utente);
+                    }
+
+                    dispose();
                 }
             });
-
         }
 
     private void mostraInterfacciaAmministratore(AmministratoreSistema admin) {

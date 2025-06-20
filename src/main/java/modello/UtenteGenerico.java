@@ -1,6 +1,5 @@
 package modello;
 
-import java.util.List;
 
 public class UtenteGenerico extends Utente {
     private String nome;
@@ -31,9 +30,5 @@ public class UtenteGenerico extends Utente {
     public static boolean registraNuovo(String nome, String cognome, String username, String password) {
         UtenteGenerico nuovoUtente = new UtenteGenerico(nome, cognome, username, password);
         return nuovoUtente.registra();
-    }
-
-    public List<Volo> visualizzaVoli() {
-        return null;
     }
 }
