@@ -9,17 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneUtente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/AmministratoreSistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/AmministratoreSistema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/UtenteGenerico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/UtenteGenerico.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ago/IdeaProjects/Object_Orientation/src/resources/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -90,7 +83,11 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\resources\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\main" />
       <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\main\java\GUI" />
     </key>
   </component>
@@ -117,8 +114,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
       </set>
     </attachedChunks>
   </component>
@@ -168,7 +165,13 @@
       <workItem from="1750255982030" duration="640000" />
       <workItem from="1750340677166" duration="768000" />
       <workItem from="1750402834096" duration="10650000" />
-      <workItem from="1750418280766" duration="8797000" />
+      <workItem from="1750418280766" duration="10819000" />
+      <workItem from="1750430984587" duration="564000" />
+      <workItem from="1750432058598" duration="134000" />
+      <workItem from="1750508966168" duration="1596000" />
+      <workItem from="1750767525800" duration="358000" />
+      <workItem from="1750767926723" duration="9022000" />
+      <workItem from="1750776995345" duration="4000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -338,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750407731607</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1750429499551</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1750429499551</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
