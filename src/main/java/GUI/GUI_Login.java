@@ -43,26 +43,6 @@ public class GUI_Login extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        textPanel.setBackground(new Color(215, 225, 250));
-        textArea.setBackground(new Color(215, 225, 250));
-        registerPanel.setBackground(new Color(215, 225, 250));
-        accediButton.setBackground(new Color(255, 225, 200));
-        registratiButton.setBackground(new Color(255, 225, 200));
-        userField.setBackground(new Color(200, 225, 255));
-        pswField.setBackground(new Color(200, 225, 255));
-        credentialsPanel.setBackground(new Color(240, 240, 240));
-        userPanel.setBackground(new Color(240, 240, 240));
-        pswPanel.setBackground(new Color(240, 240, 240));
-        accediPanel.setBackground(new Color(240, 240, 240));
-
-        title1.setFont(new Font("Inter", Font.BOLD , 18));
-        text.setFont(new Font("Inter", Font.PLAIN , 16));
-        accediButton.setFont(new Font("Inter", Font.BOLD , 13));
-        registratiButton.setFont(new Font("Inter", Font.BOLD , 13));
-        userLabel.setFont(new Font("Inter", Font.PLAIN , 14));
-        pswLabel.setFont(new Font("Inter", Font.PLAIN , 14));
-        userField.setFont(new Font("Inter", Font.PLAIN , 14));
-        pswField.setFont(new Font("Inter", Font.PLAIN , 14));
 
         credentialsPanel.setBorder(BorderFactory.createCompoundBorder(
                 new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
@@ -84,39 +64,39 @@ public class GUI_Login extends JFrame {
                 }
         });
 
-            accediButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String username = userField.getText();
-                    String password = new String(pswField.getPassword());
+        accediButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = userField.getText();
+                String password = new String(pswField.getPassword());
 
-                    if (username.isEmpty() || password.isEmpty()) {
-                        JOptionPane.showMessageDialog(GUI_Login.this,
-                                "Inserire username e password",
-                                "Errore",
-                                JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
-                    Utente utente = Controller.getInstance().login(username, password);
-
-                    if (utente == null) {
-                        JOptionPane.showMessageDialog(GUI_Login.this,
-                                "Credenziali non valide",
-                                "Errore",
-                                JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-
-                    if (utente instanceof AmministratoreSistema) {
-                        mostraInterfacciaAmministratore((AmministratoreSistema) utente);
-                    } else if (utente instanceof UtenteGenerico) {
-                        mostraInterfacciaUtente((UtenteGenerico) utente);
-                    }
-
-                    dispose();
+                if (username.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(GUI_Login.this,
+                            "Inserire username e password",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
-            });
+
+                Utente utente = Controller.getInstance().login(username, password);
+
+                if (utente == null) {
+                    JOptionPane.showMessageDialog(GUI_Login.this,
+                            "Credenziali non valide",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (utente instanceof AmministratoreSistema) {
+                    mostraInterfacciaAmministratore((AmministratoreSistema) utente);
+                } else if (utente instanceof UtenteGenerico) {
+                    mostraInterfacciaUtente((UtenteGenerico) utente);
+                }
+
+                dispose();
+            }
+        });
 
         pswField.addKeyListener(new KeyAdapter() {
             @Override
