@@ -8,7 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Login.java" afterDir="false" />
@@ -172,6 +171,7 @@
       <workItem from="1750767525800" duration="358000" />
       <workItem from="1750767926723" duration="9022000" />
       <workItem from="1750776995345" duration="4000" />
+      <workItem from="1750777145683" duration="4384000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -349,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750429499551</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1750777166030</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1750777166030</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

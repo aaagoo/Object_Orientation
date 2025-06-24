@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 
 public class GUI_Login extends JFrame {
     private JPanel mainpanel;
@@ -16,7 +19,7 @@ public class GUI_Login extends JFrame {
     private JButton registratiButton;
     private JTextField userField;
     private JPasswordField pswField;
-    private JPanel panel;
+    private JPanel textPanel;
     private JLabel title1;
     private JPanel textArea;
     private JPanel registerPanel;
@@ -24,11 +27,11 @@ public class GUI_Login extends JFrame {
     private JPanel userPanel;
     private JPanel accediPanel;
     private JLabel text;
-    private JPanel imagePanel;
     private JLabel imageLabel;
     private JLabel userLabel;
     private JLabel pswLabel;
     private JPanel credentialsPanel;
+    private JPanel imagePanel;
 
 
     public GUI_Login() {
@@ -40,17 +43,17 @@ public class GUI_Login extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        panel.setBackground(new Color(215, 225, 250));
+        textPanel.setBackground(new Color(215, 225, 250));
         textArea.setBackground(new Color(215, 225, 250));
-        userPanel.setBackground(new Color(215, 225, 250));
-        pswPanel.setBackground(new Color(215, 225, 250));
-        accediPanel.setBackground(new Color(215, 225, 250));
         registerPanel.setBackground(new Color(215, 225, 250));
         accediButton.setBackground(new Color(255, 225, 200));
         registratiButton.setBackground(new Color(255, 225, 200));
         userField.setBackground(new Color(200, 225, 255));
         pswField.setBackground(new Color(200, 225, 255));
-        credentialsPanel.setBackground(new Color(250, 250, 250));
+        credentialsPanel.setBackground(new Color(240, 240, 240));
+        userPanel.setBackground(new Color(240, 240, 240));
+        pswPanel.setBackground(new Color(240, 240, 240));
+        accediPanel.setBackground(new Color(240, 240, 240));
 
         title1.setFont(new Font("Inter", Font.BOLD , 18));
         text.setFont(new Font("Inter", Font.PLAIN , 16));
@@ -61,15 +64,16 @@ public class GUI_Login extends JFrame {
         userField.setFont(new Font("Inter", Font.PLAIN , 14));
         pswField.setFont(new Font("Inter", Font.PLAIN , 14));
 
+        credentialsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
 
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroportoimg1.jpg"));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(493, 461, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
         imageLabel.setIcon(imageIcon);
-        imagePanel.setBackground(new Color(215, 225, 250));
-
-
 
 
         registratiButton.addActionListener(new ActionListener() {
@@ -77,9 +81,8 @@ public class GUI_Login extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                 dispose();
                 new GUI_RegistrazioneScelta();
-
                 }
-            });
+        });
 
             accediButton.addActionListener(new ActionListener() {
                 @Override
@@ -114,7 +117,26 @@ public class GUI_Login extends JFrame {
                     dispose();
                 }
             });
-        }
+
+        pswField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+                    accediButton.doClick();
+                }
+            }
+        });
+
+        accediButton.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+                    accediButton.doClick();
+                }
+            }
+        });
+    }
+
 
     private void mostraInterfacciaAmministratore(AmministratoreSistema admin) {
 
@@ -125,6 +147,4 @@ public class GUI_Login extends JFrame {
 
         new GUI_HomeUtente(utente);
     }
-
 }
-
