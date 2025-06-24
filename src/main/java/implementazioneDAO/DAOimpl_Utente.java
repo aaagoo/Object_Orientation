@@ -34,24 +34,24 @@ public class DAOimpl_Utente implements DAO_Utente {
         Connection conn = ConnessioneDatabase.getInstance().connection;
 
         String createAccountTable = """
-                                           CREATE TABLE IF NOT EXISTS account (
-                                               id SERIAL PRIMARY KEY,
-                                               nomeutente VARCHAR(50) UNIQUE NOT NULL,
-                                               password VARCHAR(100) NOT NULL,
-                                               tipo VARCHAR(20) NOT NULL
-                                           )""";
+                                       CREATE TABLE IF NOT EXISTS public.account (
+                                           id SERIAL PRIMARY KEY,
+                                           nomeutente VARCHAR(50) UNIQUE NOT NULL,
+                                           password VARCHAR(100) NOT NULL,
+                                           tipo VARCHAR(20) NOT NULL
+                                       )""";
 
         String createUtenteTable = """
-                                           CREATE TABLE IF NOT EXISTS utente (
-                                               id INTEGER PRIMARY KEY REFERENCES account(id),
-                                               nome VARCHAR(50) NOT NULL,
-                                               cognome VARCHAR(50) NOT NULL
-                                           )""";
+                                       CREATE TABLE IF NOT EXISTS public.utente (
+                                           id INTEGER PRIMARY KEY REFERENCES public.account(id),
+                                           nome VARCHAR(50) NOT NULL,
+                                           cognome VARCHAR(50) NOT NULL
+                                       )""";
 
         String createAmministratoreTable = """
-                                           CREATE TABLE IF NOT EXISTS amministratore (
-                                               id INTEGER PRIMARY KEY REFERENCES account(id)
-                                           )""";
+                                       CREATE TABLE IF NOT EXISTS public.amministratore (
+                                           id INTEGER PRIMARY KEY REFERENCES public.account(id)
+                                       )""";
 
         try (Statement stmt = conn.createStatement()) {
             stmt.execute(createAccountTable);
@@ -68,7 +68,7 @@ public class DAOimpl_Utente implements DAO_Utente {
         try {
             int newId = inserisciAccount(conn, utente.getNomeUtente(), utente.getPassword(), "UTENTE");
 
-            String sql = "INSERT INTO utente (id, nome, cognome) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO public.utente (id, nome, cognome) VALUES (?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, newId);
                 stmt.setString(2, utente.getNome());
@@ -94,7 +94,7 @@ public class DAOimpl_Utente implements DAO_Utente {
         try {
             int newId = inserisciAccount(conn, admin.getNomeUtente(), admin.getPassword(), "ADMIN");
 
-            String sql = "INSERT INTO amministratore (id) VALUES (?)";
+            String sql = "INSERT INTO public.amministratore (id) VALUES (?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, newId);
                 stmt.executeUpdate();
@@ -112,7 +112,7 @@ public class DAOimpl_Utente implements DAO_Utente {
 
     private int inserisciAccount(Connection conn, String nomeutente, String password, String tipo)
             throws SQLException {
-        String sql = "INSERT INTO account (nomeutente, password, tipo) VALUES (?, ?, ?) RETURNING id";
+        String sql = "INSERT INTO public.account (nomeutente, password, tipo) VALUES (?, ?, ?) RETURNING id";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, nomeutente);
             stmt.setString(2, password);
@@ -128,7 +128,7 @@ public class DAOimpl_Utente implements DAO_Utente {
 
     @Override
     public Utente verificaCredenziali(String nomeutente, String password) throws SQLException {
-        String sql = "SELECT id, tipo FROM account WHERE nomeutente = ? AND password = ?";
+        String sql = "SELECT id, tipo FROM public.account WHERE nomeutente = ? AND password = ?";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -154,7 +154,7 @@ public class DAOimpl_Utente implements DAO_Utente {
 
     private UtenteGenerico caricaDatiUtenteGenerico(Connection conn, int id, String nomeutente, String password)
             throws SQLException {
-        String sql = "SELECT nome, cognome FROM utente WHERE id = ?";
+        String sql = "SELECT nome, cognome FROM public.utente WHERE id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
