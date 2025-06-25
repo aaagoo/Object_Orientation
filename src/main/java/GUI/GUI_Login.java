@@ -19,7 +19,6 @@ public class GUI_Login extends JFrame {
     private JButton registratiButton;
     private JTextField userField;
     private JPasswordField pswField;
-    private JPanel textPanel;
     private JLabel title1;
     private JPanel textArea;
     private JPanel registerPanel;
@@ -32,6 +31,7 @@ public class GUI_Login extends JFrame {
     private JLabel pswLabel;
     private JPanel credentialsPanel;
     private JPanel imagePanel;
+    private JPanel textPanel;
 
 
     public GUI_Login() {

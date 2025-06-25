@@ -3,6 +3,7 @@ package GUI;
 import controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,15 +17,30 @@ public class GUI_RegistrazioneUtente extends JFrame{
     private JTextField newreppsw;
     private JTextField nomebar;
     private JTextField cognomebar;
+    private JPanel imagePanel;
+    private JLabel imageLabel;
+    private JPanel credentialsPanel;
+    private JPanel titlePanel;
 
     public GUI_RegistrazioneUtente() {
         setContentPane(mainpanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 500);
+        setSize(1000, 500);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
         setTitle("Registrazione Utente");
 
+        credentialsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/airport_logo.png"));
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        imageLabel.setIcon(imageIcon);
 
         confermaButton.addActionListener(new ActionListener() {
             @Override

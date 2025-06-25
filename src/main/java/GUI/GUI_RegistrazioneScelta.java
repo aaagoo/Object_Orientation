@@ -9,15 +9,21 @@ public class GUI_RegistrazioneScelta extends JFrame {
     private JButton utenteButton;
     private JButton amministratoreButton;
     private JButton annulllaButton;
+    private JPanel choicePanel;
+    private JPanel textPanel;
+    private JPanel annullaPanel;
+    private JPanel bigPanel;
+    private JPanel smallPanel;
 
 
     public GUI_RegistrazioneScelta() {
         setContentPane(mainpanel);
         setTitle("Registrazione");
-        setSize(400,300);
+        setSize(500,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
 
         utenteButton.addActionListener(new ActionListener() {
             @Override
