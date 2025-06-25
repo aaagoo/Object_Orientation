@@ -67,6 +67,7 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-986896"/>
               <font name="Inter" size="13" style="0"/>
               <rowHeight value="40"/>
               <showVerticalLines value="false"/>
