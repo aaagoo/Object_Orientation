@@ -51,7 +51,7 @@ public class GUI_Login extends JFrame {
 
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroportoimg1.jpg"));
         Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(493, 461, Image.SCALE_SMOOTH);
+        Image newimg = image.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
         imageLabel.setIcon(imageIcon);
 

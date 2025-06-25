@@ -5,6 +5,7 @@ import modello.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
@@ -12,9 +13,12 @@ import java.time.format.DateTimeFormatter;
 
 public class GUI_VisualizzaVoliP extends JFrame {
     private JPanel mainpanel;
-    private JTable tabellavoli;
+    private JTable voliTable;
     private JButton indietroButton;
     private JButton voliButton;
+    private JPanel operazioniPanel;
+    private JPanel tabellaPanel;
+    private JLabel imageLabel;
     private DefaultTableModel modelPartenze;
     private final Utente utente;
 
@@ -22,10 +26,24 @@ public class GUI_VisualizzaVoliP extends JFrame {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Visualizza Voli in Partenza");
-        setSize(800, 600);
+        setSize(1000, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
+
+        mainpanel.setBorder(null);
+
+        operazioniPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
 
         modelPartenze = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
@@ -37,8 +55,19 @@ public class GUI_VisualizzaVoliP extends JFrame {
             }
         };
 
-        tabellavoli.setModel(modelPartenze);
+        voliTable.setModel(modelPartenze);
         modelPartenze.setRowCount(0);
+
+        modelPartenze.addRow(new Object[]{
+                "Codice",
+                "Compagnia",
+                "Destinazione",
+                "Data",
+                "Orario",
+                "Ritardo",
+                "Gate",
+                "Stato"
+        });
 
         for (VoloPartenza volo : Controller.getInstance().getVoliPartenza()) {
 
@@ -67,6 +96,8 @@ public class GUI_VisualizzaVoliP extends JFrame {
                     volo.getStato()
             });
         }
+
+
 
         indietroButton.addActionListener(new ActionListener() {
             @Override
