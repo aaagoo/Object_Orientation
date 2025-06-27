@@ -153,16 +153,6 @@ public abstract class Volo {
         voloAZ1234.setRitardo(35);
         voli.add(voloAZ1234);
 
-        voli.add(new VoloArrivo(
-                "FR5678",
-                "Ryanair",
-                "Bologna",
-                LocalDate.now(),
-                LocalTime.of(14, 45),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO
-        ));
-
         voli.add(new VoloPartenza(
                 "AZ2468",
                 "Alitalia",
@@ -220,16 +210,6 @@ public abstract class Volo {
         voloBN9932.setRitardo(10);
         voli.add(voloBN9932);
 
-        voli.add(new VoloPartenza(
-                "AN2758",
-                "Air France",
-                "Parigi",
-                LocalDate.now(),
-                LocalTime.of(15, 20),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO,
-                new Gate(7)
-        ));
     }
 
     public static List<Volo> getTuttiVoli() {

@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,7 @@ public class GUI_RegistrazioneScelta extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
+
 
         utenteButton.addActionListener(new ActionListener() {
             @Override

@@ -70,6 +70,7 @@
               <background color="-986896"/>
               <font name="Inter" size="13" style="0"/>
               <rowHeight value="40"/>
+              <selectionBackground color="-3612161"/>
               <showVerticalLines value="false"/>
             </properties>
           </component>

@@ -4,6 +4,7 @@ import controller.Controller;
 import modello.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -23,6 +24,19 @@ public class GUI_Arrivo extends JFrame {
     private JTextField ritardoField;
     private JButton annullaButton;
     private JButton confermaButton;
+    private JPanel imagePanel;
+    private JLabel imageLabel;
+    private JPanel textPanel;
+    private JPanel bottoniPanel;
+    private JPanel intestazionePanel;
+    private JLabel textLabel;
+    private JPanel operationsPanel;
+    private JPanel codicePanel;
+    private JPanel ritardoPanel;
+    private JPanel compagniaPanel;
+    private JPanel destinazionePanel;
+    private JPanel dataPanel;
+    private JPanel orarioPanel;
     private AmministratoreSistema utente;
 
 
@@ -30,10 +44,32 @@ public class GUI_Arrivo extends JFrame {
         this.utente = (AmministratoreSistema) utente;
         setContentPane(mainpanel);
         setTitle("Inserisci Volo in Arrivo");
-        setSize(400, 500);
+        setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
+
+        dataField.setToolTipText(null);
+        orarioField.setToolTipText(null);
+        ritardoField.setToolTipText(null);
+
+        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroporto_torre.jpg"));
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(350, 700, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        imageLabel.setIcon(imageIcon);
+
+        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        bottoniPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
 
         confermaButton.addActionListener(new ActionListener() {
             @Override

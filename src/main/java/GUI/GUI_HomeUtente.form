@@ -77,7 +77,7 @@
                 <properties>
                   <background color="-7736"/>
                   <font name="Inter" size="13" style="1"/>
-                  <text value="Cerca prenotazione (Passeggero)"/>
+                  <text value="Cerca Prenotazione (Passeggero)"/>
                 </properties>
               </component>
             </children>

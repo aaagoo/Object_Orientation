@@ -4,6 +4,7 @@ import modello.AmministratoreSistema;
 import modello.Utente;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +13,11 @@ public class GUI_NuovoVolo extends JFrame {
     private JButton partenzaButton;
     private JButton arrivoButton;
     private JButton annullaButton;
+    private JPanel bigPanel;
+    private JPanel smallPanel;
+    private JPanel choicePanel;
+    private JPanel annullaPanel;
+    private JPanel textPanel;
     private Utente utente;
 
 
@@ -19,11 +25,13 @@ public class GUI_NuovoVolo extends JFrame {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Nuovo Volo");
-        setSize(400,300);
+        setSize(500,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
 
+        mainpanel.setBorder(null);
 
         partenzaButton.addActionListener(new ActionListener() {
             @Override

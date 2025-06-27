@@ -3,6 +3,7 @@ package GUI;
 import modello.UtenteGenerico;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,16 +15,32 @@ public class GUI_CercaPrenPass extends JFrame {
     private JButton cercaPerCodiceVoloButton;
     private JTextField nomeField;
     private JTextField cognomeField;
+    private JPanel operationsPanel;
+    private JTextField voloField;
+    private JPanel buttonsPanel;
     private final UtenteGenerico utente;
 
     public GUI_CercaPrenPass(UtenteGenerico utente) {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Cerca Prenotazione Passeggero");
-        setSize(600, 400);
+        setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
+
+        mainpanel.setBorder(null);
+
+        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
 
         cercaButton.addActionListener(new ActionListener() {
             @Override

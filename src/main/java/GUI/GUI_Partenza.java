@@ -4,6 +4,7 @@ import controller.Controller;
 import modello.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -23,18 +24,51 @@ public class GUI_Partenza extends JFrame {
     private JTextField ritardoField;
     private JButton annullaButton;
     private JButton confermaButton;
+    private JPanel codicePanel;
+    private JPanel ritardoPanel;
+    private JPanel compagniaPanel;
+    private JPanel destinazionePanel;
+    private JPanel dataPanel;
+    private JPanel orarioPanel;
+    private JLabel imageLabel;
+    private JPanel imagePanel;
+    private JLabel textLabel;
+    private JPanel operationsPanel;
+    private JPanel intestazionePanel;
+    private JPanel bottoniPanel;
+    private JPanel textPanel;
     private AmministratoreSistema utente;
 
 
     public GUI_Partenza(Utente utente) {
         this.utente = (AmministratoreSistema) utente;
         setContentPane(mainpanel);
-        setTitle("Inserisci Volo in Partenza");
-        setSize(400, 500);
+        setTitle("Inserisci Volo");
+        setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
 
+        dataField.setToolTipText(null);
+        orarioField.setToolTipText(null);
+        ritardoField.setToolTipText(null);
+
+        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroporto_torre.jpg"));
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(350, 700, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        imageLabel.setIcon(imageIcon);
+
+        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        bottoniPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
 
         annullaButton.addActionListener(new ActionListener() {
             @Override
