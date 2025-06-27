@@ -7,6 +7,7 @@ import modello.VoloPartenza;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,9 @@ public class GUI_CercaPrenVolo extends JFrame {
     private JButton annullaButton;
     private JButton cercaPerDatiPasseggeroButton;
     private JTable tabellaVoli;
+    private JPanel tabellaPanel;
+    private JPanel buttonsPanel;
+    private JPanel operationsPanel;
     private DefaultTableModel modelVoli;
     private final UtenteGenerico utente;
 
@@ -26,10 +30,28 @@ public class GUI_CercaPrenVolo extends JFrame {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Cerca Prenotazioni per Volo");
-        setSize(800, 600);
+        setSize(1000, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
+
+        mainpanel.setBorder(null);
+
+        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
 
         modelVoli = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
@@ -67,7 +89,6 @@ public class GUI_CercaPrenVolo extends JFrame {
                     );
                     return;
                 }
-                dispose();
                 new GUI_CercaPrenVoloRisult(utente, codicevoloField.getText());
 
             }

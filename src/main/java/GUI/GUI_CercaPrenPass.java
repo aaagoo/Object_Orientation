@@ -45,7 +45,19 @@ public class GUI_CercaPrenPass extends JFrame {
         cercaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cercaPrenotazioni();
+
+                String nome = nomeField.getText().trim();
+                String cognome = cognomeField.getText().trim();
+
+                if (nome.isEmpty() || cognome.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            GUI_CercaPrenPass.this,
+                            "Inserire sia nome che cognome per la ricerca",
+                            "Campi Mancanti",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                new GUI_CercaPrenPassRisult(utente, nome, cognome);
             }
         });
 
@@ -66,20 +78,4 @@ public class GUI_CercaPrenPass extends JFrame {
         });
 
     }
-
-    private void cercaPrenotazioni() {
-        String nome = nomeField.getText().trim();
-        String cognome = cognomeField.getText().trim();
-
-        if (nome.isEmpty() || cognome.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                    "Inserire sia nome che cognome per la ricerca",
-                    "Campi Mancanti",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        new GUI_CercaPrenPassRisult(utente, nome, cognome);
-        dispose();
-    }
-
 }

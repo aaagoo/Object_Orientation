@@ -119,17 +119,15 @@ public abstract class Volo {
                 StatoVolo.PROGRAMMATO
         ));
 
-        VoloArrivo voloGS6859 = new VoloArrivo(
+        voli.add(new VoloArrivo(
                 "GS6859",
                 "Turkish Airlines",
                 "Istanbul",
                 LocalDate.now(),
                 LocalTime.of(20, 30),
-                Duration.ofMinutes(15),
-                StatoVolo.IN_RITARDO
-        );
-        voloGS6859.setRitardo(15);
-        voli.add(voloGS6859);
+                Duration.ZERO,
+                StatoVolo.PROGRAMMATO
+        ));
 
         voli.add(new VoloArrivo(
                 "GB9405",
@@ -141,17 +139,15 @@ public abstract class Volo {
                 StatoVolo.PROGRAMMATO
         ));
 
-        VoloArrivo voloAZ1234 = new VoloArrivo(
+        voli.add(new VoloArrivo(
                 "AZ1234",
                 "Alitalia",
                 "Roma",
                 LocalDate.now(),
                 LocalTime.of(12, 30),
-                Duration.ofMinutes(35),
-                StatoVolo.IN_RITARDO
-        );
-        voloAZ1234.setRitardo(35);
-        voli.add(voloAZ1234);
+                Duration.ZERO,
+                StatoVolo.PROGRAMMATO
+        ));
 
         voli.add(new VoloPartenza(
                 "AZ2468",
@@ -197,19 +193,16 @@ public abstract class Volo {
                 null
         ));
 
-        VoloPartenza voloBN9932 = new VoloPartenza(
+        voli.add(new VoloPartenza(
                 "BN9932",
                 "Lufthansa",
                 "Francoforte",
                 LocalDate.now(),
                 LocalTime.of(10, 15),
-                Duration.ofMinutes(10),
-                StatoVolo.IN_RITARDO,
+                Duration.ZERO,
+                StatoVolo.PROGRAMMATO,
                 new Gate(5)
-        );
-        voloBN9932.setRitardo(10);
-        voli.add(voloBN9932);
-
+        ));
     }
 
     public static List<Volo> getTuttiVoli() {

@@ -6,6 +6,7 @@ import modello.UtenteGenerico;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -14,6 +15,8 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
     private JPanel mainpanel;
     private JTable tabellaVoli;
     private JButton indietroButton;
+    private JPanel buttonsPanel;
+    private JPanel tabellaPanel;
     private DefaultTableModel modelTabella;
     private final UtenteGenerico utente;
 
@@ -21,10 +24,23 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
         this.utente = utente;
         setContentPane(mainpanel);
         setTitle("Risultati Ricerca Prenotazioni");
-        setSize(800, 400);
+        setSize(1000, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
+
+        mainpanel.setBorder(null);
+
+        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
+
+        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
+                BorderFactory.createEmptyBorder(0, 0, 0, 0)
+        ));
 
         modelTabella = new DefaultTableModel(
                 new String[]{"Numero Biglietto", "Nome", "Cognome", "CF", "Posto", "Stato"},
@@ -44,7 +60,6 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
         indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_CercaPrenVolo(utente);
                 dispose();
             }
         });

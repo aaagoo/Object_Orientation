@@ -9,24 +9,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_NuovoVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_NuovoVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_NuovoVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_NuovoVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneScelta.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneScelta.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneScelta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_RegistrazioneScelta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliP.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliP.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +200,7 @@
       <workItem from="1750963637749" duration="1833000" />
       <workItem from="1750974765554" duration="1268000" />
       <workItem from="1751013522424" duration="9384000" />
-      <workItem from="1751028324365" duration="365000" />
+      <workItem from="1751028324365" duration="5088000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750874641712</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1751029106435</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1751029106435</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
