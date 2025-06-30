@@ -1,5 +1,5 @@
-
 package modello;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,10 +18,12 @@ public class Prenotazione {
     private String cognomePasseggero;
     private String codiceFiscale;
     private Volo volo;
+    private String nomePrenotazione;
+    private String cognomePrenotazione;
 
     public Prenotazione(String numeroBiglietto, String postoAssegnato, StatoPrenotazione stato,
                         String nomePasseggero, String cognomePasseggero, String codiceFiscale,
-                        Volo volo) {
+                        Volo volo, String nomePrenotazione, String cognomePrenotazione) {
         this.numeroBiglietto = numeroBiglietto;
         this.postoAssegnato = postoAssegnato;
         this.stato = stato;
@@ -29,6 +31,8 @@ public class Prenotazione {
         this.cognomePasseggero = cognomePasseggero;
         this.codiceFiscale = codiceFiscale;
         this.volo = volo;
+        this .nomePrenotazione = nomePrenotazione;
+        this.cognomePrenotazione = cognomePrenotazione;
     }
 
     public String getNumeroBiglietto() {
@@ -87,10 +91,29 @@ public class Prenotazione {
         this.volo = volo;
     }
 
+    public String getNomePrenotazione() {
+        return nomePrenotazione;
+    }
+
+    public void setNomePrenotazione(String nomePrenotazione) {
+        this.nomePrenotazione = nomePrenotazione;
+    }
+
+    public String getCognomePrenotazione() {
+        return cognomePrenotazione;
+    }
+
+    public void setCognomePrenotazione(String cognomePrenotazione) {
+        this.cognomePrenotazione = cognomePrenotazione;
+    }
+
     public static Prenotazione creaPrenotazione(String nomePasseggero, String cognomePasseggero,
-                                                String codiceFiscale, Volo volo) {
+                                                String codiceFiscale, Volo volo, UtenteGenerico utente) {
         String numeroBiglietto = generaNumeroBiglietto();
         String postoAssegnato = generaPostoCasuale();
+        String nomePrenotazione = utente.getNome();
+        String cognomePrenotazione = utente.getCognome();
+
 
         Prenotazione prenotazione = new Prenotazione(
                 numeroBiglietto,
@@ -99,7 +122,9 @@ public class Prenotazione {
                 nomePasseggero,
                 cognomePasseggero,
                 codiceFiscale,
-                volo
+                volo,
+                nomePrenotazione,
+                cognomePrenotazione
         );
 
         prenotazioni.put(numeroBiglietto, prenotazione);
@@ -132,6 +157,13 @@ public class Prenotazione {
                 .collect(Collectors.toList());
     }
 
+    public static List<Prenotazione> cercaPerCreatore(String nome, String cognome) {
+        return prenotazioni.values().stream()
+                .filter(p -> p.getNomePrenotazione().equalsIgnoreCase(nome) &&
+                        p.getCognomePrenotazione().equalsIgnoreCase(cognome))
+                .collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         return "Prenotazione{" +
@@ -142,6 +174,8 @@ public class Prenotazione {
                 ", Cognome_Passeggero='" + cognomePasseggero + '\'' +
                 ", Codice_Fiscale='" + codiceFiscale + '\'' +
                 ", Volo=" + volo +
+                ", Nome_Prenotazione='" + nomePrenotazione + '\'' +
+                ", Cognome_Prenotazione='" + cognomePrenotazione + '\'' +
                 '}';
     }
 }

@@ -161,7 +161,8 @@ public class GUI_PrenotaVolo extends JFrame {
                     nomeField.getText().trim(),
                     cognomeField.getText().trim(),
                     CFField.getText().trim(),
-                    volo
+                    volo,
+                    utente
             );
 
             JOptionPane.showMessageDialog(this,

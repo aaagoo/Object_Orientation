@@ -9,17 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Utente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +195,13 @@
       <workItem from="1750963637749" duration="1833000" />
       <workItem from="1750974765554" duration="1268000" />
       <workItem from="1751013522424" duration="9384000" />
-      <workItem from="1751028324365" duration="5088000" />
+      <workItem from="1751028324365" duration="6305000" />
+      <workItem from="1751108967618" duration="4434000" />
+      <workItem from="1751124776282" duration="11000" />
+      <workItem from="1751205069520" duration="3982000" />
+      <workItem from="1751210926654" duration="2376000" />
+      <workItem from="1751272819706" duration="2716000" />
+      <workItem from="1751282173758" duration="4906000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -458,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751029106435</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1751033943235</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1751033943235</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -56,11 +56,4 @@ public abstract class Utente {
         }
     }
 
-    public static Utente autenticaUtente(String username, String password) {
-        Utente utente = utentiRegistrati.get(username);
-        if (utente != null && utente.getPassword().equals(password)) {
-            return utente;
-        }
-        return null;
-    }
 }
