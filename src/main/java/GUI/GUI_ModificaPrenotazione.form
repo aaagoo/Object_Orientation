@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.GUI_ModificaVolo">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.GUI_ModificaPrenotazione">
   <grid id="27dc6" binding="mainpanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
     <margin top="0" left="0" bottom="10" right="0"/>
     <constraints>
@@ -82,6 +82,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Inter" size="13" style="1"/>
               <text value="Le Tue Prenotazioni"/>
             </properties>
           </component>
@@ -90,6 +91,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Inter" size="13" style="1"/>
               <text value="Voli In Partenza"/>
             </properties>
           </component>

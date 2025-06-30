@@ -8,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 
 public class GUI_AssegnaGate extends JFrame {
@@ -63,6 +65,9 @@ public class GUI_AssegnaGate extends JFrame {
             }
         };
         tabellaVoli.setModel(modelVoli);
+        tabellaVoli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        modelVoli.setRowCount(0);
 
         aggiornaTabella();
 
@@ -109,6 +114,16 @@ public class GUI_AssegnaGate extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new GUI_HomeAmministratore(utente);
+            }
+        });
+
+        tabellaVoli.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                    String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
+                    codiceVoloField.setText(codiceVolo);
             }
         });
     }

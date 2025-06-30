@@ -58,7 +58,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="7e4fa" binding="datiouterPanel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="7e4fa" binding="datiouterPanel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
@@ -194,11 +194,11 @@
               </component>
             </children>
           </grid>
-          <grid id="3d033" binding="buttonPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+          <grid id="3d033" binding="buttonPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="500" height="150"/>
+                <preferred-size width="700" height="150"/>
               </grid>
             </constraints>
             <properties>
@@ -209,25 +209,37 @@
               <component id="ba146" class="javax.swing.JButton" binding="modificavoliButton">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <preferred-size width="450" height="45"/>
+                    <preferred-size width="300" height="45"/>
                   </grid>
                 </constraints>
                 <properties>
                   <background color="-7736"/>
                   <font name="Inter" size="14" style="1"/>
-                  <text value="Modifica Voli"/>
+                  <text value="Modifica Prenotazioni"/>
                 </properties>
               </component>
               <component id="c6562" class="javax.swing.JButton" binding="indietroButton">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <preferred-size width="450" height="45"/>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="400" height="45"/>
                   </grid>
                 </constraints>
                 <properties>
                   <background color="-7736"/>
                   <font name="Inter" size="14" style="1"/>
                   <text value="Indietro"/>
+                </properties>
+              </component>
+              <component id="4b9ea" class="javax.swing.JButton" binding="eliminaButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="300" height="45"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-7736"/>
+                  <font name="Inter" size="14" style="1"/>
+                  <text value="Elimina Prenotazioni"/>
                 </properties>
               </component>
             </children>

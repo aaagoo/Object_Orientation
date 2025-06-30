@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -64,14 +66,22 @@ public class GUI_CercaPrenVolo extends JFrame {
         };
         tabellaVoli.setModel(modelVoli);
         tabellaVoli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tabellaVoli.setAutoCreateRowSorter(true);
+
+        modelVoli.setRowCount(0);
 
         caricaVoliPartenza();
 
-        tabellaVoli.getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting() && tabellaVoli.getSelectedRow() != -1) {
-                String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
-                codicevoloField.setText(codiceVolo);
+        tabellaVoli.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                int riga = tabellaVoli.rowAtPoint(e.getPoint());
+
+                if (riga != 0) {
+                    String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
+                    codicevoloField.setText(codiceVolo);
+                }
             }
         });
 
@@ -114,6 +124,17 @@ public class GUI_CercaPrenVolo extends JFrame {
     private void caricaVoliPartenza() {
         modelVoli.setRowCount(0);
         List<VoloPartenza> voliPartenza = Controller.getInstance().getVoliPartenza();
+
+        modelVoli.addRow(new Object[]{
+                "Codice",
+                "Compagnia",
+                "Destinazione",
+                "Data",
+                "Orario",
+                "Ritardo",
+                "Gate",
+                "Stato"
+        });
 
         for (VoloPartenza volo : voliPartenza) {
             if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {

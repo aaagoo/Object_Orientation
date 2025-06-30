@@ -8,10 +8,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class GUI_ModificaVolo extends JFrame {
+
+public class GUI_ModificaPrenotazione extends JFrame {
 
 
     private JPanel tabellaPanel;
@@ -34,10 +37,10 @@ public class GUI_ModificaVolo extends JFrame {
     private DefaultTableModel modelTabella;
     private DefaultTableModel modelPartenze;
 
-    public GUI_ModificaVolo(UtenteGenerico utente) {
+    public GUI_ModificaPrenotazione(UtenteGenerico utente) {
         setContentPane(mainpanel);
         setTitle("Modifica Volo");
-        setSize(1000, 1000);
+        setSize(1000, 950);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -81,7 +84,7 @@ public class GUI_ModificaVolo extends JFrame {
         prenotazioniTable.setModel(modelTabella);
         prenotazioniTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        caricaRisultati(utente.getNome(), utente.getCognome());
+        caricaRisultati(utente.getNomeUtente());
 
         modelPartenze = new DefaultTableModel(
                 new String[]{"Codice", "Data", "Orario", "Ritardo", "Stato"},
@@ -94,6 +97,8 @@ public class GUI_ModificaVolo extends JFrame {
         };
 
         partenzeTable.setModel(modelPartenze);
+        partenzeTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         modelPartenze.setRowCount(0);
 
         modelPartenze.addRow(new Object[]{
@@ -133,7 +138,7 @@ public class GUI_ModificaVolo extends JFrame {
         annullaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_HomeUtente(utente);
+                new GUI_AreaPersonale(utente);
                 dispose();
             }
         });
@@ -145,11 +150,45 @@ public class GUI_ModificaVolo extends JFrame {
 
             }
         });
+
+
+        prenotazioniTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                int riga = prenotazioniTable.rowAtPoint(e.getPoint());
+
+                if (riga != 0) {
+                    String codiceVolo = (String) prenotazioniTable.getValueAt(prenotazioniTable.getSelectedRow(), 3);
+                    String nomePasseggero = (String) prenotazioniTable.getValueAt(prenotazioniTable.getSelectedRow(), 1);
+                    String cognomePasseggero = (String) prenotazioniTable.getValueAt(prenotazioniTable.getSelectedRow(), 2);
+                    codiceVoloField.setText(codiceVolo);
+                    nuovocodiceField.setText(codiceVolo);
+                    nomeField.setText(nomePasseggero);
+                    cognomeField.setText(cognomePasseggero);
+                }
+            }
+        });
+
+        partenzeTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                int riga = partenzeTable.rowAtPoint(e.getPoint());
+
+                if (riga != 0) {
+                    String codiceVolo = (String) partenzeTable.getValueAt(partenzeTable.getSelectedRow(), 0);
+                    nuovocodiceField.setText(codiceVolo);
+                }
+            }
+        });
     }
 
-    private void caricaRisultati(String nome, String cognome) {
+    private void caricaRisultati(String usernamePrenotante) {
         List<Prenotazione> prenotazioni = Controller.getInstance()
-                .cercaPrenotazioniPerCreatore(nome, cognome);
+                .cercaPrenotazioniPerCreatore(usernamePrenotante);
 
         modelTabella.addRow(new Object[]{
                 "N. Biglietto",

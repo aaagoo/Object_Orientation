@@ -93,6 +93,9 @@ public class GUI_HomeUtente extends JFrame{
         partenzeTable.setModel(modelPartenze);
         modelPartenze.setRowCount(0);
 
+        partenzeTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        arriviTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         modelPartenze.addRow(new Object[]{
                 "Codice",
                 "Data",

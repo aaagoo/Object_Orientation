@@ -8,10 +8,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
 
 
 public class GUI_PrenotaVolo extends JFrame {
@@ -69,15 +69,18 @@ public class GUI_PrenotaVolo extends JFrame {
 
         caricaVoliDisponibili();
 
-        tabellaVoli.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        tabellaVoli.addMouseListener(new MouseAdapter() {
             @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting() && tabellaVoli.getSelectedRow() != -1) {
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                if (tabellaVoli.getSelectedRow() != 0) {
                     String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
                     voloField.setText(codiceVolo);
                 }
             }
         });
+
 
         nomeField.setText(utente.getNome());
         cognomeField.setText(utente.getCognome());
@@ -105,6 +108,14 @@ public class GUI_PrenotaVolo extends JFrame {
         modelVoli.setRowCount(0);
         List<VoloPartenza> voli = Controller.getInstance().getVoliPartenza();
 
+        modelVoli.addRow(new Object[]{
+                "Codice",
+                "Compagnia",
+                "Destinazione",
+                "Data",
+                "Orario"
+        });
+
         for (VoloPartenza volo : voli) {
             if (volo.getStato() == StatoVolo.PROGRAMMATO) {
 
@@ -122,19 +133,10 @@ public class GUI_PrenotaVolo extends JFrame {
     private boolean validaCampi() {
         if (nomeField.getText().trim().isEmpty() ||
                 cognomeField.getText().trim().isEmpty() ||
-                CFField.getText().trim().isEmpty() ||
                 voloField.getText().trim().isEmpty()) {
 
             JOptionPane.showMessageDialog(this,
                     "Tutti i campi sono obbligatori!",
-                    "Errore",
-                    JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-
-        if (CFField.getText().trim().length() != 16) {
-            JOptionPane.showMessageDialog(this,
-                    "Il codice fiscale deve essere di 16 caratteri!",
                     "Errore",
                     JOptionPane.ERROR_MESSAGE);
             return false;
@@ -160,7 +162,6 @@ public class GUI_PrenotaVolo extends JFrame {
             Prenotazione prenotazione = Controller.getInstance().creaPrenotazione(
                     nomeField.getText().trim(),
                     cognomeField.getText().trim(),
-                    CFField.getText().trim(),
                     volo,
                     utente
             );

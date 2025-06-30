@@ -16,7 +16,6 @@ public class GUI_CercaPrenPass extends JFrame {
     private JTextField nomeField;
     private JTextField cognomeField;
     private JPanel operationsPanel;
-    private JTextField voloField;
     private JPanel buttonsPanel;
     private final UtenteGenerico utente;
 

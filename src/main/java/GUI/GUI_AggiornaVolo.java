@@ -8,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 
 
@@ -68,6 +70,9 @@ public class GUI_AggiornaVolo extends JFrame {
         };
 
         tabellaVoli.setModel(modelVoli);
+        tabellaVoli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        modelVoli.setRowCount(0);
+
 
         statoComboBox.setModel(new DefaultComboBoxModel<>(StatoVolo.values()));
 
@@ -138,6 +143,16 @@ public class GUI_AggiornaVolo extends JFrame {
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+
+        tabellaVoli.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
+                codiceVoloField.setText(codiceVolo);
             }
         });
     }

@@ -16,23 +16,19 @@ public class Prenotazione {
     private StatoPrenotazione stato;
     private String nomePasseggero;
     private String cognomePasseggero;
-    private String codiceFiscale;
     private Volo volo;
-    private String nomePrenotazione;
-    private String cognomePrenotazione;
+    private String usernamePrenotazione;
 
     public Prenotazione(String numeroBiglietto, String postoAssegnato, StatoPrenotazione stato,
-                        String nomePasseggero, String cognomePasseggero, String codiceFiscale,
-                        Volo volo, String nomePrenotazione, String cognomePrenotazione) {
+                        String nomePasseggero, String cognomePasseggero,
+                        Volo volo, String usernamePrenotazione) {
         this.numeroBiglietto = numeroBiglietto;
         this.postoAssegnato = postoAssegnato;
         this.stato = stato;
         this.nomePasseggero = nomePasseggero;
         this.cognomePasseggero = cognomePasseggero;
-        this.codiceFiscale = codiceFiscale;
         this.volo = volo;
-        this .nomePrenotazione = nomePrenotazione;
-        this.cognomePrenotazione = cognomePrenotazione;
+        this.usernamePrenotazione = usernamePrenotazione;
     }
 
     public String getNumeroBiglietto() {
@@ -75,14 +71,6 @@ public class Prenotazione {
         this.cognomePasseggero = cognomePasseggero;
     }
 
-    public String getCodiceFiscale() {
-        return codiceFiscale;
-    }
-
-    public void setCodiceFiscale(String codiceFiscale) {
-        this.codiceFiscale = codiceFiscale;
-    }
-
     public Volo getVolo() {
         return volo;
     }
@@ -91,28 +79,20 @@ public class Prenotazione {
         this.volo = volo;
     }
 
-    public String getNomePrenotazione() {
-        return nomePrenotazione;
+    public String getUsernamePrenotazione() {
+        return usernamePrenotazione;
     }
 
-    public void setNomePrenotazione(String nomePrenotazione) {
-        this.nomePrenotazione = nomePrenotazione;
+    public void setUsernamePrenotazione(String usernamePrenotazione) {
+        this.usernamePrenotazione = usernamePrenotazione;
     }
 
-    public String getCognomePrenotazione() {
-        return cognomePrenotazione;
-    }
-
-    public void setCognomePrenotazione(String cognomePrenotazione) {
-        this.cognomePrenotazione = cognomePrenotazione;
-    }
 
     public static Prenotazione creaPrenotazione(String nomePasseggero, String cognomePasseggero,
-                                                String codiceFiscale, Volo volo, UtenteGenerico utente) {
+                                                Volo volo, UtenteGenerico utente) {
         String numeroBiglietto = generaNumeroBiglietto();
         String postoAssegnato = generaPostoCasuale();
-        String nomePrenotazione = utente.getNome();
-        String cognomePrenotazione = utente.getCognome();
+        String usernamePrenotazione = utente.getNomeUtente();
 
 
         Prenotazione prenotazione = new Prenotazione(
@@ -121,10 +101,8 @@ public class Prenotazione {
                 StatoPrenotazione.CONFERMATA,
                 nomePasseggero,
                 cognomePasseggero,
-                codiceFiscale,
                 volo,
-                nomePrenotazione,
-                cognomePrenotazione
+                usernamePrenotazione
         );
 
         prenotazioni.put(numeroBiglietto, prenotazione);
@@ -157,10 +135,15 @@ public class Prenotazione {
                 .collect(Collectors.toList());
     }
 
-    public static List<Prenotazione> cercaPerCreatore(String nome, String cognome) {
+    public static List<Prenotazione> cercaPerCreatore(String usernamePrenotazione) {
         return prenotazioni.values().stream()
-                .filter(p -> p.getNomePrenotazione().equalsIgnoreCase(nome) &&
-                        p.getCognomePrenotazione().equalsIgnoreCase(cognome))
+                .filter(p -> p.getUsernamePrenotazione().equals(usernamePrenotazione))
+                .collect(Collectors.toList());
+    }
+
+    public static List<Prenotazione> cercaPerCodice(String codicePrenotazione) {
+        return prenotazioni.values().stream()
+                .filter(p -> p.getNumeroBiglietto().equals(codicePrenotazione))
                 .collect(Collectors.toList());
     }
 
@@ -172,10 +155,8 @@ public class Prenotazione {
                 ", Stato=" + stato +
                 ", Nome_Passeggero='" + nomePasseggero + '\'' +
                 ", Cognome_Passeggero='" + cognomePasseggero + '\'' +
-                ", Codice_Fiscale='" + codiceFiscale + '\'' +
                 ", Volo=" + volo +
-                ", Nome_Prenotazione='" + nomePrenotazione + '\'' +
-                ", Cognome_Prenotazione='" + cognomePrenotazione + '\'' +
+                ", Username_Prenotazione='" + usernamePrenotazione + '\'' +
                 '}';
     }
 }

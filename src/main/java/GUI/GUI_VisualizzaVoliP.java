@@ -58,6 +58,8 @@ public class GUI_VisualizzaVoliP extends JFrame {
         voliTable.setModel(modelPartenze);
         modelPartenze.setRowCount(0);
 
+        voliTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         modelPartenze.addRow(new Object[]{
                 "Codice",
                 "Compagnia",

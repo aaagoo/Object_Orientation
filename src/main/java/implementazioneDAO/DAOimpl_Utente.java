@@ -147,7 +147,7 @@ public class DAOimpl_Utente implements DAO_Utente {
                         return caricaDatiUtenteGenerico(conn, id, nomeutente, password);
                     }
                 }
-                return null; // Credenziali non valide
+                return null;
             }
         }
     }

@@ -10,78 +10,46 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+public class GUI_EliminaPrenotazione extends JFrame {
 
-public class GUI_AreaPersonale extends JFrame {
-    private JPanel mainpanel;
-    private JPanel leftPanel;
-    private JLabel imageLabel;
-    private JButton modificavoliButton;
+    private JPanel tabellaPanel;
     private JTable voliTable;
-    private JPanel rightPanel;
-    private JPanel tablePanel;
-    private JPanel buttonPanel;
+    private JPanel mainpanel;
+    private JPanel operationsPanel;
+    private JTextField codiceprentazioneField;
+    private JPanel buttonsPanel;
     private JButton indietroButton;
-    private JPanel infoPanel;
-    private JPanel imagePanel;
-    private JPanel datiouterPanel;
-    private JLabel nomeLabel;
-    private JLabel cognomeLabel;
-    private JLabel usernameLabel;
-    private JPanel datiPanel;
-    private JButton eliminaButton;
+    private JButton confermaButton;
     private DefaultTableModel modelTabella;
 
-
-    public GUI_AreaPersonale(UtenteGenerico utente) {
+    public GUI_EliminaPrenotazione(UtenteGenerico utente){
         setContentPane(mainpanel);
         setTitle("Area Personale");
-        setSize(1100, 600);
+        setSize(1000, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
 
-        tablePanel.setBorder(BorderFactory.createCompoundBorder(
+        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
                 new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
                 BorderFactory.createEmptyBorder(0, 0, 0, 0)
         ));
 
-        buttonPanel.setBorder(BorderFactory.createCompoundBorder(
+        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
                 new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
                 BorderFactory.createEmptyBorder(0, 0, 0, 0)
         ));
 
-        infoPanel.setBorder(BorderFactory.createCompoundBorder(
+        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
                 new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
                 BorderFactory.createEmptyBorder(0, 0, 0, 0)
         ));
-
-        datiPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(200, 225, 255), new Color(240, 240, 240)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-
-        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/user.png"));
-        Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(125, 125, Image.SCALE_SMOOTH);
-        imageIcon = new ImageIcon(newimg);
-        imageLabel.setIcon(imageIcon);
-
-        nomeLabel.setText(utente.getNome());
-        cognomeLabel.setText(utente.getCognome());
-        usernameLabel.setText(utente.getNomeUtente());
-
-        indietroButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GUI_HomeUtente(utente);
-                dispose();
-            }
-        });
 
         modelTabella = new DefaultTableModel(
                 new String[]{"Nome", "Cognome", "Numero Biglietto", "Posto", "Volo", "Data", "Orario", "Stato"},
@@ -97,19 +65,42 @@ public class GUI_AreaPersonale extends JFrame {
 
         caricaRisultati(utente.getNomeUtente());
 
-        modificavoliButton.addActionListener(new ActionListener() {
+        voliTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                int riga = voliTable.rowAtPoint(e.getPoint());
+
+                if (riga != 0) {
+                    String codiceVolo = (String) voliTable.getValueAt(voliTable.getSelectedRow(), 0);
+                    codiceprentazioneField.setText(codiceVolo);
+                }
+            }
+        });
+
+        indietroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_ModificaPrenotazione(utente);
+                new GUI_AreaPersonale(utente);
                 dispose();
             }
         });
 
-        eliminaButton.addActionListener(new ActionListener() {
+
+        confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GUI_EliminaPrenotazione(utente);
-                dispose();
+                String codicePrenotazione = codiceprentazioneField.getText().trim();
+
+                if (codicePrenotazione.isEmpty()) {
+                    JOptionPane.showMessageDialog(
+                            GUI_EliminaPrenotazione.this,
+                            "Inserire un codice di prenotazione!",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
             }
         });
     }

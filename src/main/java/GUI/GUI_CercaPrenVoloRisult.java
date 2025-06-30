@@ -82,7 +82,6 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
                     p.getNumeroBiglietto(),
                     p.getNomePasseggero(),
                     p.getCognomePasseggero(),
-                    p.getCodiceFiscale(),
                     p.getPostoAssegnato(),
                     p.getStato()
             });

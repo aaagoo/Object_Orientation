@@ -53,6 +53,7 @@ public class GUI_VisualizzaVoliA extends JFrame {
         };
         voliTable.setModel(modelArrivi);
         modelArrivi.setRowCount(0);
+        voliTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         modelArrivi.addRow(new Object[]{
                 "Codice",

@@ -64,8 +64,8 @@ public class Controller {
 
     //gestione delle prenotazioni
     public Prenotazione creaPrenotazione(String nomePasseggero, String cognomePasseggero,
-                                         String codiceFiscale, Volo volo, UtenteGenerico utente) {
-        return Prenotazione.creaPrenotazione(nomePasseggero, cognomePasseggero, codiceFiscale, volo, utente);
+                                         Volo volo, UtenteGenerico utente) {
+        return Prenotazione.creaPrenotazione(nomePasseggero, cognomePasseggero, volo, utente);
     }
 
     public List<Prenotazione> cercaPrenotazioniPerPasseggero(String nome, String cognome) {
@@ -76,7 +76,11 @@ public class Controller {
         return Prenotazione.cercaPerCodiceVolo(codiceVolo);
     }
 
-    public List<Prenotazione> cercaPrenotazioniPerCreatore(String nome, String cognome) {
-        return Prenotazione.cercaPerCreatore(nome, cognome);
+    public List<Prenotazione> cercaPrenotazioniPerCreatore(String usernamePrenotazione) {
+        return Prenotazione.cercaPerCreatore(usernamePrenotazione);
+    }
+
+    public List<Prenotazione> cercaPrenotazioniPerCodice(String codicePrenotazione) {
+        return Prenotazione.cercaPerCodice(codicePrenotazione);
     }
 }
