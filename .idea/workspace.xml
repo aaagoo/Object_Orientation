@@ -8,26 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AreaPersonale.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AreaPersonale.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AreaPersonale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AreaPersonale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeUtente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_VisualizzaVoliP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO_Utente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -214,7 +206,13 @@
       <workItem from="1751205069520" duration="3982000" />
       <workItem from="1751210926654" duration="2376000" />
       <workItem from="1751272819706" duration="2716000" />
-      <workItem from="1751282173758" duration="15485000" />
+      <workItem from="1751282173758" duration="15572000" />
+      <workItem from="1751299117844" duration="52000" />
+      <workItem from="1751389631745" duration="67000" />
+      <workItem from="1751460658038" duration="46000" />
+      <workItem from="1751656101266" duration="440000" />
+      <workItem from="1751725055324" duration="47000" />
+      <workItem from="1751725184835" duration="7947000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -488,7 +486,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751287499791</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1751299034634</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1751299034634</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

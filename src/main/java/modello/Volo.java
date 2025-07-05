@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class Volo {
     private static final List<Volo> voli = new ArrayList<>();
@@ -32,7 +31,6 @@ public abstract class Volo {
         this.stato = StatoVolo.PROGRAMMATO;
     }
 
-    // Metodi getter e setter esistenti
     public String getCodice() {
         return codice;
     }
@@ -97,150 +95,6 @@ public abstract class Volo {
         this.stato = stato;
     }
 
-    // Nuovi metodi statici per la gestione dei voli
-    public static void inizializzaDatiTest() {
-        voli.add(new VoloArrivo(
-                "BL2435",
-                "EasyJet",
-                "Madrid",
-                LocalDate.now(),
-                LocalTime.of(9, 45),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO
-        ));
-
-        voli.add(new VoloArrivo(
-                "AH8364",
-                "Ryanair",
-                "Barcellona",
-                LocalDate.now(),
-                LocalTime.of(10, 55),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO
-        ));
-
-        voli.add(new VoloArrivo(
-                "GS6859",
-                "Turkish Airlines",
-                "Istanbul",
-                LocalDate.now(),
-                LocalTime.of(20, 30),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO
-        ));
-
-        voli.add(new VoloArrivo(
-                "GB9405",
-                "British Airways",
-                "Londra",
-                LocalDate.now(),
-                LocalTime.of(16, 5),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO
-        ));
-
-        voli.add(new VoloArrivo(
-                "AZ1234",
-                "Alitalia",
-                "Roma",
-                LocalDate.now(),
-                LocalTime.of(12, 30),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO
-        ));
-
-        voli.add(new VoloPartenza(
-                "AZ2468",
-                "Alitalia",
-                "Milano",
-                LocalDate.now(),
-                LocalTime.of(16, 15),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO,
-                new Gate(1)
-        ));
-
-        voli.add(new VoloPartenza(
-                "FR1357",
-                "Ryanair",
-                "Parigi",
-                LocalDate.now(),
-                LocalTime.of(18, 30),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO,
-                new Gate(2)
-        ));
-
-        voli.add(new VoloPartenza(
-                "EA0495",
-                "EasyJet",
-                "Berlino",
-                LocalDate.now(),
-                LocalTime.of(8, 25),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO,
-                new Gate(9)
-        ));
-
-        voli.add(new VoloPartenza(
-                "BA7233",
-                "Swiss Air",
-                "Zurigo",
-                LocalDate.now(),
-                LocalTime.of(21, 35),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO,
-                null
-        ));
-
-        voli.add(new VoloPartenza(
-                "BN9932",
-                "Lufthansa",
-                "Francoforte",
-                LocalDate.now(),
-                LocalTime.of(10, 15),
-                Duration.ZERO,
-                StatoVolo.PROGRAMMATO,
-                new Gate(5)
-        ));
-    }
-
-    public static List<Volo> getTuttiVoli() {
-        return new ArrayList<>(voli);
-    }
-
-    public static List<VoloArrivo> getVoliArrivo() {
-        return voli.stream()
-                .filter(v -> v instanceof VoloArrivo)
-                .map(v -> (VoloArrivo) v)
-                .collect(Collectors.toList());
-    }
-
-    public static List<VoloPartenza> getVoliPartenza() {
-        return voli.stream()
-                .filter(v -> v instanceof VoloPartenza)
-                .map(v -> (VoloPartenza) v)
-                .collect(Collectors.toList());
-    }
-
-    public static void aggiungiVolo(Volo volo) {
-        voli.add(volo);
-    }
-
-    public static Volo cercaPerCodice(String codice) {
-        return voli.stream()
-                .filter(v -> v.getCodice().equals(codice))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public static VoloPartenza trovaVoloPartenza(String codice) {
-        return voli.stream()
-                .filter(v -> v instanceof VoloPartenza && v.getCodice().equals(codice))
-                .map(v -> (VoloPartenza) v)
-                .findFirst()
-                .orElse(null);
-    }
 
     @Override
     public String toString() {

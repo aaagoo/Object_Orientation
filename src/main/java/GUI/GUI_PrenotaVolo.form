@@ -72,29 +72,6 @@
               <font name="Inter" size="14" style="0"/>
             </properties>
           </component>
-          <component id="8c2ae" class="javax.swing.JTextField" binding="nomeField">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="650" height="40"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-3612161"/>
-              <font name="Inter" size="14" style="0"/>
-              <text value=""/>
-            </properties>
-          </component>
-          <component id="6d452" class="javax.swing.JTextField" binding="cognomeField">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="650" height="40"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-3612161"/>
-              <font name="Inter" size="14" style="0"/>
-            </properties>
-          </component>
           <component id="84724" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="2" use-parent-layout="false"/>
@@ -120,6 +97,29 @@
             <properties>
               <font name="Inter" size="14" style="0"/>
               <text value="Codice Volo"/>
+            </properties>
+          </component>
+          <component id="8c2ae" class="javax.swing.JTextField" binding="nomeField">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="650" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-3612161"/>
+              <font name="Inter" size="14" style="0"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="6d452" class="javax.swing.JTextField" binding="cognomeField">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="650" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-3612161"/>
+              <font name="Inter" size="14" style="0"/>
             </properties>
           </component>
         </children>

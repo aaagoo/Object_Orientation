@@ -176,9 +176,7 @@ public class GUI_ModificaPrenotazione extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                int riga = partenzeTable.rowAtPoint(e.getPoint());
-
-                if (riga != 0) {
+                if (partenzeTable.getSelectedRow() > 0) {
                     String codiceVolo = (String) partenzeTable.getValueAt(partenzeTable.getSelectedRow(), 0);
                     nuovocodiceField.setText(codiceVolo);
                 }

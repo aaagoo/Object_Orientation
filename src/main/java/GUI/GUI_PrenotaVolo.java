@@ -74,7 +74,7 @@ public class GUI_PrenotaVolo extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                if (tabellaVoli.getSelectedRow() != 0) {
+                if (tabellaVoli.getSelectedRow() > 0) {
                     String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
                     voloField.setText(codiceVolo);
                 }

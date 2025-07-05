@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.sql.SQLException;
 
 public class GUI_EliminaPrenotazione extends JFrame {
 
@@ -70,9 +71,7 @@ public class GUI_EliminaPrenotazione extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                int riga = voliTable.rowAtPoint(e.getPoint());
-
-                if (riga != 0) {
+                if (voliTable.getSelectedRow() > 0) {
                     String codiceVolo = (String) voliTable.getValueAt(voliTable.getSelectedRow(), 0);
                     codiceprentazioneField.setText(codiceVolo);
                 }
@@ -97,6 +96,30 @@ public class GUI_EliminaPrenotazione extends JFrame {
                     JOptionPane.showMessageDialog(
                             GUI_EliminaPrenotazione.this,
                             "Inserire un codice di prenotazione!",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                }
+
+                try {
+                    Controller.getInstance().eliminaPrenotazione(codicePrenotazione);
+
+                    modelTabella.setRowCount(0);
+                    caricaRisultati(utente.getNomeUtente());
+
+                    codiceprentazioneField.setText("");
+
+                    JOptionPane.showMessageDialog(
+                            GUI_EliminaPrenotazione.this,
+                            "Prenotazione eliminata con successo!",
+                            "Successo",
+                            JOptionPane.INFORMATION_MESSAGE
+                    );
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(
+                            GUI_EliminaPrenotazione.this,
+                            "Errore durante l'eliminazione della prenotazione: " + ex.getMessage(),
                             "Errore",
                             JOptionPane.ERROR_MESSAGE
                     );
