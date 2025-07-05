@@ -83,8 +83,16 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            impostaParametriPrenotazione(stmt, prenotazione);
+            stmt.setString(1, prenotazione.getPostoAssegnato());
+            stmt.setString(2, prenotazione.getStato().toString());
+            stmt.setString(3, prenotazione.getNomePasseggero());
+            stmt.setString(4, prenotazione.getCognomePasseggero());
+            stmt.setString(5, prenotazione.getVolo().getCodice());
+            stmt.setString(6, prenotazione.getUsernamePrenotazione());
+            stmt.setString(7, prenotazione.getNumeroBiglietto());
+
             stmt.executeUpdate();
+
         }
     }
 
@@ -103,7 +111,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
                                          Volo volo, UtenteGenerico utente) throws SQLException {
         Prenotazione prenotazione = new Prenotazione(
                 generaNumeroBiglietto(),
-                generaPostoCasuale(),
+                generaPostoCasuale(volo.getCodice()),
                 StatoPrenotazione.CONFERMATA,
                 nomePasseggero,
                 cognomePasseggero,
@@ -159,11 +167,30 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
         }
     }
 
-    private String generaPostoCasuale() {
+    private String generaPostoCasuale(String codiceVolo) throws SQLException {
+        String query = "SELECT posto_assegnato FROM prenotazione WHERE codice_volo = ?";
+        List<String> postiOccupati = new ArrayList<>();
+
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, codiceVolo);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                postiOccupati.add(rs.getString("posto_assegnato"));
+            }
+        }
+
         Random random = new Random();
-        int fila = random.nextInt(30) + 1;
-        char lettera = (char) ('A' + random.nextInt(6));
-        return fila + String.valueOf(lettera);
+        String posto;
+
+        do {
+            int fila = random.nextInt(30) + 1;
+            char lettera = (char) ('A' + random.nextInt(6));
+            posto = String.format("%02d%c", fila, lettera);
+        } while (postiOccupati.contains(posto));
+
+        return posto;
     }
 
     private Prenotazione creaPrenotazioneDaResultSet(ResultSet rs) throws SQLException {

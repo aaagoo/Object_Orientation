@@ -166,7 +166,6 @@ public class GUI_ModificaPrenotazione extends JFrame {
                     String nomePasseggero = nomeField.getText().trim();
                     String cognomePasseggero = cognomeField.getText().trim();
 
-                    // Verifica che il nuovo volo esista
                     Volo nuovoVolo = Controller.getInstance().cercaVoloPerCodice(nuovoCodice);
                     if (nuovoVolo == null) {
                         JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
@@ -176,23 +175,37 @@ public class GUI_ModificaPrenotazione extends JFrame {
                         return;
                     }
 
-                    // Trova la vecchia prenotazione
                     List<Prenotazione> prenotazioni = Controller.getInstance()
                             .cercaPrenotazioniPerCodiceVolo(vecchioCodice);
 
                     if (!prenotazioni.isEmpty()) {
                         Prenotazione vecchiaPrenotazione = prenotazioni.get(0);
+                        String numeroBigliettoVecchio = vecchiaPrenotazione.getNumeroBiglietto();
+                        String postoAssegnato = vecchiaPrenotazione.getPostoAssegnato();
 
-                        // Elimina la vecchia prenotazione
-                        Controller.getInstance().eliminaPrenotazione(vecchiaPrenotazione.getNumeroBiglietto());
+                        if (!vecchioCodice.equals(nuovoCodice)) {
 
-                        // Crea la nuova prenotazione
-                        Controller.getInstance().creaPrenotazione(
-                                nomePasseggero,
-                                cognomePasseggero,
-                                nuovoVolo,
-                                (UtenteGenerico) utente
-                        );
+                            Prenotazione nuovaPrenotazione = Controller.getInstance().creaPrenotazione(
+                                    nomePasseggero,
+                                    cognomePasseggero,
+                                    nuovoVolo,
+                                    (UtenteGenerico) utente
+                            );
+
+                            Controller.getInstance().eliminaPrenotazione(vecchiaPrenotazione.getNumeroBiglietto());
+                        } else {
+
+                            Prenotazione prenotazioneModificata = new Prenotazione(
+                                    numeroBigliettoVecchio,
+                                    postoAssegnato,
+                                    StatoPrenotazione.CONFERMATA,
+                                    nomePasseggero,
+                                    cognomePasseggero,
+                                    nuovoVolo,
+                                    utente.getNomeUtente()
+                            );
+                            Controller.getInstance().modificaPrenotazione(prenotazioneModificata);
+                        }
 
                         JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
                                 "Prenotazione aggiornata con successo!",
@@ -201,7 +214,6 @@ public class GUI_ModificaPrenotazione extends JFrame {
 
                         new GUI_AreaPersonale(utente);
                         dispose();
-
                     } else {
                         JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
                                 "Prenotazione non trovata!",
@@ -209,11 +221,17 @@ public class GUI_ModificaPrenotazione extends JFrame {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (SQLException ex) {
+                    String messaggio;
+                    if (ex.getMessage().contains("unique_passeggero_volo")) {
+                        messaggio = "Non è possibile modificare la prenotazione:\nIl passeggero ha già una prenotazione per questo volo!";
+                    } else {
+                        messaggio = "Errore durante l'aggiornamento della prenotazione: " + ex.getMessage();
+                    }
+
                     JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
-                            "Errore durante l'aggiornamento della prenotazione: " + ex.getMessage(),
+                            messaggio,
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
-                    ex.printStackTrace();
                 }
             }
         });
@@ -226,7 +244,7 @@ public class GUI_ModificaPrenotazione extends JFrame {
 
                 int riga = prenotazioniTable.rowAtPoint(e.getPoint());
 
-                if (riga != 0) {
+                if (riga > 0) {
                     String codiceVolo = (String) prenotazioniTable.getValueAt(prenotazioniTable.getSelectedRow(), 3);
                     String nomePasseggero = (String) prenotazioniTable.getValueAt(prenotazioniTable.getSelectedRow(), 1);
                     String cognomePasseggero = (String) prenotazioniTable.getValueAt(prenotazioniTable.getSelectedRow(), 2);

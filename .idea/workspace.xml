@@ -11,11 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Prenotazione.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +207,7 @@
       <workItem from="1751460658038" duration="46000" />
       <workItem from="1751656101266" duration="440000" />
       <workItem from="1751725055324" duration="47000" />
-      <workItem from="1751725184835" duration="11322000" />
+      <workItem from="1751725184835" duration="15522000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -499,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751733887723</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1751737136188</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1751737136188</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
