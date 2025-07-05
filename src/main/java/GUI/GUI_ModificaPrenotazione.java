@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.sql.SQLException;
 
 
 public class GUI_ModificaPrenotazione extends JFrame {
@@ -147,7 +148,73 @@ public class GUI_ModificaPrenotazione extends JFrame {
         confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (codiceVoloField.getText().trim().isEmpty() ||
+                        nuovocodiceField.getText().trim().isEmpty() ||
+                        nomeField.getText().trim().isEmpty() ||
+                        cognomeField.getText().trim().isEmpty()) {
 
+                    JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
+                            "Per favore, compila tutti i campi richiesti!",
+                            "Campi Mancanti",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                try {
+                    String vecchioCodice = codiceVoloField.getText().trim();
+                    String nuovoCodice = nuovocodiceField.getText().trim();
+                    String nomePasseggero = nomeField.getText().trim();
+                    String cognomePasseggero = cognomeField.getText().trim();
+
+                    // Verifica che il nuovo volo esista
+                    Volo nuovoVolo = Controller.getInstance().cercaVoloPerCodice(nuovoCodice);
+                    if (nuovoVolo == null) {
+                        JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
+                                "Il codice volo inserito non esiste!",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
+                    // Trova la vecchia prenotazione
+                    List<Prenotazione> prenotazioni = Controller.getInstance()
+                            .cercaPrenotazioniPerCodiceVolo(vecchioCodice);
+
+                    if (!prenotazioni.isEmpty()) {
+                        Prenotazione vecchiaPrenotazione = prenotazioni.get(0);
+
+                        // Elimina la vecchia prenotazione
+                        Controller.getInstance().eliminaPrenotazione(vecchiaPrenotazione.getNumeroBiglietto());
+
+                        // Crea la nuova prenotazione
+                        Controller.getInstance().creaPrenotazione(
+                                nomePasseggero,
+                                cognomePasseggero,
+                                nuovoVolo,
+                                (UtenteGenerico) utente
+                        );
+
+                        JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
+                                "Prenotazione aggiornata con successo!",
+                                "Successo",
+                                JOptionPane.INFORMATION_MESSAGE);
+
+                        new GUI_AreaPersonale(utente);
+                        dispose();
+
+                    } else {
+                        JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
+                                "Prenotazione non trovata!",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
+                            "Errore durante l'aggiornamento della prenotazione: " + ex.getMessage(),
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
             }
         });
 

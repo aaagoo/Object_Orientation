@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.sql.SQLException;
 
 
 public class GUI_PrenotaVolo extends JFrame {
@@ -175,6 +176,19 @@ public class GUI_PrenotaVolo extends JFrame {
 
             new GUI_HomeUtente(utente);
             dispose();
+
+        } catch (SQLException e) {
+            String messaggio;
+            if (e.getMessage().contains("unique_passeggero_volo")) {
+                messaggio = "Non è possibile effettuare la prenotazione:\nIl passeggero ha già prenotato questo volo!";
+            } else {
+                messaggio = "Errore durante la prenotazione: " + e.getMessage();
+            }
+
+            JOptionPane.showMessageDialog(this,
+                    messaggio,
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,

@@ -74,6 +74,20 @@ public class GUI_Arrivo extends JFrame {
         confermaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (codiceField.getText().trim().isEmpty() ||
+                        compagniaField.getText().trim().isEmpty() ||
+                        origineField.getText().trim().isEmpty() ||
+                        dataField.getText().trim().isEmpty() ||
+                        orarioField.getText().trim().isEmpty() ||
+                        ritardoField.getText().trim().isEmpty()) {
+
+                    JOptionPane.showMessageDialog(GUI_Arrivo.this,
+                            "Per favore, compila tutti i campi richiesti!",
+                            "Campi Mancanti",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
                 try {
                     String codice = codiceField.getText();
                     String compagnia = compagniaField.getText();

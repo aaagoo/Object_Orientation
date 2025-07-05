@@ -11,14 +11,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO_Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +209,7 @@
       <workItem from="1751460658038" duration="46000" />
       <workItem from="1751656101266" duration="440000" />
       <workItem from="1751725055324" duration="47000" />
-      <workItem from="1751725184835" duration="7947000" />
+      <workItem from="1751725184835" duration="11322000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -494,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751299034634</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1751733887723</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1751733887723</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
