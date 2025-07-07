@@ -18,10 +18,12 @@ public class GUI_HomeAmministratore extends JFrame{
     private JPanel textPanel;
     private JPanel operationsPanel;
     private JPanel disconnectPanel;
-    private JPanel imagePanel;
     private JLabel imageLabel;
     private JLabel userpngLabel;
     private JPanel infoadminPanel;
+    private JButton eliminaVoloButton;
+    private JButton gestisciprenotazioniButton;
+    private JButton gestisciaccountButton;
 
 
     public GUI_HomeAmministratore(AmministratoreSistema amministratore){
@@ -44,12 +46,6 @@ public class GUI_HomeAmministratore extends JFrame{
                 new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
                 BorderFactory.createEmptyBorder(0, 0, 0, 0)
         ));
-
-        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroporto_loginamm.jpg"));
-        Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(1000, 300, Image.SCALE_SMOOTH);
-        imageIcon = new ImageIcon(newimg);
-        imageLabel.setIcon(imageIcon);
 
         ImageIcon imageIcon2 = new ImageIcon(getClass().getClassLoader().getResource("images/user.png"));
         Image image2 = imageIcon2.getImage();
@@ -96,6 +92,30 @@ public class GUI_HomeAmministratore extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GUI_Login();
+                dispose();
+            }
+        });
+
+        eliminaVoloButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_EliminaVolo(amministratore);
+                dispose();
+            }
+        });
+
+        gestisciprenotazioniButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_GestisciPrenotazioni(amministratore);
+                dispose();
+            }
+        });
+
+        gestisciaccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_GestisciAccount(amministratore);
                 dispose();
             }
         });

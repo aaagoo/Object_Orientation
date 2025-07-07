@@ -1,4 +1,3 @@
-// DAOimpl_Utente.java
 package implementazioneDAO;
 
 import dao.DAO_Utente;
@@ -7,6 +6,9 @@ import modello.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+
 
 public class DAOimpl_Utente implements DAO_Utente {
     private static DAOimpl_Utente instance;
@@ -20,39 +22,50 @@ public class DAOimpl_Utente implements DAO_Utente {
     }
 
     @Override
-    public List<UtenteGenerico> getTuttiUtenti() throws SQLException {
-        List<UtenteGenerico> utenti = new ArrayList<>();
-        String query = BASE_QUERY + " a JOIN public.utente u ON a.id = u.id WHERE a.tipo = 'UTENTE'";
+    public List<Map<String, Object>> getTuttiUtenti() throws SQLException {
+        List<Map<String, Object>> utenti = new ArrayList<>();
+        String sql = "SELECT a.id, a.nomeutente, a.password, u.nome, u.cognome " +
+                "FROM account a " +
+                "JOIN utente u ON a.id = u.id " +
+                "WHERE a.tipo = 'UTENTE'";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                utenti.add(creaUtenteGenericoDaResultSet(rs));
+                Map<String, Object> utente = new HashMap<>();
+                utente.put("id", rs.getInt("id"));
+                utente.put("nomeutente", rs.getString("nomeutente"));
+                utente.put("password", rs.getString("password"));
+                utente.put("nome", rs.getString("nome"));
+                utente.put("cognome", rs.getString("cognome"));
+                utenti.add(utente);
             }
         }
         return utenti;
     }
 
     @Override
-    public List<AmministratoreSistema> getTuttiAmministratori() throws SQLException {
-        List<AmministratoreSistema> amministratori = new ArrayList<>();
-        String query = BASE_QUERY + " WHERE tipo = 'ADMIN'";
+    public List<Map<String, Object>> getTuttiAmministratori() throws SQLException {
+        List<Map<String, Object>> amministratori = new ArrayList<>();
+        String sql = "SELECT a.id, a.nomeutente, a.password " +
+                "FROM account a " +
+                "WHERE a.tipo = 'ADMIN'";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                amministratori.add(new AmministratoreSistema(
-                        rs.getString("nomeutente"),
-                        rs.getString("password")
-                ));
+                Map<String, Object> amministratore = new HashMap<>();
+                amministratore.put("id", rs.getInt("id"));
+                amministratore.put("nomeutente", rs.getString("nomeutente"));
+                amministratore.put("password", rs.getString("password"));
+                amministratori.add(amministratore);
             }
         }
         return amministratori;
     }
+
 
     @Override
     public boolean registraUtenteGenerico(UtenteGenerico utente) throws SQLException {
@@ -91,8 +104,27 @@ public class DAOimpl_Utente implements DAO_Utente {
         try (Connection conn = ConnessioneDatabase.getInstance().connection) {
             conn.setAutoCommit(false);
             try {
-                aggiornaAccount(conn, utente);
-                aggiornaDatiUtente(conn, utente);
+                // Prima aggiorniamo i dati nella tabella utente
+                String sqlUtente = "UPDATE public.utente u SET nome = ?, cognome = ? " +
+                        "FROM public.account a WHERE a.id = u.id AND a.nomeutente = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlUtente)) {
+                    stmt.setString(1, utente.getNome());
+                    stmt.setString(2, utente.getCognome());
+                    stmt.setString(3, utente.getNomeUtente());
+                    int rowsUpdated = stmt.executeUpdate();
+                    if (rowsUpdated == 0) {
+                        throw new SQLException("Nessun utente trovato con il nome utente: " + utente.getNomeUtente());
+                    }
+                }
+
+                // Poi aggiorniamo la password nell'account
+                String sqlAccount = "UPDATE public.account SET password = ? WHERE nomeutente = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlAccount)) {
+                    stmt.setString(1, utente.getPassword());
+                    stmt.setString(2, utente.getNomeUtente());
+                    stmt.executeUpdate();
+                }
+
                 conn.commit();
             } catch (SQLException e) {
                 conn.rollback();
@@ -101,12 +133,43 @@ public class DAOimpl_Utente implements DAO_Utente {
         }
     }
 
+
     @Override
     public void eliminaUtente(String username) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection) {
             conn.setAutoCommit(false);
             try {
-                eliminaAccount(conn, username);
+                // Prima verifichiamo che l'utente esista
+                String sqlCheck = "SELECT COUNT(*) FROM public.account WHERE nomeutente = ? AND tipo = 'UTENTE'";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlCheck)) {
+                    stmt.setString(1, username);
+                    ResultSet rs = stmt.executeQuery();
+                    if (rs.next() && rs.getInt(1) == 0) {
+                        throw new SQLException("L'utente '" + username + "' non esiste");
+                    }
+                }
+
+                // Prima eliminiamo eventuali prenotazioni associate all'utente
+                String sqlPrenotazioni = "DELETE FROM public.prenotazione WHERE username_prenotazione = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlPrenotazioni)) {
+                    stmt.setString(1, username);
+                    stmt.executeUpdate();
+                }
+
+                // Poi eliminiamo dalla tabella utente
+                String sqlUtente = "DELETE FROM public.utente WHERE id = (SELECT id FROM public.account WHERE nomeutente = ?)";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlUtente)) {
+                    stmt.setString(1, username);
+                    stmt.executeUpdate();
+                }
+
+                // Infine eliminiamo dalla tabella account
+                String sqlAccount = "DELETE FROM public.account WHERE nomeutente = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlAccount)) {
+                    stmt.setString(1, username);
+                    stmt.executeUpdate();
+                }
+
                 conn.commit();
             } catch (SQLException e) {
                 conn.rollback();
@@ -114,6 +177,7 @@ public class DAOimpl_Utente implements DAO_Utente {
             }
         }
     }
+
 
     @Override
     public Utente verificaCredenziali(String nomeutente, String password) throws SQLException {
@@ -170,13 +234,17 @@ public class DAOimpl_Utente implements DAO_Utente {
     }
 
     private void aggiornaAccount(Connection conn, UtenteGenerico utente) throws SQLException {
-        String sql = "UPDATE public.account SET password = ? WHERE nomeutente = ?";
+        String vecchioUsername = utente.getNomeUtente();
+
+        String sql = "UPDATE public.account SET nomeutente = ?, password = ? WHERE nomeutente = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, utente.getPassword());
-            stmt.setString(2, utente.getNomeUtente());
+            stmt.setString(1, utente.getNomeUtente());
+            stmt.setString(2, utente.getPassword());
+            stmt.setString(3, vecchioUsername);
             stmt.executeUpdate();
         }
     }
+
 
     private void aggiornaDatiUtente(Connection conn, UtenteGenerico utente) throws SQLException {
         String sql = "UPDATE public.utente u SET nome = ?, cognome = ? " +
@@ -224,4 +292,56 @@ public class DAOimpl_Utente implements DAO_Utente {
             }
         }
     }
+
+    @Override
+    public void aggiornaUsername(String vecchioUsername, String nuovoUsername) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection) {
+            conn.setAutoCommit(false);
+            try {
+                // Prima verifichiamo che il vecchio username esista e sia un utente
+                String sqlCheckVecchio = "SELECT COUNT(*) FROM public.account WHERE nomeutente = ? AND tipo = 'UTENTE'";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlCheckVecchio)) {
+                    stmt.setString(1, vecchioUsername);
+                    ResultSet rs = stmt.executeQuery();
+                    if (rs.next() && rs.getInt(1) == 0) {
+                        throw new SQLException("Utente non trovato: " + vecchioUsername);
+                    }
+                }
+
+                // Verifichiamo che il nuovo username non esista già
+                String sqlCheckNuovo = "SELECT COUNT(*) FROM public.account WHERE nomeutente = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlCheckNuovo)) {
+                    stmt.setString(1, nuovoUsername);
+                    ResultSet rs = stmt.executeQuery();
+                    if (rs.next() && rs.getInt(1) > 0) {
+                        throw new SQLException("Il nome utente '" + nuovoUsername + "' è già in uso");
+                    }
+                }
+
+                // Aggiorniamo il riferimento nelle prenotazioni
+                String sqlPrenotazioni = "UPDATE public.prenotazione SET username_prenotazione = ? " +
+                        "WHERE username_prenotazione = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlPrenotazioni)) {
+                    stmt.setString(1, nuovoUsername);
+                    stmt.setString(2, vecchioUsername);
+                    stmt.executeUpdate();
+                }
+
+                // Infine aggiorniamo l'account
+                String sqlAccount = "UPDATE public.account SET nomeutente = ? WHERE nomeutente = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sqlAccount)) {
+                    stmt.setString(1, nuovoUsername);
+                    stmt.setString(2, vecchioUsername);
+                    stmt.executeUpdate();
+                }
+
+                conn.commit();
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        }
+    }
+
+
 }

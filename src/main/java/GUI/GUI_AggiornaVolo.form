@@ -108,6 +108,7 @@
                 </constraints>
                 <properties>
                   <background color="-3612161"/>
+                  <editable value="true"/>
                   <font name="Inter" size="14" style="0"/>
                 </properties>
               </component>

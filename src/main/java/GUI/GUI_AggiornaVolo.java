@@ -59,8 +59,8 @@ public class GUI_AggiornaVolo extends JFrame {
 
 
         modelVoli = new DefaultTableModel(
-                new String[]{"Codice", "Tipo", "Compagnia", "Origine/Destinazione",
-                        "Data", "Orario", "Ritardo", "Gate", "Stato"},
+                new String[]{"Codice", "Tipo", "Compagnia", "Orig/Dest",
+                        "Data", "Orario", "Stato"},
                 0
         ) {
             @Override
@@ -71,8 +71,6 @@ public class GUI_AggiornaVolo extends JFrame {
 
         tabellaVoli.setModel(modelVoli);
         tabellaVoli.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        modelVoli.setRowCount(0);
-
 
         statoComboBox.setModel(new DefaultComboBoxModel<>(StatoVolo.values()));
 
@@ -160,6 +158,17 @@ public class GUI_AggiornaVolo extends JFrame {
     private void aggiornaTabella() {
         modelVoli.setRowCount(0);
 
+        modelVoli.addRow(new Object[]{
+                "Codice",
+                "Tipo",
+                "Compagnia",
+                "Orig/Dest",
+                "Data",
+                "Orario",
+                "Stato"
+        });
+
+
         for (Volo volo : Controller.getInstance().getAllVoli()) {
 
             if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
@@ -183,8 +192,6 @@ public class GUI_AggiornaVolo extends JFrame {
                     origine_destinazione,
                     volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                     volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
-                    volo.getRitardo() > 0 ? volo.getRitardo() + " min" : "In orario",
-                    gate,
                     volo.getStato()
             });
         }

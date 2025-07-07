@@ -122,8 +122,10 @@ public class GUI_AssegnaGate extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
+                if (tabellaVoli.getSelectedRow() > 0) {
                     String codiceVolo = (String) tabellaVoli.getValueAt(tabellaVoli.getSelectedRow(), 0);
                     codiceVoloField.setText(codiceVolo);
+                }
             }
         });
     }

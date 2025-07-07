@@ -229,7 +229,15 @@ public class DAOimpl_Volo implements DAO_Volo {
             conn = ConnessioneDatabase.getInstance().connection;
             conn.setAutoCommit(false);
 
-            // Prima elimina dalle tabelle figlie
+            String queryCheckPrenotazioni = "SELECT COUNT(*) FROM prenotazione WHERE codice_volo = ?";
+            try (PreparedStatement stmtCheck = conn.prepareStatement(queryCheckPrenotazioni)) {
+                stmtCheck.setString(1, codice);
+                ResultSet rs = stmtCheck.executeQuery();
+                if (rs.next() && rs.getInt(1) > 0) {
+                    throw new SQLException("Non è possibile eliminare il volo: esistono prenotazioni associate.");
+                }
+            }
+
             String queryDeletePartenza = "DELETE FROM volo_partenza WHERE codice = ?";
             String queryDeleteArrivo = "DELETE FROM volo_arrivo WHERE codice = ?";
             String queryDeleteVolo = "DELETE FROM volo WHERE codice = ?";
@@ -257,7 +265,7 @@ public class DAOimpl_Volo implements DAO_Volo {
                     ex.printStackTrace();
                 }
             }
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
