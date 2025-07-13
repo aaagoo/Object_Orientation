@@ -11,18 +11,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeAmministratore.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeAmministratore.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_HomeAmministratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AreaPersonale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AreaPersonale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenPassRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_CercaPrenVoloRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_GestisciAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_GestisciAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_GestisciPrenotazioni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_GestisciPrenotazioni.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaAmministratori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaAmministratori.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaUtenti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_ModificaUtenti.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO_Prenotazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO_Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO_Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO_Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Volo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/aeroporto_login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/aeroporto_loginamm.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +229,7 @@
       <workItem from="1751747921471" duration="329000" />
       <workItem from="1751799271756" duration="1224000" />
       <workItem from="1751882464807" duration="17900000" />
+      <workItem from="1752428385156" duration="3603000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />

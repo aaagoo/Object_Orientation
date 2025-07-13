@@ -120,7 +120,7 @@ public class GUI_GestisciPrenotazioni extends JFrame {
                     StatoPrenotazione nuovoStato = (StatoPrenotazione) statoComboBox.getSelectedItem();
                     prenotazione.setStato(nuovoStato);
 
-                    Controller.getInstance().modificaPrenotazione(prenotazione);
+                    //Controller.getInstance().modificaPrenotazione(prenotazione);
 
                     aggiornaTabella();
 
@@ -160,16 +160,20 @@ public class GUI_GestisciPrenotazioni extends JFrame {
                 "Username"
         });
 
-        for (Prenotazione prenotazione : Controller.getInstance().getTuttePrenotazioni()) {
-            modelPrenotazioni.addRow(new Object[]{
-                    prenotazione.getNumeroBiglietto(),
-                    prenotazione.getNomePasseggero(),
-                    prenotazione.getCognomePasseggero(),
-                    prenotazione.getVolo().getCodice(),
-                    prenotazione.getPostoAssegnato(),
-                    prenotazione.getStato(),
-                    prenotazione.getUsernamePrenotazione()
-            });
+        try {
+            for (Prenotazione prenotazione : Controller.getInstance().getTuttePrenotazioni()) {
+                modelPrenotazioni.addRow(new Object[]{
+                        prenotazione.getNumeroBiglietto(),
+                        prenotazione.getNomePasseggero(),
+                        prenotazione.getCognomePasseggero(),
+                        prenotazione.getVolo().getCodice(),
+                        prenotazione.getPostoAssegnato(),
+                        prenotazione.getStato(),
+                        prenotazione.getUsernamePrenotazione()
+                });
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -1,3 +1,4 @@
+
 package controller;
 
 import dao.DAO_Utente;
@@ -10,13 +11,13 @@ import modello.*;
 import java.util.List;
 import java.sql.SQLException;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class Controller {
     private static Controller instance;
     private final DAO_Volo DAO_Volo;
     private final DAO_Prenotazione DAO_Prenotazione;
     private final DAO_Utente DAO_Utente;
-
 
     private Controller() {
         this.DAO_Volo = DAOimpl_Volo.getInstance();
@@ -31,86 +32,122 @@ public class Controller {
         return instance;
     }
 
-    //gestione degli utenti
+    // Gestione degli utenti
     public boolean registraUtenteGenerico(String nome, String cognome, String username, String password) {
-        return UtenteGenerico.registraNuovo(nome, cognome, username, password);
+        try {
+            return DAO_Utente.registraUtenteGenerico(new UtenteGenerico(nome, cognome, username, password));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean registraAmministratore(String username, String password) {
-        return AmministratoreSistema.registraNuovo(username, password);
+        try {
+            return DAO_Utente.registraAmministratore(new AmministratoreSistema(username, password));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public Utente login(String nomeutente, String password) {
         try {
-            return DAOimpl_Utente.getInstance().verificaCredenziali(nomeutente, password);
+            return DAO_Utente.verificaCredenziali(nomeutente, password);
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public List<Map<String, Object>> getTuttiUtenti() throws SQLException {
-        return DAO_Utente.getTuttiUtenti();
+    public List<Map<String, Object>> getTuttiUtenti() {
+        try {
+            return DAO_Utente.getTuttiUtenti();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
-    public List<Map<String, Object>> getTuttiAmministratori() throws SQLException {
-        return DAO_Utente.getTuttiAmministratori();
+    public List<Map<String, Object>> getTuttiAmministratori() {
+        try {
+            return DAO_Utente.getTuttiAmministratori();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     public void modificaUtente(String vecchioUsername, String nuovoNome, String nuovoCognome,
                                String nuovoUsername, String nuovaPassword) throws SQLException {
-        UtenteGenerico utente = new UtenteGenerico(nuovoNome, nuovoCognome, nuovoUsername, nuovaPassword);
-        // Prima aggiorniamo nome e cognome
-        DAO_Utente.modificaUtente(new UtenteGenerico(nuovoNome, nuovoCognome, vecchioUsername, nuovaPassword));
-
-        // Se il nome utente è cambiato, facciamo un aggiornamento separato
-        if (!vecchioUsername.equals(nuovoUsername)) {
-            // Aggiorniamo il nome utente in una transazione separata
-            DAO_Utente.aggiornaUsername(vecchioUsername, nuovoUsername);
-        }
+        UtenteGenerico utente = new UtenteGenerico(nuovoNome, nuovoCognome, vecchioUsername, nuovaPassword);
+        DAO_Utente.modificaUtente(utente);
     }
 
     public void eliminaUtente(String username) throws SQLException {
         DAO_Utente.eliminaUtente(username);
     }
 
-
-    //gestione dei voli
+    // Gestione dei voli
     public List<Volo> getAllVoli() {
-        return DAO_Volo.getTuttiVoli();
+        try {
+            return DAO_Volo.getTuttiVoli();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     public List<VoloArrivo> getVoliArrivo() {
-        return DAO_Volo.getVoliArrivo();
+        try {
+            return DAO_Volo.getVoliArrivo();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     public List<VoloPartenza> getVoliPartenza() {
-        return DAO_Volo.getVoliPartenza();
+        try {
+            return DAO_Volo.getVoliPartenza();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
-    public void aggiungiVolo(Volo volo) {
+    public void aggiungiVolo(Volo volo) throws SQLException {
         DAO_Volo.aggiungiVolo(volo);
     }
 
     public Volo cercaVoloPerCodice(String codice) {
-        return DAO_Volo.cercaPerCodice(codice);
+        try {
+            return DAO_Volo.cercaPerCodice(codice);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public VoloPartenza trovaVoloPartenza(String codice) {
-        return DAO_Volo.trovaVoloPartenza(codice);
+        try {
+            return DAO_Volo.trovaVoloPartenza(codice);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    public void modificaVolo(Volo volo) {
+    public void modificaVolo(Volo volo) throws SQLException {
         DAO_Volo.modificaVolo(volo);
     }
 
-    public void eliminaVolo(String codice) {
+    public void eliminaVolo(String codice) throws SQLException {
         DAO_Volo.eliminaVolo(codice);
     }
 
-
-    //gestione delle prenotazioni
-    public List<Prenotazione> getTuttePrenotazioni() {
+    // Gestione delle prenotazioni
+    public List<Prenotazione> getTuttePrenotazioni() throws SQLException {
         return DAO_Prenotazione.getTuttePrenotazioni();
     }
 
@@ -119,28 +156,39 @@ public class Controller {
         return DAO_Prenotazione.creaPrenotazione(nomePasseggero, cognomePasseggero, volo, utente);
     }
 
-    public List<Prenotazione> cercaPrenotazioniPerPasseggero(String nome, String cognome) {
+    public List<Prenotazione> cercaPrenotazioniPerPasseggero(String nome, String cognome)
+            throws SQLException {
         return DAO_Prenotazione.cercaPerPasseggero(nome, cognome);
     }
 
-    public List<Prenotazione> cercaPrenotazioniPerCodiceVolo(String codiceVolo) {
+    public List<Prenotazione> cercaPrenotazioniPerCodiceVolo(String codiceVolo)
+            throws SQLException {
         return DAO_Prenotazione.cercaPerCodiceVolo(codiceVolo);
     }
 
-    public List<Prenotazione> cercaPrenotazioniPerCreatore(String usernamePrenotazione) {
+    public List<Prenotazione> cercaPrenotazioniPerCreatore(String usernamePrenotazione)
+            throws SQLException {
         return DAO_Prenotazione.cercaPerCreatore(usernamePrenotazione);
     }
 
-    public List<Prenotazione> cercaPrenotazioniPerCodice(String codicePrenotazione) {
-        return DAO_Prenotazione.cercaPerCodice(codicePrenotazione);
+    public List<Prenotazione> cercaPrenotazioniPerCodice(String numeroBiglietto)
+            throws SQLException {
+        return DAO_Prenotazione.cercaPerCodice(numeroBiglietto);
     }
 
-    public void modificaPrenotazione(Prenotazione prenotazione) throws SQLException {
-        DAO_Prenotazione.modificaPrenotazione(prenotazione);
+    public void aggiornaStatoPrenotazione(String numeroBiglietto, StatoPrenotazione nuovoStato)
+            throws SQLException {
+        DAO_Prenotazione.aggiornaStatoPrenotazione(numeroBiglietto, nuovoStato);
     }
 
     public void eliminaPrenotazione(String numeroBiglietto) throws SQLException {
         DAO_Prenotazione.eliminaPrenotazione(numeroBiglietto);
     }
 
+    public void modificaPrenotazione(String nomeutente, String codiceVoloVecchio,
+                                     String codiceVoloNuovo, String nuovoNome,
+                                     String nuovoCognome) throws SQLException {
+        DAO_Prenotazione.modificaPrenotazione(nomeutente, codiceVoloVecchio,
+                codiceVoloNuovo, nuovoNome, nuovoCognome);
+    }
 }

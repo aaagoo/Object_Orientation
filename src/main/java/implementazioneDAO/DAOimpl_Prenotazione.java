@@ -7,12 +7,10 @@ import modello.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class DAOimpl_Prenotazione implements DAO_Prenotazione {
     private static DAOimpl_Prenotazione instance;
     private final DAOimpl_Volo daoVolo;
-    private static final String PRENOTAZIONE_BASE_QUERY = "SELECT * FROM prenotazione";
 
     private DAOimpl_Prenotazione() {
         this.daoVolo = DAOimpl_Volo.getInstance();
@@ -26,178 +24,126 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
     }
 
     @Override
-    public List<Prenotazione> getTuttePrenotazioni() {
-        return eseguiQuery(PRENOTAZIONE_BASE_QUERY, null);
-    }
-
-    @Override
-    public List<Prenotazione> cercaPerPasseggero(String nome, String cognome) {
-        String query = PRENOTAZIONE_BASE_QUERY + " WHERE nome_passeggero = ? AND cognome_passeggero = ?";
-        return eseguiQuery(query, stmt -> {
-            stmt.setString(1, nome);
-            stmt.setString(2, cognome);
-        });
-    }
-
-    @Override
-    public List<Prenotazione> cercaPerCodiceVolo(String codiceVolo) {
-        String query = PRENOTAZIONE_BASE_QUERY + " WHERE codice_volo = ?";
-        return eseguiQuery(query, stmt -> stmt.setString(1, codiceVolo));
-    }
-
-    @Override
-    public List<Prenotazione> cercaPerCreatore(String usernamePrenotazione) {
-        String query = PRENOTAZIONE_BASE_QUERY + " WHERE username_prenotazione = ?";
-        return eseguiQuery(query, stmt -> stmt.setString(1, usernamePrenotazione));
-    }
-
-    @Override
-    public List<Prenotazione> cercaPerCodice(String numeroBiglietto) {
-        String query = PRENOTAZIONE_BASE_QUERY + " WHERE numero_biglietto = ?";
-        return eseguiQuery(query, stmt -> stmt.setString(1, numeroBiglietto));
-    }
-
-    @Override
-    public void aggiungiPrenotazione(Prenotazione prenotazione) throws SQLException {
-        String query = """
-                INSERT INTO prenotazione (numero_biglietto, posto_assegnato, stato,
-                nome_passeggero, cognome_passeggero, codice_volo, username_prenotazione)
-                VALUES (?, ?, ?::stato_prenotazione, ?, ?, ?, ?)
-                """;
-
+    public Prenotazione creaPrenotazione(String nomePasseggero, String cognomePasseggero,
+                                         Volo volo, UtenteGenerico utente) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            impostaParametriPrenotazione(stmt, prenotazione);
-            stmt.executeUpdate();
+             CallableStatement stmt = conn.prepareCall("CALL crea_prenotazione(?, ?, ?, ?)")) {
+
+            stmt.setString(1, utente.getNomeUtente());
+            stmt.setString(2, nomePasseggero);
+            stmt.setString(3, cognomePasseggero);
+            stmt.setString(4, volo.getCodice());
+
+            stmt.execute();
+
+            // Recupera la prenotazione appena creata
+            return cercaUltimaPrenotazioneUtente(utente.getNomeUtente());
         }
     }
 
     @Override
-    public void modificaPrenotazione(Prenotazione prenotazione) throws SQLException {
-        String query = """
-                UPDATE prenotazione 
-                SET posto_assegnato = ?, stato = ?::stato_prenotazione, nome_passeggero = ?,
-                    cognome_passeggero = ?, codice_volo = ?, username_prenotazione = ?
-                WHERE numero_biglietto = ?
-                """;
-
+    public List<Prenotazione> getTuttePrenotazioni() throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, prenotazione.getPostoAssegnato());
-            stmt.setString(2, prenotazione.getStato().toString());
-            stmt.setString(3, prenotazione.getNomePasseggero());
-            stmt.setString(4, prenotazione.getCognomePasseggero());
-            stmt.setString(5, prenotazione.getVolo().getCodice());
-            stmt.setString(6, prenotazione.getUsernamePrenotazione());
-            stmt.setString(7, prenotazione.getNumeroBiglietto());
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM prenotazioni")) {
 
-            stmt.executeUpdate();
+            return creaListaPrenotazioni(rs);
+        }
+    }
 
+    @Override
+    public List<Prenotazione> cercaPerPasseggero(String nome, String cognome) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM cerca_prenotazioni_passeggero(?, ?)")) {
+
+            stmt.setString(1, nome);
+            stmt.setString(2, cognome);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return creaListaPrenotazioni(rs);
+            }
+        }
+    }
+
+    @Override
+    public List<Prenotazione> cercaPerCodiceVolo(String codiceVolo) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM cerca_prenotazioni_volo(?)")) {
+
+            stmt.setString(1, codiceVolo);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return creaListaPrenotazioni(rs);
+            }
+        }
+    }
+
+    @Override
+    public List<Prenotazione> cercaPerCreatore(String usernamePrenotazione) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM i_miei_voli(?)")) {
+
+            stmt.setString(1, usernamePrenotazione);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return creaListaPrenotazioni(rs);
+            }
+        }
+    }
+
+    @Override
+    public List<Prenotazione> cercaPerCodice(String numeroBiglietto) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM prenotazioni WHERE numero_biglietto = ?")) {
+
+            stmt.setString(1, numeroBiglietto);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return creaListaPrenotazioni(rs);
+            }
+        }
+    }
+
+    @Override
+    public void aggiornaStatoPrenotazione(String numeroBiglietto, StatoPrenotazione nuovoStato)
+            throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall(
+                     "{CALL aggiorna_stato_prenotazione(?, ?::stato_prenotazione)}")) {
+
+            stmt.setString(1, numeroBiglietto);
+            stmt.setString(2, nuovoStato.toString());
+            stmt.execute();
         }
     }
 
     @Override
     public void eliminaPrenotazione(String numeroBiglietto) throws SQLException {
-        String query = "DELETE FROM prenotazione WHERE numero_biglietto = ?";
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+             CallableStatement stmt = conn.prepareCall("{CALL elimina_prenotazione(?)}")) {
+
             stmt.setString(1, numeroBiglietto);
-            stmt.executeUpdate();
+            stmt.execute();
         }
     }
 
-    @Override
-    public Prenotazione creaPrenotazione(String nomePasseggero, String cognomePasseggero,
-                                         Volo volo, UtenteGenerico utente) throws SQLException {
-        Prenotazione prenotazione = new Prenotazione(
-                generaNumeroBiglietto(),
-                generaPostoCasuale(volo.getCodice()),
-                StatoPrenotazione.CONFERMATA,
-                nomePasseggero,
-                cognomePasseggero,
-                volo,
-                utente.getNomeUtente()
-        );
-
-        aggiungiPrenotazione(prenotazione);
-        return prenotazione;
-    }
-
-    private List<Prenotazione> eseguiQuery(String query, PreparedStatementSetter setter) {
+    private List<Prenotazione> creaListaPrenotazioni(ResultSet rs) throws SQLException {
         List<Prenotazione> prenotazioni = new ArrayList<>();
-        try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            if (setter != null) {
-                setter.setParameters(stmt);
-            }
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                prenotazioni.add(creaPrenotazioneDaResultSet(rs));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        while (rs.next()) {
+            prenotazioni.add(creaPrenotazioneDaResultSet(rs));
         }
         return prenotazioni;
-    }
-
-    private void impostaParametriPrenotazione(PreparedStatement stmt, Prenotazione prenotazione)
-            throws SQLException {
-        stmt.setString(1, prenotazione.getNumeroBiglietto());
-        stmt.setString(2, prenotazione.getPostoAssegnato());
-        stmt.setObject(3, prenotazione.getStato().toString());
-        stmt.setString(4, prenotazione.getNomePasseggero());
-        stmt.setString(5, prenotazione.getCognomePasseggero());
-        stmt.setString(6, prenotazione.getVolo().getCodice());
-        stmt.setString(7, prenotazione.getUsernamePrenotazione());
-    }
-
-    private String generaNumeroBiglietto() throws SQLException {
-        String query = """
-                SELECT COALESCE(MAX(CAST(SUBSTRING(numero_biglietto, 4) AS INTEGER)), 0) + 1
-                FROM prenotazione WHERE numero_biglietto LIKE 'PRE%'
-                """;
-
-        try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return String.format("PRE%06d", rs.getInt(1));
-            }
-            return "PRE000001";
-        }
-    }
-
-    private String generaPostoCasuale(String codiceVolo) throws SQLException {
-        String query = "SELECT posto_assegnato FROM prenotazione WHERE codice_volo = ?";
-        List<String> postiOccupati = new ArrayList<>();
-
-        try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, codiceVolo);
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                postiOccupati.add(rs.getString("posto_assegnato"));
-            }
-        }
-
-        Random random = new Random();
-        String posto;
-
-        do {
-            int fila = random.nextInt(30) + 1;
-            char lettera = (char) ('A' + random.nextInt(6));
-            posto = String.format("%02d%c", fila, lettera);
-        } while (postiOccupati.contains(posto));
-
-        return posto;
     }
 
     private Prenotazione creaPrenotazioneDaResultSet(ResultSet rs) throws SQLException {
         return new Prenotazione(
                 rs.getString("numero_biglietto"),
                 rs.getString("posto_assegnato"),
-                StatoPrenotazione.valueOf(rs.getString("stato")),
+                StatoPrenotazione.valueOf(rs.getString("stato_prenotazione")),
                 rs.getString("nome_passeggero"),
                 rs.getString("cognome_passeggero"),
                 daoVolo.cercaPerCodice(rs.getString("codice_volo")),
@@ -205,8 +151,39 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
         );
     }
 
-    @FunctionalInterface
-    private interface PreparedStatementSetter {
-        void setParameters(PreparedStatement stmt) throws SQLException;
+    private Prenotazione cercaUltimaPrenotazioneUtente(String username) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT * FROM prenotazioni WHERE username_prenotazione = ? " +
+                             "ORDER BY numero_biglietto DESC LIMIT 1")) {
+
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return creaPrenotazioneDaResultSet(rs);
+                }
+                throw new SQLException("Nessuna prenotazione trovata per l'utente " + username);
+            }
+        }
     }
+
+    @Override
+    public void modificaPrenotazione(String nomeutente, String codiceVoloVecchio,
+                                     String codiceVoloNuovo, String nuovoNome,
+                                     String nuovoCognome) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("{CALL modifica_prenotazione(?, ?, ?, ?, ?)}")) {
+
+            stmt.setString(1, nomeutente);
+            stmt.setString(2, codiceVoloVecchio);
+            stmt.setString(3, codiceVoloNuovo);
+            stmt.setString(4, nuovoNome);
+            stmt.setString(5, nuovoCognome);
+
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new SQLException("Errore durante la modifica della prenotazione: " + e.getMessage());
+        }
+    }
+
 }

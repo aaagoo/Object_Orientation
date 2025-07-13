@@ -160,72 +160,55 @@ public class GUI_ModificaPrenotazione extends JFrame {
                     return;
                 }
 
-                try {
-                    String vecchioCodice = codiceVoloField.getText().trim();
-                    String nuovoCodice = nuovocodiceField.getText().trim();
-                    String nomePasseggero = nomeField.getText().trim();
-                    String cognomePasseggero = cognomeField.getText().trim();
+                String vecchioCodice = codiceVoloField.getText().trim();
+                String nuovoCodice = nuovocodiceField.getText().trim();
+                String nomePasseggero = nomeField.getText().trim();
+                String cognomePasseggero = cognomeField.getText().trim();
 
-                    Volo nuovoVolo = Controller.getInstance().cercaVoloPerCodice(nuovoCodice);
-                    if (nuovoVolo == null) {
+                // Verifica che il nuovo volo esista
+                try {
+                    List<Prenotazione> prenotazioni = Controller.getInstance()
+                            .cercaPrenotazioniPerCodiceVolo(vecchioCodice);
+
+                    if (prenotazioni.isEmpty()) {
                         JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
-                                "Il codice volo inserito non esiste!",
+                                "Prenotazione non trovata!",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
                         return;
                     }
 
-                    List<Prenotazione> prenotazioni = Controller.getInstance()
-                            .cercaPrenotazioniPerCodiceVolo(vecchioCodice);
+                    // Chiama il nuovo metodo del Controller per modificare la prenotazione
+                    Controller.getInstance().modificaPrenotazione(
+                            utente.getNomeUtente(),
+                            vecchioCodice,
+                            nuovoCodice,
+                            nomePasseggero,
+                            cognomePasseggero
+                    );
 
-                    if (!prenotazioni.isEmpty()) {
-                        Prenotazione vecchiaPrenotazione = prenotazioni.get(0);
-                        String numeroBigliettoVecchio = vecchiaPrenotazione.getNumeroBiglietto();
-                        String postoAssegnato = vecchiaPrenotazione.getPostoAssegnato();
+                    JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
+                            "Prenotazione modificata con successo!",
+                            "Successo",
+                            JOptionPane.INFORMATION_MESSAGE);
 
-                        if (!vecchioCodice.equals(nuovoCodice)) {
+                    // Aggiorna la tabella delle prenotazioni
+                    modelTabella.setRowCount(0);
+                    caricaRisultati(utente.getNomeUtente());
 
-                            Prenotazione nuovaPrenotazione = Controller.getInstance().creaPrenotazione(
-                                    nomePasseggero,
-                                    cognomePasseggero,
-                                    nuovoVolo,
-                                    (UtenteGenerico) utente
-                            );
+                    // Torna all'area personale
+                    new GUI_AreaPersonale(utente);
+                    dispose();
 
-                            Controller.getInstance().eliminaPrenotazione(vecchiaPrenotazione.getNumeroBiglietto());
-                        } else {
-
-                            Prenotazione prenotazioneModificata = new Prenotazione(
-                                    numeroBigliettoVecchio,
-                                    postoAssegnato,
-                                    StatoPrenotazione.CONFERMATA,
-                                    nomePasseggero,
-                                    cognomePasseggero,
-                                    nuovoVolo,
-                                    utente.getNomeUtente()
-                            );
-                            Controller.getInstance().modificaPrenotazione(prenotazioneModificata);
-                        }
-
-                        JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
-                                "Prenotazione aggiornata con successo!",
-                                "Successo",
-                                JOptionPane.INFORMATION_MESSAGE);
-
-                        new GUI_AreaPersonale(utente);
-                        dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
-                                "Prenotazione non trovata!",
-                                "Errore",
-                                JOptionPane.ERROR_MESSAGE);
-                    }
                 } catch (SQLException ex) {
                     String messaggio;
                     if (ex.getMessage().contains("unique_passeggero_volo")) {
-                        messaggio = "Non è possibile modificare la prenotazione:\nIl passeggero ha già una prenotazione per questo volo!";
+                        messaggio = "Il passeggero ha già una prenotazione per questo volo!";
+                    } else if (ex.getMessage().contains("DECOLLATO") ||
+                            ex.getMessage().contains("CANCELLATO")) {
+                        messaggio = "Non è possibile modificare una prenotazione per un volo già partito o cancellato!";
                     } else {
-                        messaggio = "Errore durante l'aggiornamento della prenotazione: " + ex.getMessage();
+                        messaggio = "Errore durante la modifica della prenotazione: " + ex.getMessage();
                     }
 
                     JOptionPane.showMessageDialog(GUI_ModificaPrenotazione.this,
@@ -270,8 +253,13 @@ public class GUI_ModificaPrenotazione extends JFrame {
     }
 
     private void caricaRisultati(String usernamePrenotante) {
-        List<Prenotazione> prenotazioni = Controller.getInstance()
-                .cercaPrenotazioniPerCreatore(usernamePrenotante);
+        List<Prenotazione> prenotazioni = null;
+        try {
+            prenotazioni = Controller.getInstance()
+                    .cercaPrenotazioniPerCreatore(usernamePrenotante);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         modelTabella.addRow(new Object[]{
                 "N. Biglietto",

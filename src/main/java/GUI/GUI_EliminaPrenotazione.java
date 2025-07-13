@@ -129,8 +129,13 @@ public class GUI_EliminaPrenotazione extends JFrame {
     }
 
     private void caricaRisultati(String usernamePrenotante) {
-        List<Prenotazione> prenotazioni = Controller.getInstance()
-                .cercaPrenotazioniPerCreatore(usernamePrenotante);
+        List<Prenotazione> prenotazioni = null;
+        try {
+            prenotazioni = Controller.getInstance()
+                    .cercaPrenotazioniPerCreatore(usernamePrenotante);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         modelTabella.addRow(new Object[]{
                 "N.Biglietto",

@@ -94,27 +94,20 @@ public class GUI_ModificaAmministratori extends JFrame{
         });
     }
     private void aggiornaTabelle() {
-        try {
-            modelAmministratori.setRowCount(0);
-            modelAmministratori.addRow(new Object[]{
-                    "ID",
-                    "Nome Utente",
-                    "Password"
-            });
+        modelAmministratori.setRowCount(0);
+        modelAmministratori.addRow(new Object[]{
+                "ID",
+                "Nome Utente",
+                "Password"
+        });
 
-            List<Map<String, Object>> amministratori = Controller.getInstance().getTuttiAmministratori();
-            for (Map<String, Object> amministratore : amministratori) {
-                modelAmministratori.addRow(new Object[]{
-                        amministratore.get("id"),
-                        amministratore.get("nomeutente"),
-                        amministratore.get("password")
-                });
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Errore durante il caricamento dei dati: " + e.getMessage(),
-                    "Errore",
-                    JOptionPane.ERROR_MESSAGE);
+        List<Map<String, Object>> amministratori = Controller.getInstance().getTuttiAmministratori();
+        for (Map<String, Object> amministratore : amministratori) {
+            modelAmministratori.addRow(new Object[]{
+                    amministratore.get("id"),
+                    amministratore.get("nomeutente"),
+                    amministratore.get("password")
+            });
         }
     }
 }

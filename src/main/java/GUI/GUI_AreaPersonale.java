@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ArrayList;
+import java.sql.SQLException;
 
 
 public class GUI_AreaPersonale extends JFrame {
@@ -115,9 +117,18 @@ public class GUI_AreaPersonale extends JFrame {
     }
 
     private void caricaRisultati(String usernamePrenotante) {
-        List<Prenotazione> prenotazioni = Controller.getInstance()
-                .cercaPrenotazioniPerCreatore(usernamePrenotante);
+        List<Prenotazione> prenotazioni = new ArrayList<>();
+        try {
+            prenotazioni = Controller.getInstance().cercaPrenotazioniPerCreatore(usernamePrenotante);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+                    "Errore durante il caricamento delle prenotazioni: " + e.getMessage(),
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        modelTabella.setRowCount(0);
         modelTabella.addRow(new Object[]{
                 "N.Biglietto",
                 "Nome",
@@ -144,3 +155,4 @@ public class GUI_AreaPersonale extends JFrame {
         }
     }
 }
+

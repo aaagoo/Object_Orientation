@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -101,7 +102,12 @@ public class GUI_EliminaVolo extends JFrame{
                     return;
                 }
 
-                List<Prenotazione> prenotazioniAssociate = Controller.getInstance().cercaPrenotazioniPerCodice(codiceVolo);
+                List<Prenotazione> prenotazioniAssociate = null;
+                try {
+                    prenotazioniAssociate = Controller.getInstance().cercaPrenotazioniPerCodice(codiceVolo);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 if (!prenotazioniAssociate.isEmpty()) {
                     JOptionPane.showMessageDialog(null,
                             "Impossibile eliminare il volo: esistono " + prenotazioniAssociate.size() +

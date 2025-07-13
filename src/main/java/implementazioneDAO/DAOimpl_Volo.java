@@ -23,10 +23,9 @@ public class DAOimpl_Volo implements DAO_Volo {
     }
 
     @Override
-    public List<Volo> getTuttiVoli() {
+    public List<Volo> getTuttiVoli() throws SQLException {
         List<Volo> voli = new ArrayList<>();
-        String query = "SELECT v.*, vp.numero_gate FROM volo v " +
-                "LEFT JOIN volo_partenza vp ON v.codice = vp.codice";
+        String query = "SELECT * FROM tutti_voli";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -35,18 +34,14 @@ public class DAOimpl_Volo implements DAO_Volo {
             while (rs.next()) {
                 voli.add(creaVoloDaResultSet(rs));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return voli;
     }
 
     @Override
-    public List<VoloArrivo> getVoliArrivo() {
+    public List<VoloArrivo> getVoliArrivo() throws SQLException {
         List<VoloArrivo> voliArrivo = new ArrayList<>();
-        String query = "SELECT v.* FROM volo v " +
-                "INNER JOIN volo_arrivo va ON v.codice = va.codice " +
-                "WHERE v.tipo_volo = 'ARRIVO'";
+        String query = "SELECT * FROM voli_in_arrivo";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -55,18 +50,14 @@ public class DAOimpl_Volo implements DAO_Volo {
             while (rs.next()) {
                 voliArrivo.add((VoloArrivo) creaVoloDaResultSet(rs));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return voliArrivo;
     }
 
     @Override
-    public List<VoloPartenza> getVoliPartenza() {
+    public List<VoloPartenza> getVoliPartenza() throws SQLException {
         List<VoloPartenza> voliPartenza = new ArrayList<>();
-        String query = "SELECT v.*, vp.numero_gate FROM volo v " +
-                "INNER JOIN volo_partenza vp ON v.codice = vp.codice " +
-                "WHERE v.tipo_volo = 'PARTENZA'";
+        String query = "SELECT * FROM voli_in_partenza";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -75,17 +66,13 @@ public class DAOimpl_Volo implements DAO_Volo {
             while (rs.next()) {
                 voliPartenza.add((VoloPartenza) creaVoloDaResultSet(rs));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return voliPartenza;
     }
 
     @Override
-    public Volo cercaPerCodice(String codice) {
-        String query = "SELECT v.*, vp.numero_gate FROM volo v " +
-                "LEFT JOIN volo_partenza vp ON v.codice = vp.codice " +
-                "WHERE v.codice = ?";
+    public Volo cercaPerCodice(String codice) throws SQLException {
+        String query = "SELECT * FROM tutti_voli WHERE codice = ?";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -96,17 +83,13 @@ public class DAOimpl_Volo implements DAO_Volo {
             if (rs.next()) {
                 return creaVoloDaResultSet(rs);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
 
     @Override
-    public VoloPartenza trovaVoloPartenza(String codice) {
-        String query = "SELECT v.*, vp.numero_gate FROM volo v " +
-                "INNER JOIN volo_partenza vp ON v.codice = vp.codice " +
-                "WHERE v.codice = ? AND v.tipo_volo = 'PARTENZA'";
+    public VoloPartenza trovaVoloPartenza(String codice) throws SQLException {
+        String query = "SELECT * FROM voli_in_partenza WHERE codice = ?";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -117,155 +100,71 @@ public class DAOimpl_Volo implements DAO_Volo {
             if (rs.next()) {
                 return (VoloPartenza) creaVoloDaResultSet(rs);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
 
     @Override
-    public void aggiungiVolo(Volo volo) {
-        Connection conn = null;
-        try {
-            conn = ConnessioneDatabase.getInstance().connection;
-            conn.setAutoCommit(false);
+    public void aggiungiVolo(Volo volo) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             // Modifica qui: cambiato da "{CALL ...}" a "CALL ..."
+             CallableStatement stmt = conn.prepareCall("CALL aggiungi_volo(?, ?, ?, ?, ?, ?, ?)")) {
 
-            String queryVolo = "INSERT INTO volo (codice, compagnia_aerea, aeroporto_origine, " +
-                    "aeroporto_destinazione, data, orario, ritardo, stato, tipo_volo) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            stmt.setString(1, volo.getCodice());
+            stmt.setString(2, volo.getCompagniaAerea());
+            stmt.setString(3, volo.getAeroportoOrigine());
+            stmt.setString(4, volo.getAeroportoDestinazione());
 
-            try (PreparedStatement stmt = conn.prepareStatement(queryVolo)) {
-                stmt.setString(1, volo.getCodice());
-                stmt.setString(2, volo.getCompagniaAerea());
-                stmt.setString(3, volo.getAeroportoOrigine());
-                stmt.setString(4, volo.getAeroportoDestinazione());
-                stmt.setDate(5, Date.valueOf(volo.getData()));
-                stmt.setTime(6, Time.valueOf(volo.getOrario()));
-                stmt.setLong(7, volo.getRitardo());
-                stmt.setObject(8, volo.getStato().toString(), Types.OTHER);
-                stmt.setString(9, volo instanceof VoloPartenza ? "PARTENZA" : "ARRIVO");
-                stmt.executeUpdate();
-            }
+            // Convertiamo la data nel formato corretto per il database
+            LocalDate data = volo.getData();
+            java.sql.Date sqlDate = java.sql.Date.valueOf(data);
+            stmt.setDate(5, sqlDate);
 
+            // Convertiamo l'orario nel formato corretto per il database
+            LocalTime orario = volo.getOrario();
+            java.sql.Time sqlTime = java.sql.Time.valueOf(orario);
+            stmt.setTime(6, sqlTime);
+
+            stmt.setString(7, volo instanceof VoloPartenza ? "PARTENZA" : "ARRIVO");
+
+            stmt.execute();
+
+            // Se è un volo in partenza e ha un gate assegnato, lo assegniamo
             if (volo instanceof VoloPartenza) {
-                String queryPartenza = "INSERT INTO volo_partenza (codice, numero_gate) VALUES (?, ?)";
-                try (PreparedStatement stmt = conn.prepareStatement(queryPartenza)) {
-                    stmt.setString(1, volo.getCodice());
-                    Gate gate = ((VoloPartenza) volo).getGate();
-                    stmt.setObject(2, gate != null ? gate.getNumeroGate() : null);
-                    stmt.executeUpdate();
-                }
-            } else {
-                String queryArrivo = "INSERT INTO volo_arrivo (codice) VALUES (?)";
-                try (PreparedStatement stmt = conn.prepareStatement(queryArrivo)) {
-                    stmt.setString(1, volo.getCodice());
-                    stmt.executeUpdate();
+                VoloPartenza voloPartenza = (VoloPartenza) volo;
+                if (voloPartenza.getGate() != null) {
+                    try (CallableStatement stmtGate = conn.prepareCall("CALL assegna_gate(?, ?)")) {
+                        stmtGate.setString(1, volo.getCodice());
+                        stmtGate.setInt(2, voloPartenza.getGate().getNumeroGate());
+                        stmtGate.execute();
+                    }
                 }
             }
+        }
+    }
 
-            conn.commit();
-        } catch (SQLException e) {
-            if (conn != null) {
-                try {
-                    conn.rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-            e.printStackTrace();
+
+
+    @Override
+    public void modificaVolo(Volo volo) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("CALL aggiorna_stato_volo(?, ?, ?)")) {
+
+            stmt.setString(1, volo.getCodice());
+            stmt.setObject(2, volo.getStato().toString(), Types.OTHER);
+            stmt.setInt(3, (int) volo.getRitardo());
+
+            stmt.execute();
         }
     }
 
     @Override
-    public void modificaVolo(Volo volo) {
-        Connection conn = null;
-        try {
-            conn = ConnessioneDatabase.getInstance().connection;
-            conn.setAutoCommit(false);
+    public void eliminaVolo(String codice) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("CALL elimina_volo(?)")) {
 
-            String queryVolo = "UPDATE volo SET compagnia_aerea = ?, aeroporto_origine = ?, " +
-                    "aeroporto_destinazione = ?, data = ?, orario = ?, ritardo = ?, " +
-                    "stato = ? WHERE codice = ?";
-
-            try (PreparedStatement stmt = conn.prepareStatement(queryVolo)) {
-                stmt.setString(1, volo.getCompagniaAerea());
-                stmt.setString(2, volo.getAeroportoOrigine());
-                stmt.setString(3, volo.getAeroportoDestinazione());
-                stmt.setDate(4, Date.valueOf(volo.getData()));
-                stmt.setTime(5, Time.valueOf(volo.getOrario()));
-                stmt.setLong(6, volo.getRitardo());
-                stmt.setString(7, volo.getStato().toString());
-                stmt.setString(8, volo.getCodice());
-                stmt.executeUpdate();
-            }
-
-            if (volo instanceof VoloPartenza) {
-                String queryPartenza = "UPDATE volo_partenza SET numero_gate = ? WHERE codice = ?";
-                try (PreparedStatement stmt = conn.prepareStatement(queryPartenza)) {
-                    Gate gate = ((VoloPartenza) volo).getGate();
-                    stmt.setObject(1, gate != null ? gate.getNumeroGate() : null);
-                    stmt.setString(2, volo.getCodice());
-                    stmt.executeUpdate();
-                }
-            }
-
-            conn.commit();
-        } catch (SQLException e) {
-            if (conn != null) {
-                try {
-                    conn.rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void eliminaVolo(String codice) {
-        Connection conn = null;
-        try {
-            conn = ConnessioneDatabase.getInstance().connection;
-            conn.setAutoCommit(false);
-
-            String queryCheckPrenotazioni = "SELECT COUNT(*) FROM prenotazione WHERE codice_volo = ?";
-            try (PreparedStatement stmtCheck = conn.prepareStatement(queryCheckPrenotazioni)) {
-                stmtCheck.setString(1, codice);
-                ResultSet rs = stmtCheck.executeQuery();
-                if (rs.next() && rs.getInt(1) > 0) {
-                    throw new SQLException("Non è possibile eliminare il volo: esistono prenotazioni associate.");
-                }
-            }
-
-            String queryDeletePartenza = "DELETE FROM volo_partenza WHERE codice = ?";
-            String queryDeleteArrivo = "DELETE FROM volo_arrivo WHERE codice = ?";
-            String queryDeleteVolo = "DELETE FROM volo WHERE codice = ?";
-
-            try (PreparedStatement stmtPartenza = conn.prepareStatement(queryDeletePartenza);
-                 PreparedStatement stmtArrivo = conn.prepareStatement(queryDeleteArrivo);
-                 PreparedStatement stmtVolo = conn.prepareStatement(queryDeleteVolo)) {
-
-                stmtPartenza.setString(1, codice);
-                stmtPartenza.executeUpdate();
-
-                stmtArrivo.setString(1, codice);
-                stmtArrivo.executeUpdate();
-
-                stmtVolo.setString(1, codice);
-                stmtVolo.executeUpdate();
-
-                conn.commit();
-            }
-        } catch (SQLException e) {
-            if (conn != null) {
-                try {
-                    conn.rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-            throw new RuntimeException(e.getMessage());
+            stmt.setString(1, codice);
+            stmt.execute();
         }
     }
 
@@ -274,8 +173,9 @@ public class DAOimpl_Volo implements DAO_Volo {
         String compagniaAerea = rs.getString("compagnia_aerea");
         String aeroportoOrigine = rs.getString("aeroporto_origine");
         String aeroportoDestinazione = rs.getString("aeroporto_destinazione");
-        LocalDate data = rs.getDate("data").toLocalDate();
+        LocalDate data = rs.getDate("data_partenza").toLocalDate();
         LocalTime orario = rs.getTime("orario").toLocalTime();
+        long ritardo = rs.getInt("ritardo");
         StatoVolo stato = StatoVolo.valueOf(rs.getString("stato"));
         String tipoVolo = rs.getString("tipo_volo");
 
@@ -283,10 +183,10 @@ public class DAOimpl_Volo implements DAO_Volo {
             Integer numeroGate = rs.getObject("numero_gate", Integer.class);
             Gate gate = numeroGate != null ? new Gate(numeroGate) : null;
             return new VoloPartenza(codice, compagniaAerea, aeroportoDestinazione,
-                    data, orario, java.time.Duration.ZERO, stato, gate);
+                    data, orario, java.time.Duration.ofMinutes(ritardo), stato, gate);
         } else {
             return new VoloArrivo(codice, compagniaAerea, aeroportoOrigine,
-                    data, orario, java.time.Duration.ZERO, stato);
+                    data, orario, java.time.Duration.ofMinutes(ritardo), stato);
         }
     }
 }

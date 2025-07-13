@@ -105,47 +105,40 @@ public class GUI_GestisciAccount extends JFrame {
     }
 
     private void aggiornaTabelle() {
-        try {
-            modelUtenti.setRowCount(0);
+        modelUtenti.setRowCount(0);
+        modelUtenti.addRow(new Object[]{
+                "ID",
+                "Nome Utente",
+                "Password",
+                "Nome",
+                "Cognome"
+        });
+
+        List<Map<String, Object>> utenti = Controller.getInstance().getTuttiUtenti();
+        for (Map<String, Object> utente : utenti) {
             modelUtenti.addRow(new Object[]{
-                    "ID",
-                    "Nome Utente",
-                    "Password",
-                    "Nome",
-                    "Cognome"
+                    utente.get("id"),
+                    utente.get("nomeutente"),
+                    utente.get("password"),
+                    utente.get("nome"),
+                    utente.get("cognome")
             });
+        }
 
-            List<Map<String, Object>> utenti = Controller.getInstance().getTuttiUtenti();
-            for (Map<String, Object> utente : utenti) {
-                modelUtenti.addRow(new Object[]{
-                        utente.get("id"),
-                        utente.get("nomeutente"),
-                        utente.get("password"),
-                        utente.get("nome"),
-                        utente.get("cognome")
-                });
-            }
+        modelAmministratori.setRowCount(0);
+        modelAmministratori.addRow(new Object[]{
+                "ID",
+                "Nome Utente",
+                "Password"
+        });
 
-            modelAmministratori.setRowCount(0);
+        List<Map<String, Object>> amministratori = Controller.getInstance().getTuttiAmministratori();
+        for (Map<String, Object> amministratore : amministratori) {
             modelAmministratori.addRow(new Object[]{
-                    "ID",
-                    "Nome Utente",
-                    "Password"
+                    amministratore.get("id"),
+                    amministratore.get("nomeutente"),
+                    amministratore.get("password")
             });
-
-            List<Map<String, Object>> amministratori = Controller.getInstance().getTuttiAmministratori();
-            for (Map<String, Object> amministratore : amministratori) {
-                modelAmministratori.addRow(new Object[]{
-                        amministratore.get("id"),
-                        amministratore.get("nomeutente"),
-                        amministratore.get("password")
-                });
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Errore durante il caricamento dei dati: " + e.getMessage(),
-                    "Errore",
-                    JOptionPane.ERROR_MESSAGE);
         }
     }
 }

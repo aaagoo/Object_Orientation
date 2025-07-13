@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 
 public class GUI_CercaPrenVoloRisult extends JFrame {
@@ -66,8 +67,13 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
     }
 
     private void caricaRisultati(String codiceVolo) {
-        List<Prenotazione> prenotazioni = Controller.getInstance()
-                .cercaPrenotazioniPerCodiceVolo(codiceVolo);
+        List<Prenotazione> prenotazioni = null;
+        try {
+            prenotazioni = Controller.getInstance()
+                    .cercaPrenotazioniPerCodiceVolo(codiceVolo);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         if (prenotazioni.isEmpty()) {
             JOptionPane.showMessageDialog(this,

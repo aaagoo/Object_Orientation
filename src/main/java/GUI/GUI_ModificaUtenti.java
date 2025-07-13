@@ -208,31 +208,24 @@ public class GUI_ModificaUtenti extends JFrame{
     }
 
     private void aggiornaTabelle() {
-        try {
-            modelUtenti.setRowCount(0);
-            modelUtenti.addRow(new Object[]{
-                    "ID",
-                    "Nome Utente",
-                    "Password",
-                    "Nome",
-                    "Cognome"
-            });
+        modelUtenti.setRowCount(0);
+        modelUtenti.addRow(new Object[]{
+                "ID",
+                "Nome Utente",
+                "Password",
+                "Nome",
+                "Cognome"
+        });
 
-            List<Map<String, Object>> utenti = Controller.getInstance().getTuttiUtenti();
-            for (Map<String, Object> utente : utenti) {
-                modelUtenti.addRow(new Object[]{
-                        utente.get("id"),
-                        utente.get("nomeutente"),
-                        utente.get("password"),
-                        utente.get("nome"),
-                        utente.get("cognome")
-                });
-            }
-        } catch (SQLException e){
-                JOptionPane.showMessageDialog(this,
-                        "Errore durante il caricamento dei dati: " + e.getMessage(),
-                        "Errore",
-                        JOptionPane.ERROR_MESSAGE);
+        List<Map<String, Object>> utenti = Controller.getInstance().getTuttiUtenti();
+        for (Map<String, Object> utente : utenti) {
+            modelUtenti.addRow(new Object[]{
+                    utente.get("id"),
+                    utente.get("nomeutente"),
+                    utente.get("password"),
+                    utente.get("nome"),
+                    utente.get("cognome")
+            });
         }
     }
 }
