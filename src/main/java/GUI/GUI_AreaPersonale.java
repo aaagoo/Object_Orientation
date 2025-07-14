@@ -34,6 +34,7 @@ public class GUI_AreaPersonale extends JFrame {
     private JLabel usernameLabel;
     private JPanel datiPanel;
     private JButton eliminaButton;
+    private JButton modificaAccountButton;
     private DefaultTableModel modelTabella;
 
 
@@ -111,6 +112,14 @@ public class GUI_AreaPersonale extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GUI_EliminaPrenotazione(utente);
+                dispose();
+            }
+        });
+
+        modificaAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GUI_ModificaAccountPersonale(utente);
                 dispose();
             }
         });
