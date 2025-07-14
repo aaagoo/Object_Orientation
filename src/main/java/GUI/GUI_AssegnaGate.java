@@ -41,21 +41,6 @@ public class GUI_AssegnaGate extends JFrame {
 
         mainpanel.setBorder(null);
 
-        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         modelVoli = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
                 0

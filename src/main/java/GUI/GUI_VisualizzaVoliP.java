@@ -34,17 +34,6 @@ public class GUI_VisualizzaVoliP extends JFrame {
 
         mainpanel.setBorder(null);
 
-        operazioniPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-
         modelPartenze = new DefaultTableModel(
                 new String[]{"Codice", "Compagnia", "Destinazione", "Data", "Orario", "Ritardo", "Gate", "Stato"},
                 0

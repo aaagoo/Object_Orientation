@@ -36,16 +36,6 @@ public class GUI_ModificaAccountPersonale extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/user.png"));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(125, 125, Image.SCALE_SMOOTH);

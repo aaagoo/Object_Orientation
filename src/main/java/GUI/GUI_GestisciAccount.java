@@ -36,21 +36,6 @@ public class GUI_GestisciAccount extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        utentiPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        amministratoriPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         modelUtenti = new DefaultTableModel(
                 new String[]{"ID", "Nome Utente", "Password", "Nome", "Cognome"},
                 0

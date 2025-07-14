@@ -46,16 +46,6 @@ public class GUI_CercaPrenPassRisult extends JFrame {
     private void setupUI() {
         mainpanel.setBorder(null);
 
-        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         modelTabella = new DefaultTableModel(
                 new String[]{"Numero Biglietto", "Volo", "Data", "Orario", "Posto", "Stato"},
                 0

@@ -20,7 +20,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="70ea" class="javax.swing.JButton" binding="indietroButton" default-binding="true">
             <constraints>
@@ -56,7 +58,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="383de" class="javax.swing.JTable" binding="voliTable">
             <constraints>

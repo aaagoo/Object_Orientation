@@ -43,12 +43,6 @@ public class GUI_Login extends JFrame {
         setVisible(true);
         setResizable(false);
 
-
-        credentialsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroportoimg1.jpg"));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(500, 500, Image.SCALE_SMOOTH);

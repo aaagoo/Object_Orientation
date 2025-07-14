@@ -30,7 +30,9 @@
             <properties>
               <background color="-986896"/>
             </properties>
-            <border type="none"/>
+            <border type="line">
+              <color color="-5524801"/>
+            </border>
             <children>
               <component id="89a0" class="javax.swing.JButton" binding="visualizzaVoliButton" default-binding="true">
                 <constraints>
@@ -154,7 +156,9 @@
             <properties>
               <background color="-986896"/>
             </properties>
-            <border type="none"/>
+            <border type="line">
+              <color color="-5524801"/>
+            </border>
             <children>
               <component id="5d7aa" class="javax.swing.JLabel" binding="benvenuto">
                 <constraints>
@@ -167,7 +171,7 @@
               </component>
               <component id="c1f03" class="javax.swing.JLabel" binding="userpngLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
                     <preferred-size width="40" height="40"/>
                   </grid>
                 </constraints>

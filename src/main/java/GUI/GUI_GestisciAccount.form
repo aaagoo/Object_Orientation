@@ -32,7 +32,9 @@
             <properties>
               <background color="-986896"/>
             </properties>
-            <border type="none"/>
+            <border type="line">
+              <color color="-5524801"/>
+            </border>
             <children>
               <component id="ea3d9" class="javax.swing.JTable" binding="utentiTable">
                 <constraints>
@@ -59,7 +61,9 @@
             <properties>
               <background color="-986896"/>
             </properties>
-            <border type="none"/>
+            <border type="line">
+              <color color="-5524801"/>
+            </border>
             <children>
               <component id="80706" class="javax.swing.JTable" binding="amministratoriTable">
                 <constraints>
@@ -88,7 +92,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="fc065" class="javax.swing.JButton" binding="modificaUtentiButton" default-binding="true">
             <constraints>

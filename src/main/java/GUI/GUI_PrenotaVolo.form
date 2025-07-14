@@ -21,7 +21,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="bd3a5" class="javax.swing.JButton" binding="confermaButton" default-binding="true">
             <constraints>
@@ -59,7 +61,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="b0a66" class="javax.swing.JTextField" binding="voloField">
             <constraints>
@@ -134,7 +138,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="b8281" class="javax.swing.JTable" binding="tabellaVoli">
             <constraints>

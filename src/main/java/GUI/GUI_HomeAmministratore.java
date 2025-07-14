@@ -37,16 +37,6 @@ public class GUI_HomeAmministratore extends JFrame{
 
         mainpanel.setBorder(null);
 
-        infoadminPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         ImageIcon imageIcon2 = new ImageIcon(getClass().getClassLoader().getResource("images/user.png"));
         Image image2 = imageIcon2.getImage();
         Image newimg2 = image2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);

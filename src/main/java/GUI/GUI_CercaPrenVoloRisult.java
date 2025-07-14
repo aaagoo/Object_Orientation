@@ -33,16 +33,6 @@ public class GUI_CercaPrenVoloRisult extends JFrame {
 
         mainpanel.setBorder(null);
 
-        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         modelTabella = new DefaultTableModel(
                 new String[]{"Numero Biglietto", "Nome", "Cognome", "CF", "Posto", "Stato"},
                 0

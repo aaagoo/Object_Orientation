@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="mainpanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="908" height="646"/>
+      <xy x="20" y="20" width="908" height="652"/>
     </constraints>
     <properties>
       <background color="-2629126"/>
@@ -20,7 +20,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="25b0f" class="javax.swing.JTable" binding="utentiTable">
             <constraints>
@@ -42,13 +44,15 @@
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="700" height="240"/>
+            <preferred-size width="700" height="260"/>
           </grid>
         </constraints>
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="461bf" class="javax.swing.JTextField" binding="passwordField">
             <constraints>
@@ -165,7 +169,9 @@
         <properties>
           <background color="-986896"/>
         </properties>
-        <border type="none"/>
+        <border type="line">
+          <color color="-5524801"/>
+        </border>
         <children>
           <component id="ed0ea" class="javax.swing.JButton" binding="confermaButton" default-binding="true">
             <constraints>

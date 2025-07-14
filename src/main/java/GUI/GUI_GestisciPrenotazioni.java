@@ -41,21 +41,6 @@ public class GUI_GestisciPrenotazioni extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
         modelPrenotazioni = new DefaultTableModel(
                 new String[]{"Numero Biglietto", "Nome Passeggero", "Cognome Passeggero",
                         "Codice Volo", "Posto", "Stato", "Username"},

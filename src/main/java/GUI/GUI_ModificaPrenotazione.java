@@ -40,38 +40,12 @@ public class GUI_ModificaPrenotazione extends JFrame {
 
     public GUI_ModificaPrenotazione(UtenteGenerico utente) {
         setContentPane(mainpanel);
-        setTitle("Modifica Volo");
+        setTitle("Modifica Prenotazioni");
         setSize(1000, 950);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
-
-        operationsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonsPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        tabellaPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        prenotazioniPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(240, 240, 240)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        partenzePanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(240, 240, 240)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
 
         modelTabella = new DefaultTableModel(
                 new String[]{"Nome", "Cognome", "Numero Biglietto", "Posto", "Volo", "Data", "Orario", "Stato"},

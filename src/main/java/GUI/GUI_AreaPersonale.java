@@ -47,27 +47,6 @@ public class GUI_AreaPersonale extends JFrame {
         setVisible(true);
         setResizable(false);
 
-        tablePanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        buttonPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        infoPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(240, 240, 240), new Color(215, 225, 250)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-        datiPanel.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedBorder(15, new Color(200, 225, 255), new Color(240, 240, 240)),
-                BorderFactory.createEmptyBorder(0, 0, 0, 0)
-        ));
-
-
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/user.png"));
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(125, 125, Image.SCALE_SMOOTH);
