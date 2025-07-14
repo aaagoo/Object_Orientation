@@ -92,6 +92,92 @@ public class GUI_ModificaAmministratori extends JFrame{
                 dispose();
             }
         });
+
+        confermaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nomeutente = nomeutenteField.getText();
+                String nuovaPassword = passwordField.getText();
+                String confermaPassword = rippasswordField.getText();
+
+                if (nomeutente.isEmpty() || nuovaPassword.isEmpty() || confermaPassword.isEmpty()) {
+                    JOptionPane.showMessageDialog(null,
+                            "Tutti i campi sono obbligatori!",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (!nuovaPassword.equals(confermaPassword)) {
+                    JOptionPane.showMessageDialog(null,
+                            "Le password non coincidono!",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                try {
+                    Controller.getInstance().modificaAdmin(nomeutente, nuovaPassword);
+                    JOptionPane.showMessageDialog(null,
+                            "Password modificata con successo!",
+                            "Successo",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    aggiornaTabelle();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null,
+                            "Errore durante la modifica della password: " + ex.getMessage(),
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+
+        eliminaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nomeutente = nomeutenteField.getText();
+
+                if (nomeutente.isEmpty()) {
+                    JOptionPane.showMessageDialog(null,
+                            "Seleziona un amministratore dalla tabella!",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                    try {
+                        Controller.getInstance().eliminaAdmin(nomeutente);
+
+                        aggiornaTabelle();
+                        nomeutenteField.setText("");
+                        passwordField.setText("");
+                        rippasswordField.setText("");
+
+                        JOptionPane.showMessageDialog(null,
+                                "Amministratore eliminato con successo!",
+                                "Successo",
+                                JOptionPane.INFORMATION_MESSAGE);
+
+                        if (nomeutente.equals(amministratore.getNomeUtente())) {
+
+                            JOptionPane.showMessageDialog(null,
+                                    "Hai eliminato il tuo account.\n" +
+                                            "Sarai reindirizzato alla pagina di login.",
+                                    "Avviso",
+                                    JOptionPane.INFORMATION_MESSAGE);
+
+                            new GUI_Login();
+                            dispose();
+                        }
+
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null,
+                                "Errore durante l'eliminazione dell'amministratore: " + ex.getMessage(),
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+            }
+        });
     }
     private void aggiornaTabelle() {
         modelAmministratori.setRowCount(0);

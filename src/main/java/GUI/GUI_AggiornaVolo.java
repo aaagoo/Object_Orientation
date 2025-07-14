@@ -60,7 +60,7 @@ public class GUI_AggiornaVolo extends JFrame {
 
         modelVoli = new DefaultTableModel(
                 new String[]{"Codice", "Tipo", "Compagnia", "Orig/Dest",
-                        "Data", "Orario", "Stato"},
+                        "Data", "Orario", "Ritardo", "Stato"},
                 0
         ) {
             @Override
@@ -107,23 +107,12 @@ public class GUI_AggiornaVolo extends JFrame {
                     }
 
                     long nuovoRitardo = Long.parseLong(ritardoField.getText().trim());
-                    if (nuovoRitardo < 0) {
-                        throw new IllegalArgumentException("Il ritardo non può essere negativo");
-                    }
-                    volo.setRitardo(nuovoRitardo);
 
                     StatoVolo nuovoStato = (StatoVolo) statoComboBox.getSelectedItem();
-                    volo.setStato(nuovoStato);
 
-                    if (nuovoRitardo > 0 && nuovoStato == StatoVolo.PROGRAMMATO) {
-                        volo.setStato(StatoVolo.IN_RITARDO);
-                    }
+                    Controller.getInstance().aggiornaStatoVolo(codiceVolo, nuovoStato, nuovoRitardo);
 
                     aggiornaTabella();
-
-                    codiceVoloField.setText("");
-                    ritardoField.setText("0");
-                    statoComboBox.setSelectedItem(StatoVolo.PROGRAMMATO);
 
                     JOptionPane.showMessageDialog(GUI_AggiornaVolo.this,
                             "Volo aggiornato con successo!",
@@ -141,8 +130,13 @@ public class GUI_AggiornaVolo extends JFrame {
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                 }
+
+                codiceVoloField.setText("");
+                ritardoField.setText("0");
+                statoComboBox.setSelectedItem(StatoVolo.PROGRAMMATO);
             }
         });
+
 
         tabellaVoli.addMouseListener(new MouseAdapter() {
             @Override
@@ -165,15 +159,12 @@ public class GUI_AggiornaVolo extends JFrame {
                 "Orig/Dest",
                 "Data",
                 "Orario",
+                "Ritardo",
                 "Stato"
         });
 
 
         for (Volo volo : Controller.getInstance().getAllVoli()) {
-
-            if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {
-                volo.setStato(StatoVolo.IN_RITARDO);
-            }
 
             String tipo = volo instanceof VoloArrivo ? "Arrivo" : "Partenza";
             String origine_destinazione = volo instanceof VoloArrivo ?
@@ -192,6 +183,7 @@ public class GUI_AggiornaVolo extends JFrame {
                     origine_destinazione,
                     volo.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                     volo.getOrario().format(DateTimeFormatter.ofPattern("HH:mm")),
+                    volo.getRitardo() > 0 ? volo.getRitardo() + " min" : "In orario",
                     volo.getStato()
             });
         }

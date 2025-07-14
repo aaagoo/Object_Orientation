@@ -98,6 +98,15 @@ public class GUI_Login extends JFrame {
             }
         });
 
+        userField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+                    accediButton.doClick();
+                }
+            }
+        });
+
         pswField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -116,7 +125,6 @@ public class GUI_Login extends JFrame {
             }
         });
     }
-
 
     private void mostraInterfacciaAmministratore(AmministratoreSistema admin) {
 

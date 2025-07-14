@@ -126,11 +126,8 @@ public class GUI_ModificaUtenti extends JFrame{
                 }
 
                 try {
-                    // Prendi il vecchio username dalla tabella
-                    String vecchioUsername = (String) utentiTable.getValueAt(utentiTable.getSelectedRow(), 1);
-
                     // Chiama il controller per modificare l'utente
-                    Controller.getInstance().modificaUtente(vecchioUsername, nome, cognome, username, password);
+                    Controller.getInstance().modificaUtente(username, nome, cognome, password);
 
                     // Aggiorna la tabella
                     aggiornaTabelle();

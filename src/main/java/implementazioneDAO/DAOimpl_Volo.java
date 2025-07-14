@@ -159,6 +159,33 @@ public class DAOimpl_Volo implements DAO_Volo {
     }
 
     @Override
+    public void assegnaGate(String codiceVolo, int numeroGate) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("CALL assegna_gate(?, ?)")) {
+
+            stmt.setString(1, codiceVolo);
+            stmt.setInt(2, numeroGate);
+            stmt.execute();
+        }
+    }
+
+    @Override
+    public void aggiornaStatoVolo(String codiceVolo, StatoVolo nuovoStato, long nuovoRitardo) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("CALL aggiorna_stato_volo(?, ?::stato_volo, ?)")) {
+
+            stmt.setString(1, codiceVolo);
+            stmt.setString(2, nuovoStato.toString());
+            stmt.setInt(3, (int) nuovoRitardo);
+
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new SQLException("Errore durante l'aggiornamento dello stato del volo: " + e.getMessage());
+        }
+    }
+
+
+    @Override
     public void eliminaVolo(String codice) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              CallableStatement stmt = conn.prepareCall("CALL elimina_volo(?)")) {

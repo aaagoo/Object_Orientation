@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
 public class GUI_AssegnaGate extends JFrame {
@@ -88,7 +89,7 @@ public class GUI_AssegnaGate extends JFrame {
                         return;
                     }
 
-                    volo.setGate(new Gate(numeroGate));
+                    Controller.getInstance().assegnaGate(codiceVolo, numeroGate);
 
                     aggiornaTabella();
 
@@ -100,7 +101,7 @@ public class GUI_AssegnaGate extends JFrame {
                             "Successo",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                } catch (NumberFormatException ex) {
+                } catch (NumberFormatException | SQLException ex) {
                     JOptionPane.showMessageDialog(GUI_AssegnaGate.this,
                             "Numero gate non valido",
                             "Errore",
@@ -132,6 +133,18 @@ public class GUI_AssegnaGate extends JFrame {
 
     private void aggiornaTabella() {
         modelVoli.setRowCount(0);
+
+        modelVoli.addRow(new Object[]{
+                "Codice",
+                "Compagnia",
+                "Destinazione",
+                "Data",
+                "Orario",
+                "Ritardo",
+                "Gate",
+                "Stato"
+        });
+
         for (VoloPartenza volo : Controller.getInstance().getVoliPartenza()) {
 
             if (volo.getRitardo() > 0 && volo.getStato() == StatoVolo.PROGRAMMATO) {

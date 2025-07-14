@@ -24,9 +24,7 @@ public class ConnessioneDatabase {
             System.out.println("Database Connection Creation Failed : " + ex.getMessage());
             ex.printStackTrace();
         }
-
     }
-
 
     public static ConnessioneDatabase getInstance() throws SQLException {
         if (instance == null) {

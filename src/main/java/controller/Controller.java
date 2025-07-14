@@ -78,14 +78,20 @@ public class Controller {
         }
     }
 
-    public void modificaUtente(String vecchioUsername, String nuovoNome, String nuovoCognome,
-                               String nuovoUsername, String nuovaPassword) throws SQLException {
-        UtenteGenerico utente = new UtenteGenerico(nuovoNome, nuovoCognome, vecchioUsername, nuovaPassword);
-        DAO_Utente.modificaUtente(utente);
+    public void modificaUtente(String nomeutente, String nuovoNome, String nuovoCognome, String nuovaPassword) throws SQLException {
+        DAO_Utente.modificaUtente(nomeutente, nuovaPassword, nuovoNome, nuovoCognome);
+    }
+
+    public void modificaAdmin(String nomeutente, String nuovaPassword) throws SQLException {
+        DAO_Utente.modificaAdmin(nomeutente, nuovaPassword);
     }
 
     public void eliminaUtente(String username) throws SQLException {
         DAO_Utente.eliminaUtente(username);
+    }
+
+    public void eliminaAdmin(String username) throws SQLException {
+        DAO_Utente.eliminaAdmin(username);
     }
 
     // Gestione dei voli
@@ -140,6 +146,14 @@ public class Controller {
 
     public void modificaVolo(Volo volo) throws SQLException {
         DAO_Volo.modificaVolo(volo);
+    }
+
+    public void assegnaGate(String codiceVolo, int numeroGate) throws SQLException {
+        DAO_Volo.assegnaGate(codiceVolo, numeroGate);
+    }
+
+    public void aggiornaStatoVolo(String codiceVolo, StatoVolo nuovoStato, long nuovoRitardo) throws SQLException {
+        DAO_Volo.aggiornaStatoVolo(codiceVolo, nuovoStato, nuovoRitardo);
     }
 
     public void eliminaVolo(String codice) throws SQLException {

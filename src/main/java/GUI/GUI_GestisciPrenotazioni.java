@@ -120,7 +120,7 @@ public class GUI_GestisciPrenotazioni extends JFrame {
                     StatoPrenotazione nuovoStato = (StatoPrenotazione) statoComboBox.getSelectedItem();
                     prenotazione.setStato(nuovoStato);
 
-                    //Controller.getInstance().modificaPrenotazione(prenotazione);
+                    Controller.getInstance().aggiornaStatoPrenotazione(numeroBiglietto, nuovoStato);
 
                     aggiornaTabella();
 

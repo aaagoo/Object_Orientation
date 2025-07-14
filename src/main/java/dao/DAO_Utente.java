@@ -15,7 +15,8 @@ public interface DAO_Utente {
     boolean registraUtenteGenerico(UtenteGenerico utente) throws SQLException;
     boolean registraAmministratore(AmministratoreSistema admin) throws SQLException;
 
-    void modificaUtente(UtenteGenerico utente) throws SQLException;
+    void modificaUtente(String nomeutente, String nuovaPassword, String nuovoNome, String nuovoCognome) throws SQLException;
+    void modificaAdmin(String nomeutente, String nuovaPassword) throws SQLException;
 
     void eliminaUtente(String username) throws SQLException;
     void eliminaAdmin(String username) throws SQLException;

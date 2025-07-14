@@ -33,6 +33,7 @@ public class DAOimpl_Utente implements DAO_Utente {
 
             while (rs.next()) {
                 Map<String, Object> utente = new HashMap<>();
+                utente.put("id", rs.getInt("id"));
                 utente.put("nomeutente", rs.getString("nomeutente"));
                 utente.put("password", rs.getString("password"));
                 utente.put("nome", rs.getString("nome"));
@@ -54,6 +55,7 @@ public class DAOimpl_Utente implements DAO_Utente {
 
             while (rs.next()) {
                 Map<String, Object> admin = new HashMap<>();
+                admin.put("id", rs.getInt("id"));
                 admin.put("nomeutente", rs.getString("nomeutente"));
                 admin.put("password", rs.getString("password"));
                 amministratori.add(admin);
@@ -91,33 +93,31 @@ public class DAOimpl_Utente implements DAO_Utente {
     }
 
     @Override
-    public void modificaUtente(UtenteGenerico utente) throws SQLException {
-        try (Connection conn = ConnessioneDatabase.getInstance().connection) {
-            conn.setAutoCommit(false);
-            try {
-                String sqlUtente = "UPDATE utente u SET nome = ?, cognome = ? " +
-                        "FROM account a WHERE a.id = u.id AND a.nomeutente = ?";
-                try (PreparedStatement stmt = conn.prepareStatement(sqlUtente)) {
-                    stmt.setString(1, utente.getNome());
-                    stmt.setString(2, utente.getCognome());
-                    stmt.setString(3, utente.getNomeUtente());
-                    stmt.executeUpdate();
-                }
+    public void modificaUtente(String nomeutente, String nuovaPassword, String nuovoNome, String nuovoCognome) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("CALL modifica_utente(?, ?, ?, ?)")) {
 
-                String sqlAccount = "UPDATE account SET password = ? WHERE nomeutente = ?";
-                try (PreparedStatement stmt = conn.prepareStatement(sqlAccount)) {
-                    stmt.setString(1, utente.getPassword());
-                    stmt.setString(2, utente.getNomeUtente());
-                    stmt.executeUpdate();
-                }
+            stmt.setString(1, nomeutente);      // nomeutente
+            stmt.setString(2, nuovaPassword);   // nuova password
+            stmt.setString(3, nuovoNome);       // nuovo nome
+            stmt.setString(4, nuovoCognome);    // nuovo cognome
 
-                conn.commit();
-            } catch (SQLException e) {
-                conn.rollback();
-                throw e;
-            }
+            stmt.execute();
         }
     }
+
+    @Override
+    public void modificaAdmin(String nomeutente, String nuovaPassword) throws SQLException {
+        try (Connection conn = ConnessioneDatabase.getInstance().connection;
+             CallableStatement stmt = conn.prepareCall("CALL modifica_admin(?, ?)")) {
+
+            stmt.setString(1, nomeutente);
+            stmt.setString(2, nuovaPassword);
+            stmt.execute();
+        }
+    }
+
+
 
     @Override
     public void eliminaUtente(String username) throws SQLException {

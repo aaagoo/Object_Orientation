@@ -113,7 +113,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
             throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              CallableStatement stmt = conn.prepareCall(
-                     "{CALL aggiorna_stato_prenotazione(?, ?::stato_prenotazione)}")) {
+                     "CALL aggiorna_stato_prenotazione(?, ?::stato_prenotazione)")) {
 
             stmt.setString(1, numeroBiglietto);
             stmt.setString(2, nuovoStato.toString());
@@ -124,7 +124,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
     @Override
     public void eliminaPrenotazione(String numeroBiglietto) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             CallableStatement stmt = conn.prepareCall("{CALL elimina_prenotazione(?)}")) {
+             CallableStatement stmt = conn.prepareCall("CALL elimina_prenotazione(?)")) {
 
             stmt.setString(1, numeroBiglietto);
             stmt.execute();
@@ -143,7 +143,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
         return new Prenotazione(
                 rs.getString("numero_biglietto"),
                 rs.getString("posto_assegnato"),
-                StatoPrenotazione.valueOf(rs.getString("stato_prenotazione")),
+                StatoPrenotazione.valueOf(rs.getString("stato")),
                 rs.getString("nome_passeggero"),
                 rs.getString("cognome_passeggero"),
                 daoVolo.cercaPerCodice(rs.getString("codice_volo")),
@@ -154,8 +154,11 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
     private Prenotazione cercaUltimaPrenotazioneUtente(String username) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT * FROM prenotazioni WHERE username_prenotazione = ? " +
-                             "ORDER BY numero_biglietto DESC LIMIT 1")) {
+                     "SELECT p.*, v.stato as stato_volo " +
+                             "FROM prenotazione p " +
+                             "JOIN volo v ON p.codice_volo = v.codice " +
+                             "WHERE p.username_prenotazione = ? " +
+                             "ORDER BY p.numero_biglietto DESC LIMIT 1")) {
 
             stmt.setString(1, username);
             try (ResultSet rs = stmt.executeQuery()) {
@@ -172,7 +175,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
                                      String codiceVoloNuovo, String nuovoNome,
                                      String nuovoCognome) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             CallableStatement stmt = conn.prepareCall("{CALL modifica_prenotazione(?, ?, ?, ?, ?)}")) {
+             CallableStatement stmt = conn.prepareCall("CALL modifica_prenotazione(?, ?, ?, ?, ?)")) {
 
             stmt.setString(1, nomeutente);
             stmt.setString(2, codiceVoloVecchio);
