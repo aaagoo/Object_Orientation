@@ -7,7 +7,8 @@ un'applicazione Java con GUI (Swing).
 
 ---
 
-## Attraverso una struttura di login, gli account del programma si dividono tra Utente e Amministratore.
+## DESCRIZIONE
+Attraverso una struttura di login, gli account del programma si dividono tra Utente e Amministratore.
 
 Ogni utente può:
 -visualizzare voli;
