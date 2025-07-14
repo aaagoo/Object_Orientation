@@ -68,17 +68,18 @@
                 <children>
                   <component id="8411f" class="javax.swing.JTextField" binding="newuser">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="35"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="380" height="35"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-3612161"/>
+                      <font name="Inter" size="14" style="0"/>
                     </properties>
                   </component>
                   <component id="f1e9f" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font name="Inter" size="14" style="0"/>
@@ -99,8 +100,8 @@
                 <children>
                   <component id="926f0" class="javax.swing.JButton" binding="annullaButton">
                     <constraints>
-                      <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="35"/>
+                      <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="190" height="35"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -111,8 +112,8 @@
                   </component>
                   <component id="2552" class="javax.swing.JButton" binding="confermaButton">
                     <constraints>
-                      <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="35"/>
+                      <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="190" height="35"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -135,17 +136,18 @@
                 <children>
                   <component id="73a7f" class="javax.swing.JTextField" binding="newreppsw">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="35"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="380" height="35"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-3612161"/>
+                      <font name="Inter" size="14" style="0"/>
                     </properties>
                   </component>
                   <component id="71f0d" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font name="Inter" size="14" style="0"/>
@@ -166,17 +168,18 @@
                 <children>
                   <component id="2b65a" class="javax.swing.JTextField" binding="newpsw">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="35"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="380" height="35"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-3612161"/>
+                      <font name="Inter" size="14" style="0"/>
                     </properties>
                   </component>
                   <component id="b8a16" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font name="Inter" size="14" style="0"/>
