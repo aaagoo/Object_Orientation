@@ -25,7 +25,7 @@ Ogni amministratore può:
 ---
 
 ### SVOLTO DA:
-Agostino Sorrentino - N86005123
-Mariateresa Principato - N86005284
+- Agostino Sorrentino . N86005123
+- Mariateresa Principato . N86005284
 
 ---
