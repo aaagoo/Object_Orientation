@@ -3,10 +3,6 @@ package modello;
 import java.util.Map;
 import java.util.HashMap;
 
-import implementazioneDAO.DAOimpl_Utente;
-
-import java.sql.SQLException;
-
 public abstract class Utente {
     private static final Map<String, Utente> utentiRegistrati = new HashMap<>();
     private String nomeUtente;
@@ -32,28 +28,6 @@ public abstract class Utente {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    protected boolean registra() {
-        try {
-            if (this instanceof UtenteGenerico) {
-                boolean success = DAOimpl_Utente.getInstance().registraUtenteGenerico((UtenteGenerico) this);
-                if (success) {
-                    utentiRegistrati.put(this.getNomeUtente(), this);
-                }
-                return success;
-            } else if (this instanceof AmministratoreSistema) {
-                boolean success = DAOimpl_Utente.getInstance().registraAmministratore((AmministratoreSistema) this);
-                if (success) {
-                    utentiRegistrati.put(this.getNomeUtente(), this);
-                }
-                return success;
-            }
-            return false;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
 }
