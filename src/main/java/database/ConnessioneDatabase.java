@@ -6,15 +6,13 @@ import java.sql.SQLException;
 
 public class ConnessioneDatabase {
 
-    // ATTRIBUTI
     private static ConnessioneDatabase instance;
     public Connection connection = null;
     private String nome = "postgres";
-    private String password = "";
+    private String password = "postgres";
     private String url = "jdbc:postgresql://localhost:5432/aeroporto";
     private String driver = "org.postgresql.Driver";
 
-    // COSTRUTTORE
     private ConnessioneDatabase() throws SQLException {
         try {
             Class.forName(driver);
