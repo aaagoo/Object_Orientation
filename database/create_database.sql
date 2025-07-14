@@ -25,9 +25,7 @@ SET row_security = off;
 --
 
 CREATE DATABASE aeroporto
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'C'
-    LC_CTYPE = 'C';
+    ENCODING = 'UTF8';
 
 ALTER DATABASE aeroporto OWNER TO postgres;
 
