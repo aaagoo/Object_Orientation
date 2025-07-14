@@ -1,12 +1,13 @@
-📚PROGETTO OBJECT ORIENTATION
-Questo progetto nasce come esercitazione universitaria per il corso di Object-OrienTATION (CdL Triennale in Informatica – A.A. 2024/2025). L’obiettivo è lo sviluppo di un sistema per la gestione dell'Aeroporto di Napoli.
+# 📚PROGETTO OBJECT ORIENTATION
+Questo progetto nasce come esercitazione universitaria per il corso di Object-Orientation (CdL Triennale in Informatica – A.A. 2024/2025). L’obiettivo è lo sviluppo di un sistema per la gestione dell'Aeroporto di Napoli.
 
 L’applicazione è composta da:
 una base di dati relazionale
 un'applicazione Java con GUI (Swing).
 
+---
 
-Attraverso una struttura di login, gli account del programma si dividono tra Utente e Amministratore.
+# Attraverso una struttura di login, gli account del programma si dividono tra Utente e Amministratore.
 
 Ogni utente può:
 -visualizzare voli;
