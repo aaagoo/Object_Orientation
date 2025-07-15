@@ -13,7 +13,7 @@ public class VoloArrivo extends Volo {
                       LocalTime orario,
                       Duration ritardo,
                       StatoVolo stato) {
-        super(codice, compagniaAerea, aeroportoOrigine, "Napoli", data, orario, ritardo, stato);
+        super(codice, compagniaAerea, aeroportoOrigine, "Napoli", data, orario, ritardo, stato, TipoVolo.ARRIVO);
     }
 
     @Override

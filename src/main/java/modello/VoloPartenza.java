@@ -15,7 +15,7 @@ public class VoloPartenza extends Volo {
                         Duration ritardo,
                         StatoVolo stato,
                         Gate gate) {
-        super(codice, compagniaAerea, "Napoli", aeroportoDestinazione, data, orario, ritardo, stato);
+        super(codice, compagniaAerea, "Napoli", aeroportoDestinazione, data, orario, ritardo, stato, TipoVolo.PARTENZA);
         this.gate = gate;
     }
 

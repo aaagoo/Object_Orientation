@@ -17,10 +17,11 @@ public abstract class Volo {
     private LocalTime orario;
     private long ritardo;
     private StatoVolo stato;
+    private TipoVolo tipo;
 
     protected Volo(String codice, String compagniaAerea, String aeroportoOrigine,
                    String aeroportoDestinazione, LocalDate data, LocalTime orario,
-                   Duration ritardo, StatoVolo stato) {
+                   Duration ritardo, StatoVolo stato, TipoVolo tipo) {
         this.codice = codice;
         this.compagniaAerea = compagniaAerea;
         this.aeroportoOrigine = aeroportoOrigine;
@@ -29,6 +30,7 @@ public abstract class Volo {
         this.orario = orario;
         this.ritardo = ritardo.toMinutes();
         this.stato = stato;
+        this.tipo = tipo;
     }
 
     public String getCodice() {
@@ -95,6 +97,13 @@ public abstract class Volo {
         this.stato = stato;
     }
 
+    public TipoVolo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoVolo tipo) {
+        this.tipo = tipo;
+    }
 
     @Override
     public String toString() {
@@ -107,6 +116,7 @@ public abstract class Volo {
                 ", Orario=" + orario +
                 ", Ritardo=" + ritardo +
                 ", Stato=" + stato +
+                ", Tipo=" + tipo +
                 '}';
     }
 }

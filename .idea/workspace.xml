@@ -8,23 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/285ac2bf-a301-46b8-9eb1-4dff1d3cc766/storage_v2/_src_/database/aeroporto.TYsTfA/schema/public.abK9xQ.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AggiornaVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Arrivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_AssegnaGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaVolo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaVolo.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_EliminaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_GestisciPrenotazioni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_GestisciPrenotazioni.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_Partenza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/GUI_PrenotaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Prenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Volo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/VoloArrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/VoloArrivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/VoloPartenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/VoloPartenza.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +22,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -231,7 +218,7 @@
       <workItem from="1752428385156" duration="4283000" />
       <workItem from="1752481705074" duration="24183000" />
       <workItem from="1752509702977" duration="5004000" />
-      <workItem from="1752567401103" duration="11004000" />
+      <workItem from="1752567401103" duration="11589000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -609,7 +596,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752511835828</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1752580163986</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1752580163986</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
