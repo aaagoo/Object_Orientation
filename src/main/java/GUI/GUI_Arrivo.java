@@ -37,6 +37,8 @@ public class GUI_Arrivo extends JFrame {
     private JPanel destinazionePanel;
     private JPanel dataPanel;
     private JPanel orarioPanel;
+    private JPanel statoPanel;
+    private JComboBox comboBox1;
     private AmministratoreSistema utente;
 
 
@@ -53,6 +55,11 @@ public class GUI_Arrivo extends JFrame {
         dataField.setToolTipText(null);
         orarioField.setToolTipText(null);
         ritardoField.setToolTipText(null);
+
+        for (StatoVolo stato : StatoVolo.values()) {
+            comboBox1.addItem(stato);
+        }
+        comboBox1.setSelectedItem(StatoVolo.PROGRAMMATO);
 
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/aeroporto_torre.jpg"));
         Image image = imageIcon.getImage();
@@ -87,18 +94,7 @@ public class GUI_Arrivo extends JFrame {
                             DateTimeFormatter.ofPattern("HH:mm"));
                     long ritardoMinuti = Long.parseLong(ritardoField.getText());
 
-
-                    if (ritardoMinuti < 0) {
-                        throw new IllegalArgumentException("Il ritardo non può essere negativo");
-                    }
-
-                    StatoVolo statoIniziale;
-                    if (ritardoMinuti > 0) {
-                        statoIniziale = StatoVolo.IN_RITARDO;
-                    } else {
-                        statoIniziale = StatoVolo.PROGRAMMATO;
-                    }
-
+                    StatoVolo statoSelezionato = (StatoVolo) comboBox1.getSelectedItem();
 
                     VoloArrivo nuovoVolo = new VoloArrivo(
                             codice,
@@ -107,7 +103,7 @@ public class GUI_Arrivo extends JFrame {
                             data,
                             orario,
                             Duration.ofMinutes(ritardoMinuti),
-                            statoIniziale
+                            statoSelezionato
                     );
 
                     nuovoVolo.setRitardo(ritardoMinuti);

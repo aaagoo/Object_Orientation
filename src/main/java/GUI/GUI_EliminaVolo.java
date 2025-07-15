@@ -89,17 +89,22 @@ public class GUI_EliminaVolo extends JFrame{
 
                 List<Prenotazione> prenotazioniAssociate = null;
                 try {
-                    prenotazioniAssociate = Controller.getInstance().cercaPrenotazioniPerCodice(codiceVolo);
+                    prenotazioniAssociate = Controller.getInstance().cercaPrenotazioniPerCodiceVolo(codiceVolo);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+
                 if (!prenotazioniAssociate.isEmpty()) {
-                    JOptionPane.showMessageDialog(null,
-                            "Impossibile eliminare il volo: esistono " + prenotazioniAssociate.size() +
-                                    " prenotazioni associate.\nPrima di eliminare il volo, gestisci le prenotazioni.",
-                            "Errore",
-                            JOptionPane.ERROR_MESSAGE);
-                    return;
+                    int scelta = JOptionPane.showConfirmDialog(null,
+                            "Esistono " + prenotazioniAssociate.size() + " prenotazioni associate a questo volo.\n" +
+                                    "Vuoi procedere con l'eliminazione del volo e di tutte le prenotazioni associate?",
+                            "Conferma eliminazione",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE);
+
+                    if (scelta != JOptionPane.YES_OPTION) {
+                        return;
+                    }
                 }
 
                 try {
@@ -119,6 +124,7 @@ public class GUI_EliminaVolo extends JFrame{
                 }
             }
         });
+
 
         annullaButton.addActionListener(new ActionListener() {
             @Override

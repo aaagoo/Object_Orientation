@@ -27,8 +27,8 @@ public abstract class Volo {
         this.aeroportoDestinazione = aeroportoDestinazione;
         this.data = data;
         this.orario = orario;
-        this.ritardo = 0;
-        this.stato = StatoVolo.PROGRAMMATO;
+        this.ritardo = ritardo.toMinutes();
+        this.stato = stato;
     }
 
     public String getCodice() {

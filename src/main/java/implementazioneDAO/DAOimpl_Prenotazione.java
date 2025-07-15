@@ -45,7 +45,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
     public List<Prenotazione> getTuttePrenotazioni() throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM prenotazioni")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM prenotazione")) {
 
             return creaListaPrenotazioni(rs);
         }
@@ -98,7 +98,7 @@ public class DAOimpl_Prenotazione implements DAO_Prenotazione {
     public List<Prenotazione> cercaPerCodice(String numeroBiglietto) throws SQLException {
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT * FROM prenotazioni WHERE numero_biglietto = ?")) {
+                     "SELECT * FROM prenotazione WHERE numero_biglietto = ?")) {
 
             stmt.setString(1, numeroBiglietto);
 

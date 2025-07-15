@@ -103,7 +103,7 @@ public class GUI_PrenotaVolo extends JFrame {
         });
 
         for (VoloPartenza volo : voli) {
-            if (volo.getStato() == StatoVolo.PROGRAMMATO) {
+            if (volo.getStato() == StatoVolo.PROGRAMMATO || volo.getStato() == StatoVolo.IN_RITARDO) {
 
                 modelVoli.addRow(new Object[]{
                         volo.getCodice(),

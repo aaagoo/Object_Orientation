@@ -86,14 +86,20 @@ public class GUI_AssegnaGate extends JFrame {
                             "Successo",
                             JOptionPane.INFORMATION_MESSAGE);
 
-                } catch (NumberFormatException | SQLException ex) {
+                } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(GUI_AssegnaGate.this,
                             "Numero gate non valido",
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(GUI_AssegnaGate.this,
+                            ex.getMessage(),
+                            "Errore Database",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
 
         annullaButton.addActionListener(new ActionListener() {
             @Override

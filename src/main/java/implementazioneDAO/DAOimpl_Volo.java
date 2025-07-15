@@ -41,7 +41,7 @@ public class DAOimpl_Volo implements DAO_Volo {
     @Override
     public List<VoloArrivo> getVoliArrivo() throws SQLException {
         List<VoloArrivo> voliArrivo = new ArrayList<>();
-        String query = "SELECT * FROM voli_in_arrivo";
+        String query = "SELECT * FROM volo_arrivo";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -57,7 +57,7 @@ public class DAOimpl_Volo implements DAO_Volo {
     @Override
     public List<VoloPartenza> getVoliPartenza() throws SQLException {
         List<VoloPartenza> voliPartenza = new ArrayList<>();
-        String query = "SELECT * FROM voli_in_partenza";
+        String query = "SELECT * FROM volo_partenza";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -89,7 +89,7 @@ public class DAOimpl_Volo implements DAO_Volo {
 
     @Override
     public VoloPartenza trovaVoloPartenza(String codice) throws SQLException {
-        String query = "SELECT * FROM voli_in_partenza WHERE codice = ?";
+        String query = "SELECT * FROM volo_partenza WHERE codice = ?";
 
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -104,32 +104,28 @@ public class DAOimpl_Volo implements DAO_Volo {
         return null;
     }
 
-    @Override
     public void aggiungiVolo(Volo volo) throws SQLException {
+        // Verifica del ritardo negativo
+        if (volo.getRitardo() < 0) {
+            throw new SQLException("Il ritardo non può essere negativo");
+        }
+
         try (Connection conn = ConnessioneDatabase.getInstance().connection;
-             // Modifica qui: cambiato da "{CALL ...}" a "CALL ..."
-             CallableStatement stmt = conn.prepareCall("CALL aggiungi_volo(?, ?, ?, ?, ?, ?, ?)")) {
+             CallableStatement stmt = conn.prepareCall("CALL aggiungi_volo(?, ?, ?, ?, ?, ?, ?::tipo_volo, ?, ?::stato_volo)")) {
 
             stmt.setString(1, volo.getCodice());
             stmt.setString(2, volo.getCompagniaAerea());
             stmt.setString(3, volo.getAeroportoOrigine());
             stmt.setString(4, volo.getAeroportoDestinazione());
-
-            // Convertiamo la data nel formato corretto per il database
-            LocalDate data = volo.getData();
-            java.sql.Date sqlDate = java.sql.Date.valueOf(data);
-            stmt.setDate(5, sqlDate);
-
-            // Convertiamo l'orario nel formato corretto per il database
-            LocalTime orario = volo.getOrario();
-            java.sql.Time sqlTime = java.sql.Time.valueOf(orario);
-            stmt.setTime(6, sqlTime);
-
+            stmt.setDate(5, java.sql.Date.valueOf(volo.getData()));
+            stmt.setTime(6, java.sql.Time.valueOf(volo.getOrario()));
             stmt.setString(7, volo instanceof VoloPartenza ? "PARTENZA" : "ARRIVO");
+            stmt.setInt(8, (int) volo.getRitardo());
+            stmt.setString(9, volo.getStato().toString());
 
             stmt.execute();
 
-            // Se è un volo in partenza e ha un gate assegnato, lo assegniamo
+            // Gestione del gate per i voli in partenza
             if (volo instanceof VoloPartenza) {
                 VoloPartenza voloPartenza = (VoloPartenza) volo;
                 if (voloPartenza.getGate() != null) {
@@ -142,7 +138,6 @@ public class DAOimpl_Volo implements DAO_Volo {
             }
         }
     }
-
 
 
     @Override
@@ -166,6 +161,8 @@ public class DAOimpl_Volo implements DAO_Volo {
             stmt.setString(1, codiceVolo);
             stmt.setInt(2, numeroGate);
             stmt.execute();
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
         }
     }
 
@@ -204,7 +201,7 @@ public class DAOimpl_Volo implements DAO_Volo {
         LocalTime orario = rs.getTime("orario").toLocalTime();
         long ritardo = rs.getInt("ritardo");
         StatoVolo stato = StatoVolo.valueOf(rs.getString("stato"));
-        String tipoVolo = rs.getString("tipo_volo");
+        String tipoVolo = rs.getString("tipo");
 
         if (tipoVolo.equals("PARTENZA")) {
             Integer numeroGate = rs.getObject("numero_gate", Integer.class);
