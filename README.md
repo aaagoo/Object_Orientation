@@ -3,7 +3,7 @@ Questo progetto nasce come esercitazione universitaria per il corso di Object-Or
 
 L’applicazione è composta da:
 - una base di dati relazionale
-- un'applicazione Java con GUI (Swing).
+- un'applicazione Java con gui (Swing).
 
 ---
 
