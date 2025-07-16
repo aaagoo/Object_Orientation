@@ -5,31 +5,7 @@
 -- Dumped from database version 17.4
 -- Dumped by pg_dump version 17.4
 
--- Started on 2025-07-14 16:33:07
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- TOC entry 5004 (class 1262 OID 16427)
--- Name: aeroporto; Type: DATABASE; Schema: -; Owner: postgres
---
-
-CREATE DATABASE aeroporto
-    ENCODING = 'UTF8';
-
-ALTER DATABASE aeroporto OWNER TO postgres;
-
-\connect aeroporto
+-- Started on 2025-07-16 14:21:44
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -45,18 +21,16 @@ SET row_security = off;
 
 --
 -- TOC entry 5 (class 2615 OID 16912)
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
 -- *not* creating schema, since initdb creates it
 
 
-ALTER SCHEMA public OWNER TO postgres;
-
 --
--- TOC entry 5005 (class 0 OID 0)
+-- TOC entry 5006 (class 0 OID 0)
 -- Dependencies: 5
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON SCHEMA public IS '';
@@ -64,7 +38,7 @@ COMMENT ON SCHEMA public IS '';
 
 --
 -- TOC entry 881 (class 1247 OID 16914)
--- Name: stato_prenotazione; Type: TYPE; Schema: public; Owner: postgres
+-- Name: stato_prenotazione; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.stato_prenotazione AS ENUM (
@@ -74,11 +48,9 @@ CREATE TYPE public.stato_prenotazione AS ENUM (
 );
 
 
-ALTER TYPE public.stato_prenotazione OWNER TO postgres;
-
 --
 -- TOC entry 884 (class 1247 OID 16922)
--- Name: stato_volo; Type: TYPE; Schema: public; Owner: postgres
+-- Name: stato_volo; Type: TYPE; Schema: public; Owner: -
 --
 
 CREATE TYPE public.stato_volo AS ENUM (
@@ -90,11 +62,20 @@ CREATE TYPE public.stato_volo AS ENUM (
 );
 
 
-ALTER TYPE public.stato_volo OWNER TO postgres;
+--
+-- TOC entry 905 (class 1247 OID 17099)
+-- Name: tipo_volo; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.tipo_volo AS ENUM (
+    'PARTENZA',
+    'ARRIVO'
+);
+
 
 --
--- TOC entry 255 (class 1255 OID 17066)
--- Name: aggiorna_stato_prenotazione(character varying, public.stato_prenotazione); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 254 (class 1255 OID 17066)
+-- Name: aggiorna_stato_prenotazione(character varying, public.stato_prenotazione); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.aggiorna_stato_prenotazione(IN p_numero_biglietto character varying, IN p_nuovo_stato public.stato_prenotazione)
@@ -118,11 +99,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.aggiorna_stato_prenotazione(IN p_numero_biglietto character varying, IN p_nuovo_stato public.stato_prenotazione) OWNER TO postgres;
-
 --
--- TOC entry 256 (class 1255 OID 17067)
--- Name: aggiorna_stato_volo(character varying, public.stato_volo, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 255 (class 1255 OID 17067)
+-- Name: aggiorna_stato_volo(character varying, public.stato_volo, integer); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.aggiorna_stato_volo(IN p_codice_volo character varying, IN p_nuovo_stato public.stato_volo, IN p_ritardo integer)
@@ -159,20 +138,18 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.aggiorna_stato_volo(IN p_codice_volo character varying, IN p_nuovo_stato public.stato_volo, IN p_ritardo integer) OWNER TO postgres;
-
 --
--- TOC entry 249 (class 1255 OID 17059)
--- Name: aggiungi_volo(character varying, character varying, character varying, character varying, date, time without time zone, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 256 (class 1255 OID 17158)
+-- Name: aggiungi_volo(character varying, character varying, character varying, character varying, date, time without time zone, public.tipo_volo, integer, public.stato_volo); Type: PROCEDURE; Schema: public; Owner: -
 --
 
-CREATE PROCEDURE public.aggiungi_volo(IN p_codice character varying, IN p_compagnia_aerea character varying, IN p_aeroporto_origine character varying, IN p_aeroporto_destinazione character varying, IN p_data_partenza date, IN p_orario time without time zone, IN p_tipo_volo character varying)
+CREATE PROCEDURE public.aggiungi_volo(IN p_codice character varying, IN p_compagnia_aerea character varying, IN p_aeroporto_origine character varying, IN p_aeroporto_destinazione character varying, IN p_data_partenza date, IN p_orario time without time zone, IN p_tipo_volo public.tipo_volo, IN p_ritardo integer, IN p_stato public.stato_volo)
     LANGUAGE plpgsql
     AS $$
 BEGIN
-    -- Verifica che il tipo_volo sia valido
-    IF p_tipo_volo NOT IN ('ARRIVO', 'PARTENZA') THEN
-        RAISE EXCEPTION 'Il tipo volo deve essere ARRIVO o PARTENZA';
+    -- Verifica che il ritardo non sia negativo
+    IF p_ritardo < 0 THEN
+        RAISE EXCEPTION 'Il ritardo non può essere negativo';
     END IF;
 
     -- Verifica che la data non sia nel passato
@@ -185,89 +162,89 @@ BEGIN
         RAISE EXCEPTION 'Non è possibile inserire voli con orario nel passato';
     END IF;
 
-    -- Inserimento del nuovo volo
-    INSERT INTO volo (
-        codice,
-        compagnia_aerea,
-        aeroporto_origine,
-        aeroporto_destinazione,
-        data_partenza,
-        orario,
-        tipo_volo,
-        stato,
-        ritardo
-    ) VALUES (
-                 p_codice,
-                 p_compagnia_aerea,
-                 p_aeroporto_origine,
-                 p_aeroporto_destinazione,
-                 p_data_partenza,
-                 p_orario,
-                 p_tipo_volo,
-                 'PROGRAMMATO',
-                 0
-             );
+    -- Inserisci il volo nella tabella appropriata
+    IF p_tipo_volo = 'PARTENZA' THEN
+        INSERT INTO volo_partenza (
+            codice, compagnia_aerea, aeroporto_origine, aeroporto_destinazione,
+            data_partenza, orario, ritardo, stato, tipo
+        ) VALUES (
+                     p_codice, p_compagnia_aerea, p_aeroporto_origine, p_aeroporto_destinazione,
+                     p_data_partenza, p_orario, p_ritardo, p_stato, p_tipo_volo
+                 );
+    ELSIF p_tipo_volo = 'ARRIVO' THEN
+        INSERT INTO volo_arrivo (
+            codice, compagnia_aerea, aeroporto_origine, aeroporto_destinazione,
+            data_partenza, orario, ritardo, stato, tipo
+        ) VALUES (
+                     p_codice, p_compagnia_aerea, p_aeroporto_origine, p_aeroporto_destinazione,
+                     p_data_partenza, p_orario, p_ritardo, p_stato, p_tipo_volo
+                 );
+    END IF;
 END;
 $$;
 
 
-ALTER PROCEDURE public.aggiungi_volo(IN p_codice character varying, IN p_compagnia_aerea character varying, IN p_aeroporto_origine character varying, IN p_aeroporto_destinazione character varying, IN p_data_partenza date, IN p_orario time without time zone, IN p_tipo_volo character varying) OWNER TO postgres;
-
 --
 -- TOC entry 257 (class 1255 OID 17068)
--- Name: assegna_gate(character varying, integer); Type: PROCEDURE; Schema: public; Owner: postgres
+-- Name: assegna_gate(character varying, integer); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.assegna_gate(IN p_codice_volo character varying, IN p_numero_gate integer)
     LANGUAGE plpgsql
     AS $$
-DECLARE
-    v_tipo_volo VARCHAR(10);
-    v_stato_volo stato_volo;
 BEGIN
-    -- Verifica che il volo esista e ottieni informazioni
-    SELECT tipo_volo, stato
-    INTO v_tipo_volo, v_stato_volo
-    FROM volo
-    WHERE codice = p_codice_volo;
-
-    IF NOT FOUND THEN
-        RAISE EXCEPTION 'Volo % non trovato', p_codice_volo;
-    END IF;
-
-    -- Verifica che il volo sia in partenza
-    IF v_tipo_volo != 'PARTENZA' THEN
-        RAISE EXCEPTION 'I gate possono essere assegnati solo ai voli in partenza';
+    -- Verifica che il volo esista e sia un volo in partenza
+    IF NOT EXISTS (
+        SELECT 1
+        FROM volo_partenza
+        WHERE codice = p_codice_volo
+    ) THEN
+        RAISE EXCEPTION 'Il volo % non esiste o non è un volo in partenza', p_codice_volo;
     END IF;
 
     -- Verifica che il volo non sia già partito o cancellato
-    IF v_stato_volo IN ('DECOLLATO', 'ATTERRATO', 'CANCELLATO') THEN
-        RAISE EXCEPTION 'Non è possibile assegnare un gate a un volo %', v_stato_volo;
+    IF EXISTS (
+        SELECT 1
+        FROM volo
+        WHERE codice = p_codice_volo
+          AND stato IN ('DECOLLATO', 'ATTERRATO', 'CANCELLATO')
+    ) THEN
+        RAISE EXCEPTION 'Non è possibile assegnare un gate a un volo già partito o cancellato';
     END IF;
 
-    -- Verifica che il gate non sia già assegnato a questo volo
-    DELETE FROM gate WHERE codice_volo = p_codice_volo;
+    -- Verifica che il numero del gate non sia già in uso da un altro volo
+    IF EXISTS (
+        SELECT 1
+        FROM gate
+        WHERE numero_gate = p_numero_gate
+          AND codice_volo != p_codice_volo
+    ) THEN
+        RAISE EXCEPTION 'Il gate % è già assegnato ad un altro volo', p_numero_gate;
+    END IF;
 
-    -- Inserisci la nuova assegnazione
-    INSERT INTO gate (numero_gate, codice_volo)
-    VALUES (p_numero_gate, p_codice_volo);
+    -- Inserisci o aggiorna l'assegnazione del gate
+    INSERT INTO gate (codice_volo, numero_gate)
+    VALUES (p_codice_volo, p_numero_gate)
+    ON CONFLICT (codice_volo) DO UPDATE
+        SET numero_gate = p_numero_gate;
+
+    -- Aggiorna il numero_gate nella tabella volo_partenza
+    UPDATE volo_partenza
+    SET numero_gate = p_numero_gate
+    WHERE codice = p_codice_volo;
 
 EXCEPTION
     WHEN check_violation THEN
         RAISE EXCEPTION 'Il numero del gate deve essere positivo';
-    WHEN unique_violation THEN
-        RAISE EXCEPTION 'Il gate % è già assegnato', p_numero_gate;
     WHEN others THEN
         RAISE EXCEPTION 'Errore durante l''assegnazione del gate: %', SQLERRM;
 END;
 $$;
 
 
-ALTER PROCEDURE public.assegna_gate(IN p_codice_volo character varying, IN p_numero_gate integer) OWNER TO postgres;
-
 --
 -- TOC entry 260 (class 1255 OID 17077)
--- Name: cerca_prenotazioni_passeggero(character varying, character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: cerca_prenotazioni_passeggero(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.cerca_prenotazioni_passeggero(p_nome_passeggero character varying, p_cognome_passeggero character varying) RETURNS TABLE(numero_biglietto character varying, posto_assegnato character varying, stato public.stato_prenotazione, nome_passeggero character varying, cognome_passeggero character varying, codice_volo character varying, compagnia_aerea character varying, aeroporto_origine character varying, aeroporto_destinazione character varying, data_partenza date, orario time without time zone, ritardo integer, stato_volo public.stato_volo, numero_gate integer, username_prenotazione character varying)
@@ -302,11 +279,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.cerca_prenotazioni_passeggero(p_nome_passeggero character varying, p_cognome_passeggero character varying) OWNER TO postgres;
-
 --
 -- TOC entry 258 (class 1255 OID 17074)
--- Name: cerca_prenotazioni_volo(character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: cerca_prenotazioni_volo(character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.cerca_prenotazioni_volo(p_codice_volo character varying) RETURNS TABLE(numero_biglietto character varying, posto_assegnato character varying, stato public.stato_prenotazione, nome_passeggero character varying, cognome_passeggero character varying, codice_volo character varying, compagnia_aerea character varying, aeroporto_origine character varying, aeroporto_destinazione character varying, data_partenza date, orario time without time zone, ritardo integer, stato_volo public.stato_volo, numero_gate integer, username_prenotazione character varying)
@@ -344,11 +319,28 @@ END;
 $$;
 
 
-ALTER FUNCTION public.cerca_prenotazioni_volo(p_codice_volo character varying) OWNER TO postgres;
+--
+-- TOC entry 252 (class 1255 OID 17150)
+-- Name: check_tipo_volo(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.check_tipo_volo() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF NEW.tipo = 'PARTENZA' AND TG_TABLE_NAME <> 'volo_partenza' THEN
+        RAISE EXCEPTION 'I voli di tipo PARTENZA devono essere inseriti nella tabella volo_partenza';
+    ELSIF NEW.tipo = 'ARRIVO' AND TG_TABLE_NAME <> 'volo_arrivo' THEN
+        RAISE EXCEPTION 'I voli di tipo ARRIVO devono essere inseriti nella tabella volo_arrivo';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
 
 --
--- TOC entry 230 (class 1255 OID 17005)
--- Name: check_volo_partenza_trigger(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 229 (class 1255 OID 17005)
+-- Name: check_volo_partenza_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.check_volo_partenza_trigger() RETURNS trigger
@@ -360,7 +352,7 @@ BEGIN
             SELECT 1
             FROM volo v
             WHERE v.codice = NEW.codice_volo
-              AND v.tipo_volo = 'PARTENZA'
+              AND v.tipo = 'PARTENZA'
         ) THEN
             RAISE EXCEPTION 'Il gate può essere assegnato solo a voli in partenza';
         END IF;
@@ -370,11 +362,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.check_volo_partenza_trigger() OWNER TO postgres;
-
 --
--- TOC entry 248 (class 1255 OID 17024)
--- Name: crea_account_admin(character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 247 (class 1255 OID 17024)
+-- Name: crea_account_admin(character varying, character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.crea_account_admin(IN p_nomeutente character varying, IN p_password character varying)
@@ -408,11 +398,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.crea_account_admin(IN p_nomeutente character varying, IN p_password character varying) OWNER TO postgres;
-
 --
--- TOC entry 236 (class 1255 OID 17017)
--- Name: crea_account_utente(character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 235 (class 1255 OID 17017)
+-- Name: crea_account_utente(character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.crea_account_utente(IN p_nomeutente character varying, IN p_password character varying, IN p_nome character varying, IN p_cognome character varying)
@@ -447,11 +435,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.crea_account_utente(IN p_nomeutente character varying, IN p_password character varying, IN p_nome character varying, IN p_cognome character varying) OWNER TO postgres;
-
 --
--- TOC entry 250 (class 1255 OID 17060)
--- Name: crea_prenotazione(character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 248 (class 1255 OID 17060)
+-- Name: crea_prenotazione(character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.crea_prenotazione(IN p_nomeutente character varying, IN p_nome_passeggero character varying, IN p_cognome_passeggero character varying, IN p_codice_volo character varying)
@@ -491,11 +477,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.crea_prenotazione(IN p_nomeutente character varying, IN p_nome_passeggero character varying, IN p_cognome_passeggero character varying, IN p_codice_volo character varying) OWNER TO postgres;
-
 --
--- TOC entry 252 (class 1255 OID 17058)
--- Name: elimina_admin(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 250 (class 1255 OID 17058)
+-- Name: elimina_admin(character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.elimina_admin(IN p_nomeutente character varying)
@@ -526,11 +510,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.elimina_admin(IN p_nomeutente character varying) OWNER TO postgres;
-
 --
--- TOC entry 253 (class 1255 OID 17061)
--- Name: elimina_prenotazione(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 251 (class 1255 OID 17061)
+-- Name: elimina_prenotazione(character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.elimina_prenotazione(IN p_numero_biglietto character varying)
@@ -544,11 +526,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.elimina_prenotazione(IN p_numero_biglietto character varying) OWNER TO postgres;
-
 --
--- TOC entry 251 (class 1255 OID 17057)
--- Name: elimina_utente(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 249 (class 1255 OID 17057)
+-- Name: elimina_utente(character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.elimina_utente(IN p_nomeutente character varying)
@@ -583,11 +563,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.elimina_utente(IN p_nomeutente character varying) OWNER TO postgres;
-
 --
--- TOC entry 254 (class 1255 OID 17065)
--- Name: elimina_volo(character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- TOC entry 253 (class 1255 OID 17065)
+-- Name: elimina_volo(character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.elimina_volo(IN p_codice_volo character varying)
@@ -616,11 +594,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.elimina_volo(IN p_codice_volo character varying) OWNER TO postgres;
-
 --
--- TOC entry 231 (class 1255 OID 17011)
--- Name: genera_numero_biglietto(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 230 (class 1255 OID 17011)
+-- Name: genera_numero_biglietto(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.genera_numero_biglietto() RETURNS character varying
@@ -646,11 +622,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.genera_numero_biglietto() OWNER TO postgres;
-
 --
--- TOC entry 232 (class 1255 OID 17012)
--- Name: genera_posto_casuale(character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 231 (class 1255 OID 17012)
+-- Name: genera_posto_casuale(character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.genera_posto_casuale(p_codice_volo character varying) RETURNS character varying
@@ -681,11 +655,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.genera_posto_casuale(p_codice_volo character varying) OWNER TO postgres;
-
 --
 -- TOC entry 259 (class 1255 OID 17075)
--- Name: i_miei_voli(character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: i_miei_voli(character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.i_miei_voli(p_nomeutente character varying) RETURNS TABLE(numero_biglietto character varying, posto_assegnato character varying, stato public.stato_prenotazione, nome_passeggero character varying, cognome_passeggero character varying, codice_volo character varying, compagnia_aerea character varying, aeroporto_origine character varying, aeroporto_destinazione character varying, data_partenza date, orario time without time zone, ritardo integer, stato_volo public.stato_volo, numero_gate integer, username_prenotazione character varying)
@@ -718,11 +690,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.i_miei_voli(p_nomeutente character varying) OWNER TO postgres;
-
 --
 -- TOC entry 263 (class 1255 OID 17096)
--- Name: modifica_admin(character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- Name: modifica_admin(character varying, character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.modifica_admin(IN p_nomeutente character varying, IN p_nuova_password character varying)
@@ -753,11 +723,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.modifica_admin(IN p_nomeutente character varying, IN p_nuova_password character varying) OWNER TO postgres;
-
 --
 -- TOC entry 261 (class 1255 OID 17069)
--- Name: modifica_prenotazione(character varying, character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- Name: modifica_prenotazione(character varying, character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.modifica_prenotazione(IN p_nomeutente character varying, IN p_codice_volo_vecchio character varying, IN p_codice_volo_nuovo character varying, IN p_nuovo_nome character varying, IN p_nuovo_cognome character varying)
@@ -824,11 +792,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.modifica_prenotazione(IN p_nomeutente character varying, IN p_codice_volo_vecchio character varying, IN p_codice_volo_nuovo character varying, IN p_nuovo_nome character varying, IN p_nuovo_cognome character varying) OWNER TO postgres;
-
 --
 -- TOC entry 262 (class 1255 OID 17095)
--- Name: modifica_utente(character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: postgres
+-- Name: modifica_utente(character varying, character varying, character varying, character varying); Type: PROCEDURE; Schema: public; Owner: -
 --
 
 CREATE PROCEDURE public.modifica_utente(IN p_nomeutente character varying, IN p_nuova_password character varying, IN p_nuovo_nome character varying, IN p_nuovo_cognome character varying)
@@ -864,11 +830,9 @@ END;
 $$;
 
 
-ALTER PROCEDURE public.modifica_utente(IN p_nomeutente character varying, IN p_nuova_password character varying, IN p_nuovo_nome character varying, IN p_nuovo_cognome character varying) OWNER TO postgres;
-
 --
--- TOC entry 233 (class 1255 OID 17013)
--- Name: pulisci_gate_trigger(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 232 (class 1255 OID 17013)
+-- Name: pulisci_gate_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.pulisci_gate_trigger() RETURNS trigger
@@ -883,11 +847,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.pulisci_gate_trigger() OWNER TO postgres;
-
 --
--- TOC entry 235 (class 1255 OID 17016)
--- Name: verifica_admin(character varying, character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 234 (class 1255 OID 17016)
+-- Name: verifica_admin(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.verifica_admin(p_nomeutente character varying, p_password character varying) RETURNS boolean
@@ -905,11 +867,9 @@ END;
 $$;
 
 
-ALTER FUNCTION public.verifica_admin(p_nomeutente character varying, p_password character varying) OWNER TO postgres;
-
 --
--- TOC entry 234 (class 1255 OID 17015)
--- Name: verifica_utente(character varying, character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 233 (class 1255 OID 17015)
+-- Name: verifica_utente(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
 CREATE FUNCTION public.verifica_utente(p_nomeutente character varying, p_password character varying) RETURNS boolean
@@ -927,15 +887,13 @@ END;
 $$;
 
 
-ALTER FUNCTION public.verifica_utente(p_nomeutente character varying, p_password character varying) OWNER TO postgres;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
 -- TOC entry 218 (class 1259 OID 16934)
--- Name: account; Type: TABLE; Schema: public; Owner: postgres
+-- Name: account; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.account (
@@ -945,11 +903,9 @@ CREATE TABLE public.account (
 );
 
 
-ALTER TABLE public.account OWNER TO postgres;
-
 --
 -- TOC entry 217 (class 1259 OID 16933)
--- Name: account_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: account_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.account_id_seq
@@ -961,12 +917,10 @@ CREATE SEQUENCE public.account_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.account_id_seq OWNER TO postgres;
-
 --
 -- TOC entry 5007 (class 0 OID 0)
 -- Dependencies: 217
--- Name: account_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: account_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.account_id_seq OWNED BY public.account.id;
@@ -974,7 +928,7 @@ ALTER SEQUENCE public.account_id_seq OWNED BY public.account.id;
 
 --
 -- TOC entry 220 (class 1259 OID 16952)
--- Name: amministratore; Type: TABLE; Schema: public; Owner: postgres
+-- Name: amministratore; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.amministratore (
@@ -982,25 +936,21 @@ CREATE TABLE public.amministratore (
 );
 
 
-ALTER TABLE public.amministratore OWNER TO postgres;
-
 --
--- TOC entry 223 (class 1259 OID 16992)
--- Name: gate; Type: TABLE; Schema: public; Owner: postgres
+-- TOC entry 228 (class 1259 OID 17161)
+-- Name: gate; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.gate (
-    numero_gate integer NOT NULL,
     codice_volo character varying(10) NOT NULL,
-    CONSTRAINT check_positive_gate CHECK ((numero_gate > 0))
+    numero_gate integer NOT NULL,
+    CONSTRAINT gate_numero_gate_check CHECK ((numero_gate > 0))
 );
 
 
-ALTER TABLE public.gate OWNER TO postgres;
-
 --
--- TOC entry 222 (class 1259 OID 16976)
--- Name: prenotazione; Type: TABLE; Schema: public; Owner: postgres
+-- TOC entry 221 (class 1259 OID 16976)
+-- Name: prenotazione; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.prenotazione (
@@ -1014,60 +964,9 @@ CREATE TABLE public.prenotazione (
 );
 
 
-ALTER TABLE public.prenotazione OWNER TO postgres;
-
 --
--- TOC entry 221 (class 1259 OID 16968)
--- Name: volo; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.volo (
-    codice character varying(10) NOT NULL,
-    compagnia_aerea character varying(20) NOT NULL,
-    aeroporto_origine character varying(20) NOT NULL,
-    aeroporto_destinazione character varying(20) NOT NULL,
-    data_partenza date NOT NULL,
-    orario time without time zone NOT NULL,
-    ritardo integer DEFAULT 0,
-    stato public.stato_volo DEFAULT 'PROGRAMMATO'::public.stato_volo,
-    tipo_volo character varying(10) NOT NULL,
-    CONSTRAINT volo_tipo_volo_check CHECK (((tipo_volo)::text = ANY ((ARRAY['ARRIVO'::character varying, 'PARTENZA'::character varying])::text[])))
-);
-
-
-ALTER TABLE public.volo OWNER TO postgres;
-
---
--- TOC entry 227 (class 1259 OID 17079)
--- Name: prenotazioni; Type: VIEW; Schema: public; Owner: postgres
---
-
-CREATE VIEW public.prenotazioni AS
- SELECT p.numero_biglietto,
-    p.posto_assegnato,
-    p.stato,
-    p.nome_passeggero,
-    p.cognome_passeggero,
-    p.codice_volo,
-    p.username_prenotazione,
-    v.compagnia_aerea,
-    v.aeroporto_origine,
-    v.aeroporto_destinazione,
-    v.data_partenza,
-    v.orario,
-    v.ritardo,
-    v.stato AS stato_volo,
-    v.tipo_volo
-   FROM ((public.prenotazione p
-     JOIN public.volo v ON (((p.codice_volo)::text = (v.codice)::text)))
-     JOIN public.account a ON (((p.username_prenotazione)::text = (a.nomeutente)::text)));
-
-
-ALTER VIEW public.prenotazioni OWNER TO postgres;
-
---
--- TOC entry 229 (class 1259 OID 17088)
--- Name: tutti_admin; Type: VIEW; Schema: public; Owner: postgres
+-- TOC entry 223 (class 1259 OID 17088)
+-- Name: tutti_admin; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.tutti_admin AS
@@ -1079,11 +978,9 @@ CREATE VIEW public.tutti_admin AS
   ORDER BY a.nomeutente;
 
 
-ALTER VIEW public.tutti_admin OWNER TO postgres;
-
 --
 -- TOC entry 219 (class 1259 OID 16942)
--- Name: utente; Type: TABLE; Schema: public; Owner: postgres
+-- Name: utente; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.utente (
@@ -1093,11 +990,9 @@ CREATE TABLE public.utente (
 );
 
 
-ALTER TABLE public.utente OWNER TO postgres;
-
 --
--- TOC entry 228 (class 1259 OID 17084)
--- Name: tutti_utenti; Type: VIEW; Schema: public; Owner: postgres
+-- TOC entry 222 (class 1259 OID 17084)
+-- Name: tutti_utenti; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.tutti_utenti AS
@@ -1111,86 +1006,120 @@ CREATE VIEW public.tutti_utenti AS
   ORDER BY u.cognome, u.nome;
 
 
-ALTER VIEW public.tutti_utenti OWNER TO postgres;
+--
+-- TOC entry 224 (class 1259 OID 17103)
+-- Name: volo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.volo (
+    codice character varying(10) NOT NULL,
+    compagnia_aerea character varying(50) NOT NULL,
+    aeroporto_origine character varying(50) NOT NULL,
+    aeroporto_destinazione character varying(50) NOT NULL,
+    data_partenza date NOT NULL,
+    orario time without time zone NOT NULL,
+    ritardo integer DEFAULT 0,
+    stato public.stato_volo DEFAULT 'PROGRAMMATO'::public.stato_volo,
+    tipo public.tipo_volo NOT NULL,
+    CONSTRAINT volo_ritardo_check CHECK ((ritardo >= 0))
+);
+
 
 --
--- TOC entry 226 (class 1259 OID 17053)
--- Name: tutti_voli; Type: VIEW; Schema: public; Owner: postgres
+-- TOC entry 225 (class 1259 OID 17118)
+-- Name: volo_arrivo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.volo_arrivo (
+)
+INHERITS (public.volo);
+
+
+--
+-- TOC entry 226 (class 1259 OID 17130)
+-- Name: volo_partenza; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.volo_partenza (
+    numero_gate integer
+)
+INHERITS (public.volo);
+
+
+--
+-- TOC entry 227 (class 1259 OID 17153)
+-- Name: tutti_voli; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.tutti_voli AS
- SELECT v.codice,
-    v.compagnia_aerea,
-    v.aeroporto_origine,
-    v.aeroporto_destinazione,
-    v.data_partenza,
-    v.orario,
-    v.ritardo,
-    v.stato,
-    v.tipo_volo,
-    g.numero_gate
-   FROM (public.volo v
-     LEFT JOIN public.gate g ON (((v.codice)::text = (g.codice_volo)::text)))
-  ORDER BY v.data_partenza, v.orario;
+ SELECT volo_partenza.codice,
+    volo_partenza.compagnia_aerea,
+    volo_partenza.aeroporto_origine,
+    volo_partenza.aeroporto_destinazione,
+    volo_partenza.data_partenza,
+    volo_partenza.orario,
+    volo_partenza.ritardo,
+    volo_partenza.stato,
+    volo_partenza.tipo,
+    volo_partenza.numero_gate
+   FROM public.volo_partenza
+UNION ALL
+ SELECT volo_arrivo.codice,
+    volo_arrivo.compagnia_aerea,
+    volo_arrivo.aeroporto_origine,
+    volo_arrivo.aeroporto_destinazione,
+    volo_arrivo.data_partenza,
+    volo_arrivo.orario,
+    volo_arrivo.ritardo,
+    volo_arrivo.stato,
+    volo_arrivo.tipo,
+    NULL::integer AS numero_gate
+   FROM public.volo_arrivo;
 
-
-ALTER VIEW public.tutti_voli OWNER TO postgres;
-
---
--- TOC entry 225 (class 1259 OID 17036)
--- Name: voli_in_arrivo; Type: VIEW; Schema: public; Owner: postgres
---
-
-CREATE VIEW public.voli_in_arrivo AS
- SELECT codice,
-    compagnia_aerea,
-    aeroporto_origine,
-    aeroporto_destinazione,
-    data_partenza,
-    orario,
-    ritardo,
-    stato,
-    tipo_volo
-   FROM public.volo
-  WHERE (((tipo_volo)::text = 'ARRIVO'::text) AND ((aeroporto_destinazione)::text = 'Napoli'::text));
-
-
-ALTER VIEW public.voli_in_arrivo OWNER TO postgres;
-
---
--- TOC entry 224 (class 1259 OID 17031)
--- Name: voli_in_partenza; Type: VIEW; Schema: public; Owner: postgres
---
-
-CREATE VIEW public.voli_in_partenza AS
- SELECT v.codice,
-    v.compagnia_aerea,
-    v.aeroporto_origine,
-    v.aeroporto_destinazione,
-    v.data_partenza,
-    v.orario,
-    v.ritardo,
-    v.stato,
-    v.tipo_volo,
-    g.numero_gate
-   FROM (public.volo v
-     LEFT JOIN public.gate g ON (((v.codice)::text = (g.codice_volo)::text)))
-  WHERE (((v.tipo_volo)::text = 'PARTENZA'::text) AND ((v.aeroporto_origine)::text = 'Napoli'::text));
-
-
-ALTER VIEW public.voli_in_partenza OWNER TO postgres;
 
 --
 -- TOC entry 4815 (class 2604 OID 16937)
--- Name: account id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: account id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.account ALTER COLUMN id SET DEFAULT nextval('public.account_id_seq'::regclass);
 
 
 --
--- TOC entry 4822 (class 2606 OID 16941)
--- Name: account account_nomeutente_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4819 (class 2604 OID 17121)
+-- Name: volo_arrivo ritardo; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.volo_arrivo ALTER COLUMN ritardo SET DEFAULT 0;
+
+
+--
+-- TOC entry 4820 (class 2604 OID 17122)
+-- Name: volo_arrivo stato; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.volo_arrivo ALTER COLUMN stato SET DEFAULT 'PROGRAMMATO'::public.stato_volo;
+
+
+--
+-- TOC entry 4821 (class 2604 OID 17133)
+-- Name: volo_partenza ritardo; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.volo_partenza ALTER COLUMN ritardo SET DEFAULT 0;
+
+
+--
+-- TOC entry 4822 (class 2604 OID 17134)
+-- Name: volo_partenza stato; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.volo_partenza ALTER COLUMN stato SET DEFAULT 'PROGRAMMATO'::public.stato_volo;
+
+
+--
+-- TOC entry 4828 (class 2606 OID 16941)
+-- Name: account account_nomeutente_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.account
@@ -1198,8 +1127,8 @@ ALTER TABLE ONLY public.account
 
 
 --
--- TOC entry 4824 (class 2606 OID 16939)
--- Name: account account_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4830 (class 2606 OID 16939)
+-- Name: account account_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.account
@@ -1207,8 +1136,8 @@ ALTER TABLE ONLY public.account
 
 
 --
--- TOC entry 4828 (class 2606 OID 16956)
--- Name: amministratore amministratore_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4834 (class 2606 OID 16956)
+-- Name: amministratore amministratore_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.amministratore
@@ -1216,26 +1145,17 @@ ALTER TABLE ONLY public.amministratore
 
 
 --
--- TOC entry 4838 (class 2606 OID 16999)
--- Name: gate gate_codice_volo_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4846 (class 2606 OID 17166)
+-- Name: gate gate_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.gate
-    ADD CONSTRAINT gate_codice_volo_key UNIQUE (codice_volo);
+    ADD CONSTRAINT gate_pkey PRIMARY KEY (codice_volo);
 
 
 --
--- TOC entry 4840 (class 2606 OID 16997)
--- Name: gate gate_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.gate
-    ADD CONSTRAINT gate_pkey PRIMARY KEY (numero_gate, codice_volo);
-
-
---
--- TOC entry 4832 (class 2606 OID 16981)
--- Name: prenotazione prenotazione_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4836 (class 2606 OID 16981)
+-- Name: prenotazione prenotazione_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.prenotazione
@@ -1243,8 +1163,8 @@ ALTER TABLE ONLY public.prenotazione
 
 
 --
--- TOC entry 4834 (class 2606 OID 17008)
--- Name: prenotazione unique_passeggero_volo; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4838 (class 2606 OID 17008)
+-- Name: prenotazione unique_passeggero_volo; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.prenotazione
@@ -1252,8 +1172,8 @@ ALTER TABLE ONLY public.prenotazione
 
 
 --
--- TOC entry 4836 (class 2606 OID 17010)
--- Name: prenotazione unique_posto_volo; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4840 (class 2606 OID 17010)
+-- Name: prenotazione unique_posto_volo; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.prenotazione
@@ -1261,8 +1181,8 @@ ALTER TABLE ONLY public.prenotazione
 
 
 --
--- TOC entry 4826 (class 2606 OID 16946)
--- Name: utente utente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4832 (class 2606 OID 16946)
+-- Name: utente utente_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.utente
@@ -1270,8 +1190,17 @@ ALTER TABLE ONLY public.utente
 
 
 --
--- TOC entry 4830 (class 2606 OID 16975)
--- Name: volo volo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4844 (class 2606 OID 17144)
+-- Name: volo_partenza volo_partenza_codice_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.volo_partenza
+    ADD CONSTRAINT volo_partenza_codice_key UNIQUE (codice);
+
+
+--
+-- TOC entry 4842 (class 2606 OID 17110)
+-- Name: volo volo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.volo
@@ -1279,24 +1208,24 @@ ALTER TABLE ONLY public.volo
 
 
 --
--- TOC entry 4847 (class 2620 OID 17006)
--- Name: gate gate_volo_partenza_check; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 4851 (class 2620 OID 17152)
+-- Name: volo_arrivo enforce_volo_tipo_arrivo; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER gate_volo_partenza_check BEFORE INSERT OR UPDATE ON public.gate FOR EACH ROW EXECUTE FUNCTION public.check_volo_partenza_trigger();
-
-
---
--- TOC entry 4846 (class 2620 OID 17014)
--- Name: volo pulisci_gate_dopo_decollo; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER pulisci_gate_dopo_decollo AFTER UPDATE ON public.volo FOR EACH ROW EXECUTE FUNCTION public.pulisci_gate_trigger();
+CREATE TRIGGER enforce_volo_tipo_arrivo BEFORE INSERT OR UPDATE ON public.volo_arrivo FOR EACH ROW EXECUTE FUNCTION public.check_tipo_volo();
 
 
 --
--- TOC entry 4842 (class 2606 OID 16957)
--- Name: amministratore amministratore_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4852 (class 2620 OID 17151)
+-- Name: volo_partenza enforce_volo_tipo_partenza; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER enforce_volo_tipo_partenza BEFORE INSERT OR UPDATE ON public.volo_partenza FOR EACH ROW EXECUTE FUNCTION public.check_tipo_volo();
+
+
+--
+-- TOC entry 4848 (class 2606 OID 16957)
+-- Name: amministratore amministratore_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.amministratore
@@ -1304,26 +1233,17 @@ ALTER TABLE ONLY public.amministratore
 
 
 --
--- TOC entry 4845 (class 2606 OID 17000)
--- Name: gate gate_codice_volo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4850 (class 2606 OID 17167)
+-- Name: gate gate_codice_volo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.gate
-    ADD CONSTRAINT gate_codice_volo_fkey FOREIGN KEY (codice_volo) REFERENCES public.volo(codice);
+    ADD CONSTRAINT gate_codice_volo_fkey FOREIGN KEY (codice_volo) REFERENCES public.volo_partenza(codice) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4843 (class 2606 OID 16982)
--- Name: prenotazione prenotazione_codice_volo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.prenotazione
-    ADD CONSTRAINT prenotazione_codice_volo_fkey FOREIGN KEY (codice_volo) REFERENCES public.volo(codice);
-
-
---
--- TOC entry 4844 (class 2606 OID 16987)
--- Name: prenotazione prenotazione_username_prenotazione_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4849 (class 2606 OID 16987)
+-- Name: prenotazione prenotazione_username_prenotazione_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.prenotazione
@@ -1331,25 +1251,15 @@ ALTER TABLE ONLY public.prenotazione
 
 
 --
--- TOC entry 4841 (class 2606 OID 16947)
--- Name: utente utente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4847 (class 2606 OID 16947)
+-- Name: utente utente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.utente
     ADD CONSTRAINT utente_id_fkey FOREIGN KEY (id) REFERENCES public.account(id);
 
 
---
--- TOC entry 5006 (class 0 OID 0)
--- Dependencies: 5
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE USAGE ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
--- Completed on 2025-07-14 16:33:07
+-- Completed on 2025-07-16 14:21:44
 
 --
 -- PostgreSQL database dump complete
