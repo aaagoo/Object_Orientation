@@ -8,9 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/create_database.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/insert_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +65,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/Ago/IdeaProjects/Object_Orientation/Documentazione",
+    "last_opened_file_path": "C:/Users/Ago/IdeaProjects/Object_Orientation/database",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,8 +83,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\Documentazione" />
       <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\database" />
+      <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\Documentazione" />
       <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\main\resources\images" />
       <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\main\java\GUI" />
       <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\src\resources\images" />
@@ -222,15 +220,7 @@
       <workItem from="1752567401103" duration="18694000" />
       <workItem from="1752657954402" duration="36000" />
       <workItem from="1752658827558" duration="2415000" />
-      <workItem from="1752666457787" duration="1776000" />
-    </task>
-    <task id="LOCAL-00003" summary="init commit">
-      <option name="closed" value="true" />
-      <created>1745417068784</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1745417068784</updated>
+      <workItem from="1752666457787" duration="2078000" />
     </task>
     <task id="LOCAL-00004" summary="init commit">
       <option name="closed" value="true" />
@@ -616,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752667279872</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1752668835210</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1752668835210</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
