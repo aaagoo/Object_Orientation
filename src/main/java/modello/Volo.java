@@ -3,11 +3,8 @@ package modello;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Volo {
-    private static final List<Volo> voli = new ArrayList<>();
 
     private String codice;
     private String compagniaAerea;

@@ -38,7 +38,7 @@ public class GUI_Login extends JFrame {
         setContentPane(mainpanel);
         setTitle("Login");
         setSize(1000,500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

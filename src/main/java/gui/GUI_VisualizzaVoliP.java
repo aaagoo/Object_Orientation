@@ -17,7 +17,6 @@ public class GUI_VisualizzaVoliP extends JFrame {
     private JButton voliButton;
     private JPanel operazioniPanel;
     private JPanel tabellaPanel;
-    private JLabel imageLabel;
     private DefaultTableModel modelPartenze;
     private final Utente utente;
 
@@ -26,7 +25,7 @@ public class GUI_VisualizzaVoliP extends JFrame {
         setContentPane(mainpanel);
         setTitle("Visualizza Voli in Partenza");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

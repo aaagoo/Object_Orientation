@@ -18,7 +18,6 @@ public class GUI_ModificaAccountPersonale extends JFrame {
     private JTextField passwordField;
     private JTextField nomeField;
     private JTextField cognomeField;
-    private JTextField nomeutenteField;
     private JTextField rippasswordField;
     private JPanel buttonsPanel;
     private JButton confermaButton;
@@ -31,7 +30,7 @@ public class GUI_ModificaAccountPersonale extends JFrame {
         setContentPane(mainpanel);
         setTitle("Modifica Account Personale");
         setSize(800, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

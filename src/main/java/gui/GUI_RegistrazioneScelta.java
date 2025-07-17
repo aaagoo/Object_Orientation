@@ -20,7 +20,7 @@ public class GUI_RegistrazioneScelta extends JFrame {
         setContentPane(mainpanel);
         setTitle("Registrazione");
         setSize(500,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

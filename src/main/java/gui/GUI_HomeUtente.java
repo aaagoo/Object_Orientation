@@ -22,7 +22,6 @@ public class GUI_HomeUtente extends JFrame{
     private JButton cercaPrenotazionePasseggeroButton;
     private JLabel benvenuto;
     private JButton disconnettitiButton;
-    private JLabel imageLabel;
     private JPanel textPanel;
     private JPanel operationsPanel;
     private JPanel disconnectPanel;
@@ -43,7 +42,7 @@ public class GUI_HomeUtente extends JFrame{
         setContentPane(mainpanel);
         setTitle("Home Utente");
         setSize(1200,800);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

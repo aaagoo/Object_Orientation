@@ -41,7 +41,7 @@ public class GUI_ModificaPrenotazione extends JFrame {
         setContentPane(mainpanel);
         setTitle("Modifica Prenotazioni");
         setSize(1000, 950);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

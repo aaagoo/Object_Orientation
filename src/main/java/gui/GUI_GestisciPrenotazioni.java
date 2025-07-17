@@ -35,7 +35,7 @@ public class GUI_GestisciPrenotazioni extends JFrame {
         setContentPane(mainpanel);
         setTitle("Gestisci Prenotazioni");
         setSize(1000, 900);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

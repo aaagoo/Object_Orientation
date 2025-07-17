@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
-  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_AggiornaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_AggiornaVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_AreaPersonale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_AreaPersonale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_Arrivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_AssegnaGate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPassRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPassRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVoloRisult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciPrenotazioni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciPrenotazioni.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeAmministratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeUtente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAccountPersonale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAccountPersonale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAmministratori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAmministratori.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaPrenotazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaUtenti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaUtenti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_NuovoVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_NuovoVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_Partenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_PrenotaVolo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneAmministratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneScelta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneScelta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneUtente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +100,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/agoso/Documents/Java/Aeroporto/src/main/java/org/example/Main.java",
-    "settings.editor.selected.configurable": "settings.sync",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -220,15 +248,14 @@
       <workItem from="1752567401103" duration="18694000" />
       <workItem from="1752657954402" duration="36000" />
       <workItem from="1752658827558" duration="2415000" />
-      <workItem from="1752666457787" duration="2078000" />
-    </task>
-    <task id="LOCAL-00004" summary="init commit">
-      <option name="closed" value="true" />
-      <created>1745417253952</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745417253952</updated>
+      <workItem from="1752666457787" duration="3433000" />
+      <workItem from="1752675116451" duration="31000" />
+      <workItem from="1752675156853" duration="55000" />
+      <workItem from="1752675251773" duration="17000" />
+      <workItem from="1752679536356" duration="8000" />
+      <workItem from="1752679565604" duration="462000" />
+      <workItem from="1752682433517" duration="1782000" />
+      <workItem from="1752742658924" duration="2155000" />
     </task>
     <task id="LOCAL-00005" summary="init commit">
       <option name="closed" value="true" />
@@ -614,7 +641,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752668835210</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1752668859397</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1752668859397</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -33,7 +33,7 @@ public class GUI_ModificaAmministratori extends JFrame{
         setContentPane(mainpanel);
         setTitle("modifica Account Amministratori");
         setSize(1000, 800);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

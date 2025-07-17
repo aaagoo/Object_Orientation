@@ -23,7 +23,7 @@ public class GUI_CercaPrenPass extends JFrame {
         setContentPane(mainpanel);
         setTitle("Cerca Prenotazione Passeggero");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

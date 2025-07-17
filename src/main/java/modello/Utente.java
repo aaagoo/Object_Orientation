@@ -1,10 +1,6 @@
 package modello;
 
-import java.util.Map;
-import java.util.HashMap;
-
 public abstract class Utente {
-    private static final Map<String, Utente> utentiRegistrati = new HashMap<>();
     private String nomeUtente;
     private String password;
 

@@ -29,7 +29,7 @@ public class GUI_GestisciAccount extends JFrame {
         setContentPane(mainpanel);
         setTitle("Gestione Account");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

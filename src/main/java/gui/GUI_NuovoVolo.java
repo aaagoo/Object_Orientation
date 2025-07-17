@@ -25,7 +25,7 @@ public class GUI_NuovoVolo extends JFrame {
         setContentPane(mainpanel);
         setTitle("Nuovo Volo");
         setSize(500,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

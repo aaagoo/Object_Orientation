@@ -42,7 +42,7 @@ public class GUI_AreaPersonale extends JFrame {
         setContentPane(mainpanel);
         setTitle("Area Personale");
         setSize(1100, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

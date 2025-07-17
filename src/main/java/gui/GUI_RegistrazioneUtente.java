@@ -24,7 +24,7 @@ public class GUI_RegistrazioneUtente extends JFrame{
 
     public GUI_RegistrazioneUtente() {
         setContentPane(mainpanel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(1000, 500);
         setLocationRelativeTo(null);
         setVisible(true);

@@ -24,7 +24,7 @@ public class GUI_VisualizzaVoliA extends JFrame {
         setContentPane(mainpanel);
         setTitle("Visualizza Voli in Arrivo");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

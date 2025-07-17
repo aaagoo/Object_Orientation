@@ -33,7 +33,7 @@ public class GUI_EliminaVolo extends JFrame{
         setContentPane(mainpanel);
         setTitle("Elimina Volo");
         setSize(1000, 900);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

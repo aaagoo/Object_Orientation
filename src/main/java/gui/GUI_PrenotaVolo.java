@@ -34,7 +34,7 @@ public class GUI_PrenotaVolo extends JFrame {
         setContentPane(mainpanel);
         setTitle("Prenota Volo");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
 

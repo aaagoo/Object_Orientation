@@ -21,7 +21,7 @@ public class GUI_RegistrazioneAmministratore extends JFrame {
 
     public GUI_RegistrazioneAmministratore () {
         setContentPane(mainpanel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(1000, 500);
         setLocationRelativeTo(null);
         setVisible(true);

@@ -36,7 +36,7 @@ public class GUI_CercaPrenPassRisult extends JFrame {
         setContentPane(mainpanel);
         setTitle("Risultati Ricerca Prenotazioni");
         setSize(1000, 400);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

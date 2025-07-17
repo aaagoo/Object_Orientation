@@ -47,7 +47,7 @@ public class GUI_Arrivo extends JFrame {
         setContentPane(mainpanel);
         setTitle("Inserisci Volo in Arrivo");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

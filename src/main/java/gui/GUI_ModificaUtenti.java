@@ -35,7 +35,7 @@ public class GUI_ModificaUtenti extends JFrame{
         setContentPane(mainpanel);
         setTitle("Modifica Account Utenti");
         setSize(1000, 800);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

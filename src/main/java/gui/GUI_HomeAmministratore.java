@@ -30,7 +30,7 @@ public class GUI_HomeAmministratore extends JFrame{
         setContentPane(mainpanel);
         setTitle("Home Amministratore");
         setSize(1000,700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

@@ -12,6 +12,12 @@ import java.util.HashMap;
 public class DAOimpl_Utente implements DAO_Utente {
     private static DAOimpl_Utente instance;
 
+    private static final String COLUMN_NOME_UTENTE = "nomeutente";
+    private static final String COLUMN_PASSWORD = "password";
+    private static final String COLUMN_COGNOME = "cognome";
+    private static final String COLUMN_NOME = "nome";
+    private static final String COLUMN_ID = "id";
+
     private DAOimpl_Utente() {
     }
 
@@ -33,11 +39,11 @@ public class DAOimpl_Utente implements DAO_Utente {
 
             while (rs.next()) {
                 Map<String, Object> utente = new HashMap<>();
-                utente.put("id", rs.getInt("id"));
-                utente.put("nomeutente", rs.getString("nomeutente"));
-                utente.put("password", rs.getString("password"));
-                utente.put("nome", rs.getString("nome"));
-                utente.put("cognome", rs.getString("cognome"));
+                utente.put(COLUMN_ID, rs.getInt(COLUMN_ID));
+                utente.put(COLUMN_NOME_UTENTE, rs.getString(COLUMN_NOME_UTENTE));
+                utente.put(COLUMN_PASSWORD, rs.getString(COLUMN_PASSWORD));
+                utente.put(COLUMN_NOME, rs.getString(COLUMN_NOME));
+                utente.put(COLUMN_COGNOME, rs.getString(COLUMN_COGNOME));
                 utenti.add(utente);
             }
         }
@@ -55,14 +61,15 @@ public class DAOimpl_Utente implements DAO_Utente {
 
             while (rs.next()) {
                 Map<String, Object> admin = new HashMap<>();
-                admin.put("id", rs.getInt("id"));
-                admin.put("nomeutente", rs.getString("nomeutente"));
-                admin.put("password", rs.getString("password"));
+                admin.put(COLUMN_ID, rs.getInt(COLUMN_ID));
+                admin.put(COLUMN_NOME_UTENTE, rs.getString(COLUMN_NOME_UTENTE));
+                admin.put(COLUMN_PASSWORD, rs.getString(COLUMN_PASSWORD));
                 amministratori.add(admin);
             }
         }
         return amministratori;
     }
+
 
     @Override
     public boolean registraUtenteGenerico(UtenteGenerico utente) throws SQLException {
@@ -164,19 +171,20 @@ public class DAOimpl_Utente implements DAO_Utente {
 
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next() && rs.getBoolean(1)) {
-                    // Se è un utente valido, recuperiamo i suoi dati dalla vista
-                    String sqlDati = "SELECT nome, cognome FROM tutti_utenti WHERE nomeutente = ?";
+                    String sqlDati = "SELECT " + COLUMN_NOME + ", " + COLUMN_COGNOME +
+                            " FROM tutti_utenti WHERE " + COLUMN_NOME_UTENTE + " = ?";
                     try (PreparedStatement stmtDati = conn.prepareStatement(sqlDati)) {
                         stmtDati.setString(1, nomeutente);
                         ResultSet rsDati = stmtDati.executeQuery();
 
                         if (rsDati.next()) {
                             return new UtenteGenerico(
-                                    rsDati.getString("nome"),
-                                    rsDati.getString("cognome"),
+                                    rsDati.getString(COLUMN_NOME),
+                                    rsDati.getString(COLUMN_COGNOME),
                                     nomeutente,
                                     password
                             );
+
                         }
                     }
                 }
