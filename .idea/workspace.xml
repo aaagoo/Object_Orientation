@@ -5,38 +5,138 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_AggiornaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_AggiornaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_AreaPersonale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_AreaPersonale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_Arrivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_Arrivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_AssegnaGate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_AssegnaGate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPassRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenPassRisult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVoloRisult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_CercaPrenVoloRisult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaPrenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_EliminaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciPrenotazioni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_GestisciPrenotazioni.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeAmministratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_HomeUtente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAccountPersonale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAccountPersonale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAmministratori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaAmministratori.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaPrenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaUtenti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_ModificaUtenti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_NuovoVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_NuovoVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_Partenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_Partenza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_PrenotaVolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_PrenotaVolo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneAmministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneAmministratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneScelta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneScelta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneUtente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_RegistrazioneUtente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GUI_VisualizzaVoliP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/implementazioneDAO/DAOimpl_Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Utente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modello/Volo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modello/Volo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/controller/Controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/controller/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/controller/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/DAO_Prenotazione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/DAO_Utente.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/DAO_Volo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/database/ConnessioneDatabase.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/database/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/database/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_AggiornaVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_AreaPersonale.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_Arrivo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_AssegnaGate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenPass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenPassRisult.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenVoloRisult.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_EliminaPrenotazione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_EliminaVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_GestisciAccount.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_GestisciPrenotazioni.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_HomeAmministratore.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_HomeUtente.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_Login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaAccountPersonale.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaAmministratori.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaPrenotazione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaUtenti.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_NuovoVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_Partenza.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_PrenotaVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_RegistrazioneAmministratore.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_RegistrazioneScelta.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_RegistrazioneUtente.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_VisualizzaVoliA.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_VisualizzaVoliP.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/DAOimpl_Prenotazione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/DAOimpl_Utente.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/DAOimpl_Volo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/dejavufonts.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/main/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/main/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/main/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/AmministratoreSistema.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Gate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Prenotazione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/StatoPrenotazione.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/StatoVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/TipoVolo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Utente.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/UtenteGenerico.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Volo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/VoloArrivo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/VoloPartenza.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Oblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Oblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/dejavu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/link.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/jquery-3.7.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/type-search-index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,15 +355,7 @@
       <workItem from="1752679536356" duration="8000" />
       <workItem from="1752679565604" duration="462000" />
       <workItem from="1752682433517" duration="1782000" />
-      <workItem from="1752742658924" duration="2155000" />
-    </task>
-    <task id="LOCAL-00005" summary="init commit">
-      <option name="closed" value="true" />
-      <created>1747393956124</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1747393956124</updated>
+      <workItem from="1752742658924" duration="2829000" />
     </task>
     <task id="LOCAL-00006" summary="init commit">
       <option name="closed" value="true" />
@@ -649,7 +741,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752668859397</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="init commit">
+      <option name="closed" value="true" />
+      <created>1752745104117</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1752745104117</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
