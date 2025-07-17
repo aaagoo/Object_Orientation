@@ -4,140 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/allclasses-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/allpackages-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/controller/Controller.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/controller/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/controller/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/DAO_Prenotazione.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/DAO_Utente.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/DAO_Volo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/dao/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/database/ConnessioneDatabase.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/database/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/database/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_AggiornaVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_AreaPersonale.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_Arrivo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_AssegnaGate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenPass.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenPassRisult.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_CercaPrenVoloRisult.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_EliminaPrenotazione.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_EliminaVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_GestisciAccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_GestisciPrenotazioni.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_HomeAmministratore.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_HomeUtente.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_Login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaAccountPersonale.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaAmministratori.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaPrenotazione.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_ModificaUtenti.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_NuovoVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_Partenza.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_PrenotaVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_RegistrazioneAmministratore.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_RegistrazioneScelta.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_RegistrazioneUtente.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_VisualizzaVoliA.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/GUI_VisualizzaVoliP.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/gui/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/DAOimpl_Prenotazione.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/DAOimpl_Utente.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/DAOimpl_Volo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/implementazioneDAO/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/dejavufonts.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/jquery.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/legal/jqueryUI.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/main/Main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/main/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/main/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/AmministratoreSistema.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Gate.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Prenotazione.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/StatoPrenotazione.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/StatoVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/TipoVolo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Utente.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/UtenteGenerico.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/Volo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/VoloArrivo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/VoloPartenza.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/modello/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/module-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/overview-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/copy.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-BoldOblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Oblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans-Oblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSans.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-BoldOblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono-Oblique.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSansMono.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Bold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Bold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-BoldItalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Italic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif-Italic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/DejaVuLGCSerif.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/fonts/dejavu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/link.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/resource-files/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/jquery-3.7.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/search-page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/script-files/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/serialized-form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/tag-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentazione/javadoc/type-search-index.js" beforeDir="false" />
-    </list>
+    <list default="true" id="b51737b4-8c72-469f-975e-67dc599fe93f" name="Changes" comment="init commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,34 +48,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "234",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/Ago/IdeaProjects/Object_Orientation/database",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/agoso/Documents/Java/Aeroporto/src/main/java/org/example/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;234&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ago/IdeaProjects/Object_Orientation/database&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/agoso/Documents/Java/Aeroporto/src/main/java/org/example/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Ago\IdeaProjects\Object_Orientation\database" />
